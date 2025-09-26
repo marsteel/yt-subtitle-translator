@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube双语字幕翻译助手",
+  "version": "1.0.0",
+  "description": "实时翻译字幕，显示双语字幕",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "https://youtu.be/*",
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*", "https://youtu.be/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
