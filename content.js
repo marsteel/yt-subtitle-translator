@@ -83,6 +83,8 @@ function clearCustomSubtitle() {
   const customDiv = document.getElementById("custom-subtitle");
   if (customDiv) {
     customDiv.remove();
+    //debug log
+    //console.log("Custom subtitle cleared.");
   }
 }
 
@@ -107,27 +109,14 @@ window.addEventListener("yt-navigate-finish", () => {
 });
 
 
-// clearCustomSubtitle when caption is disabled by keyboard shortcut
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'c' || event.key === 'C') { // 'c' key toggles captions on YouTube
-    setTimeout(() => {
-      const subtitleContainer = document.querySelector(".ytp-caption-window-container");
-      if (subtitleContainer && subtitleContainer.innerText.trim() === '') {
-        clearCustomSubtitle();
-      }
-    }, 500); // Delay to allow caption state to update
+// periodically monitor result of subtitleContainer && subtitleContainer.innerText.trim() === ''
+// if true then the subtitle is disabled by user， then call clearCustomSubtitle
+setInterval(() => {
+  const subtitleContainer = document.querySelector(".ytp-caption-window-container");
+  if (subtitleContainer && subtitleContainer.innerText.trim() === '') {
+    clearCustomSubtitle();
   }
-});
-
-// clearCustomSubtitle when caption is disabled by mouse click caption button
-document.querySelector('.ytp-subtitles-button').addEventListener('click', () => {
-  setTimeout(() => {
-      const subtitleContainer = document.querySelector(".ytp-caption-window-container");
-      if (subtitleContainer && subtitleContainer.innerText.trim() === '') {
-        clearCustomSubtitle();
-      }
-    }, 500); // Delay to allow caption state to update
-});
+}, 1000);
 
 let debounceTimer = null;
 
