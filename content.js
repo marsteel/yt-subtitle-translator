@@ -25,34 +25,58 @@ initSubtitleObserver();
 function showBilingualSubtitle(original, translated) {
   chrome.storage.sync.get(["subtitleColor", "subtitleFontSize", "subtitleBgColor"], (data) => {
     const color = data.subtitleColor || "yellow";
-    const fontSize = data.subtitleFontSize || "25px";
+    const fontSize = data.subtitleFontSize || "25";
     const bgColor = data.subtitleBgColor || "black";
 
-  let customDiv = document.getElementById("custom-subtitle");
-  if (!customDiv) {
-    customDiv = document.createElement("div");
-    customDiv.id = "custom-subtitle";
-    customDiv.style.position = "absolute";
-    customDiv.style.bottom = "15%";
-    //customDiv.style.width = "100%";
-    // width dynamically adjust to subtitle width and center
-    customDiv.style.left = "50%";
-    customDiv.style.transform = "translateX(-50%)";
-    customDiv.style.display = "inline-block";
-    customDiv.style.textAlign = "center";
-    customDiv.style.fontSize = "25px";
-    customDiv.style.color = "yellow";
-    customDiv.style.textShadow = "2px 2px 4px black";
-    document.body.appendChild(customDiv);
-  }
+    let customDiv = document.getElementById("custom-subtitle");
+    if (!customDiv) {
+      customDiv = document.createElement("div");
+      customDiv.id = "custom-subtitle";
+      customDiv.style.position = "fixed"; // 用 fixed 避免滚动条干扰
+      customDiv.style.bottom = "15%";
+      customDiv.style.left = "50%";
+      customDiv.style.transform = "translateX(-50%)";
+      customDiv.style.textAlign = "center";
+      customDiv.style.textShadow = "2px 2px 4px black";
+      customDiv.style.cursor = "move"; // 鼠标样式提示可拖动
+      customDiv.style.zIndex = 9999;   // 保证在视频上层
+      document.body.appendChild(customDiv);
 
-  customDiv.style.fontSize = fontSize + "px";
-  customDiv.style.color = color;
-  customDiv.style.backgroundColor = bgColor;
+      // ---------- 拖拽逻辑 ----------
+      let isDragging = false;
+      let offsetX = 0, offsetY = 0;
 
-  customDiv.innerHTML = `<span>${translated}</span>`;
+      customDiv.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        // 清掉 transform，改用绝对位置
+        customDiv.style.transform = "";
+        offsetX = e.clientX - customDiv.offsetLeft;
+        offsetY = e.clientY - customDiv.offsetTop;
+        e.preventDefault();
+      });
 
-});
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          customDiv.style.left = (e.clientX - offsetX) + "px";
+          customDiv.style.top = (e.clientY - offsetY) + "px";
+          customDiv.style.bottom = "auto"; // 防止和 bottom 冲突
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+    }
+
+    customDiv.style.fontSize = fontSize + "px";
+    customDiv.style.color = color;
+    customDiv.style.backgroundColor = bgColor;
+
+    // 双语显示：原文 + 翻译
+    customDiv.innerHTML = `
+      <div>${translated}</div>
+    `;
+  });
 }
 
 function clearCustomSubtitle() {
