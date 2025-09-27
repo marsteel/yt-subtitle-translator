@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "YouTube双语字幕翻译助手",
-  "version": "1.0.0",
-  "description": "实时翻译字幕，显示双语字幕",
+  "version": "1.1.0",
+  "description": "显示YouTube双语字幕，调用OpenAI API进行翻译，Key不上传服务器，保护隐私。",
   "permissions": [
     "storage"
   ],
