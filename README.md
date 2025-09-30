@@ -1,5 +1,7 @@
 # YouTube双语字幕翻译助手
 
+![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/mklfmioimlpfejandkbnnnfbojflimco)
+
 ## 实时翻译字幕，显示双语字幕
 
 YouTube双语字幕翻译助手让你在观看 YouTube 视频时轻松显示第二条字幕。
