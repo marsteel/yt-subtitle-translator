@@ -24,6 +24,8 @@ YouTube双语字幕翻译助手让你在观看 YouTube 视频时轻松显示第�
 
 直接安装 [Chrome Web Store](https://chromewebstore.google.com/detail/youtube%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95%E7%BF%BB%E8%AF%91%E5%8A%A9%E6%89%8B/mklfmioimlpfejandkbnnnfbojflimco?authuser=0&hl=en)
 
+直接安装 [Edge Add-On](https://microsoftedge.microsoft.com/addons/detail/youtube%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95%E7%BF%BB%E8%AF%91%E5%8A%A9%E6%89%8B/iigbejclmmandbleldjpoomjdnlgcnod)
+
 或[加载未打包的扩展程序](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?hl=zh-cn)
 
 ## 使用方式：
