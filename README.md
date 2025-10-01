@@ -2,6 +2,8 @@
 
 ![GitHub License](https://img.shields.io/github/license/marsteel/yt-subtitle-translator)
 ![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/mklfmioimlpfejandkbnnnfbojflimco)
+[![](https://img.shields.io/badge/dynamic/json?label=edge%20add-on&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fiigbejclmmandbleldjpoomjdnlgcnod)]([https://microsoftedge.microso](https://microsoftedge.microsoft.com/addons/detail/youtube%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95%E7%BF%BB%E8%AF%91%E5%8A%A9%E6%89%8B/iigbejclmmandbleldjpoomjdnlgcnod))
+
 
 ## 实时翻译字幕，显示双语字幕
 
