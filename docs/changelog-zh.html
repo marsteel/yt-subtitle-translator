@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 - YouTube双语字幕翻译助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .version {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .version:last-of-type {
+            border-bottom: none;
+        }
+
+        .version-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .version-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .version-date {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.latest {
+            background: #10b981;
+        }
+
+        h3 {
+            color: #4b5563;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        ul {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #4b5563;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <a href="changelog-zh.html" class="active">中文</a> | <a href="changelog.html">English</a>
+    </div>
+
+    <div class="container">
+        <a href="index-zh.html" class="back-link">← 返回首页</a>
+
+        <h1>📝 更新日志</h1>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.1.2</span>
+                <span class="badge latest">最新版本</span>
+                <span class="version-date">当前版本</span>
+            </div>
+
+            <h3>✨ 功能特性</h3>
+            <ul>
+                <li>在YouTube视频上显示双语字幕（原文+翻译）</li>
+                <li>使用OpenAI API进行高质量翻译</li>
+                <li>API密钥本地存储，保护隐私安全</li>
+                <li>支持自定义翻译目标语言</li>
+                <li>字幕位置可拖动调整</li>
+                <li>简洁美观的用户界面</li>
+            </ul>
+
+            <h3>🔧 技术实现</h3>
+            <ul>
+                <li>Manifest V3架构</li>
+                <li>Service Worker后台脚本</li>
+                <li>Content Script注入YouTube页面</li>
+                <li>Chrome Sync Storage存储设置</li>
+            </ul>
+
+            <h3>⚠️ 已知问题</h3>
+            <ul>
+                <li>视频全屏模式时字幕被拖拽到过低位置，退出全屏后字幕有时无法正常显示</li>
+                <li><strong>临时解决方法：</strong>切换到全屏模式后可拖动字幕到合适位置，再切回默认视图</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.0.0</span>
+                <span class="version-date">初始发布</span>
+            </div>
+
+            <h3>🎉 首次发布</h3>
+            <ul>
+                <li>实现YouTube双语字幕显示功能</li>
+                <li>集成OpenAI API翻译服务</li>
+                <li>本地存储API密钥和设置</li>
+                <li>支持多种目标语言翻译</li>
+                <li>发布到Chrome Web Store和Edge Add-ons</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 YouTube双语字幕翻译助手. 采用MIT许可证的开源项目.</p>
+        </div>
+    </div>
+</body>
+
+</html>

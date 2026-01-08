@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - YouTube Bilingual Subtitle Translator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        .language-switcher a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px 8px;
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switcher .active {
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .version {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .version:last-of-type {
+            border-bottom: none;
+        }
+
+        .version-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .version-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .version-date {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.latest {
+            background: #10b981;
+        }
+
+        h3 {
+            color: #4b5563;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        ul {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #4b5563;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <a href="changelog-zh.html">中文</a> | <a href="changelog.html" class="active">English</a>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <h1>📝 Changelog</h1>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.1.2</span>
+                <span class="badge latest">Latest</span>
+                <span class="version-date">Current Version</span>
+            </div>
+
+            <h3>✨ Features</h3>
+            <ul>
+                <li>Display bilingual subtitles on YouTube videos (original + translation)</li>
+                <li>High-quality translation using OpenAI API</li>
+                <li>API key stored locally for privacy protection</li>
+                <li>Customizable target translation language</li>
+                <li>Draggable subtitle positioning</li>
+                <li>Clean and beautiful user interface</li>
+            </ul>
+
+            <h3>🔧 Technical Implementation</h3>
+            <ul>
+                <li>Manifest V3 architecture</li>
+                <li>Service Worker background script</li>
+                <li>Content Script injection on YouTube pages</li>
+                <li>Chrome Sync Storage for settings</li>
+            </ul>
+
+            <h3>⚠️ Known Issues</h3>
+            <ul>
+                <li>When subtitles are dragged too low in fullscreen mode, they may not display correctly after exiting
+                    fullscreen</li>
+                <li><strong>Workaround:</strong> Drag subtitles to an appropriate position in fullscreen mode, then
+                    switch back to default view</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.0.0</span>
+                <span class="version-date">Initial Release</span>
+            </div>
+
+            <h3>🎉 First Release</h3>
+            <ul>
+                <li>Implemented YouTube bilingual subtitle display functionality</li>
+                <li>Integrated OpenAI API translation service</li>
+                <li>Local storage of API keys and settings</li>
+                <li>Support for multiple target languages</li>
+                <li>Published to Chrome Web Store and Edge Add-ons</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 YouTube Bilingual Subtitle Translator. Open source under MIT License.</p>
+        </div>
+    </div>
+</body>
+
+</html>
