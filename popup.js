@@ -34,6 +34,29 @@ document.addEventListener("DOMContentLoaded", () => {
     advancedArrow.classList.toggle("expanded");
   });
 
+  // Provider selection with endpoint presets
+  const providerSelect = document.getElementById("providerSelect");
+  const apiEndpointInput = document.getElementById("apiEndpoint");
+
+  const providerEndpoints = {
+    "openai": "https://api.openai.com/v1/chat/completions",
+    "azure": "https://YOUR-RESOURCE.openai.azure.com/openai/deployments/YOUR-DEPLOYMENT/chat/completions?api-version=2024-02-15-preview",
+    "anthropic": "https://api.anthropic.com/v1/messages",
+    "gemini": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
+    "deepseek": "https://api.deepseek.com/v1/chat/completions"
+  };
+
+  providerSelect.addEventListener("change", (e) => {
+    const selectedProvider = e.target.value;
+    if (selectedProvider !== "custom" && providerEndpoints[selectedProvider]) {
+      apiEndpointInput.value = providerEndpoints[selectedProvider];
+      apiEndpointInput.disabled = false;
+    } else if (selectedProvider === "custom") {
+      apiEndpointInput.disabled = false;
+      apiEndpointInput.focus();
+    }
+  });
+
   // Load stored values and display them on popup open
   chrome.storage.sync.get([
     "targetLang", "apiKey", "subtitleColor", "subtitleFontSize", "subtitleBgColor",
@@ -58,6 +81,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load custom endpoint settings
     if (data.apiEndpoint) {
       document.getElementById("apiEndpoint").value = data.apiEndpoint;
+
+      // Detect provider based on endpoint
+      const endpoint = data.apiEndpoint;
+      let detectedProvider = "custom";
+
+      if (endpoint.includes("api.openai.com")) {
+        detectedProvider = "openai";
+      } else if (endpoint.includes("openai.azure.com")) {
+        detectedProvider = "azure";
+      } else if (endpoint.includes("api.anthropic.com")) {
+        detectedProvider = "anthropic";
+      } else if (endpoint.includes("generativelanguage.googleapis.com")) {
+        detectedProvider = "gemini";
+      } else if (endpoint.includes("api.deepseek.com")) {
+        detectedProvider = "deepseek";
+      }
+
+      document.getElementById("providerSelect").value = detectedProvider;
     }
     if (data.modelName) {
       document.getElementById("modelName").value = data.modelName;
@@ -96,3 +137,70 @@ document.getElementById("saveBtn").addEventListener("click", () => {
     });
   });
 });
+
+// Test API endpoint button
+document.getElementById("testEndpointBtn").addEventListener("click", async () => {
+  const apiKeyInput = document.getElementById("apiKey").value;
+  const endpoint = document.getElementById("apiEndpoint").value.trim() || "https://api.openai.com/v1/chat/completions";
+  const model = document.getElementById("modelName").value.trim() || "gpt-4o-mini";
+  const testStatus = document.getElementById("testStatus");
+  const testBtn = document.getElementById("testEndpointBtn");
+
+  // Get API key from storage or input
+  chrome.storage.sync.get("apiKey", async (data) => {
+    let apiKey = apiKeyInput;
+
+    // If input shows asterisks, use stored key
+    if (apiKeyInput.startsWith("*")) {
+      apiKey = data.apiKey || "";
+    }
+
+    // Check if API key is set
+    if (!apiKey) {
+      testStatus.style.display = "block";
+      testStatus.style.color = "#dc2626";
+      testStatus.textContent = chrome.i18n.getMessage("apiKeyNotSet") || "[未设置 API Key]";
+      return;
+    }
+
+    // Show testing status
+    testBtn.disabled = true;
+    testBtn.textContent = chrome.i18n.getMessage("testingEndpoint") || "测试中...";
+    testStatus.style.display = "block";
+    testStatus.style.color = "#6b7280";
+    testStatus.textContent = "";
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: model,
+          messages: [
+            { role: "user", content: "Hello" }
+          ],
+          max_tokens: 5
+        })
+      });
+
+      if (response.ok) {
+        testStatus.style.color = "#10b981";
+        testStatus.textContent = chrome.i18n.getMessage("testSuccess") || "✓ 连接成功！";
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        testStatus.style.color = "#dc2626";
+        testStatus.textContent = `${chrome.i18n.getMessage("testFailed") || "✗ 连接失败"}: ${response.status} ${errorData.error?.message || response.statusText}`;
+      }
+    } catch (error) {
+      testStatus.style.color = "#dc2626";
+      testStatus.textContent = `${chrome.i18n.getMessage("testFailed") || "✗ 连接失败"}: ${error.message}`;
+    } finally {
+      testBtn.disabled = false;
+      testBtn.textContent = chrome.i18n.getMessage("testEndpoint") || "测试连接";
+    }
+  });
+});
+

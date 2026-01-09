@@ -47,6 +47,14 @@
         "message": "API端点URL：",
         "description": "Label for API endpoint input"
     },
+    "providerLabel": {
+        "message": "AI服务商：",
+        "description": "Label for AI provider selection"
+    },
+    "providerCustom": {
+        "message": "自定义",
+        "description": "Custom provider option"
+    },
     "apiEndpointPlaceholder": {
         "message": "https://api.openai.com/v1/chat/completions",
         "description": "Placeholder for API endpoint input"
@@ -74,5 +82,21 @@
     "visitWebsite": {
         "message": "📖 访问官网获取更多信息",
         "description": "Link text to visit project website"
+    },
+    "testEndpoint": {
+        "message": "测试连接",
+        "description": "Button text to test API endpoint"
+    },
+    "testingEndpoint": {
+        "message": "测试中...",
+        "description": "Status text while testing endpoint"
+    },
+    "testSuccess": {
+        "message": "✓ 连接成功！",
+        "description": "Success message for endpoint test"
+    },
+    "testFailed": {
+        "message": "✗ 连接失败",
+        "description": "Failure message for endpoint test"
     }
 }
