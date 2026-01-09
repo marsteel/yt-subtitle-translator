@@ -322,18 +322,29 @@
         // Fetch Edge Add-ons version
         async function fetchEdgeVersion() {
             try {
-                // Use shields.io badge API which supports Edge Add-ons
-                const response = await fetch('https://img.shields.io/badge/dynamic/json?label=edge&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fiigbejclmmandbleldjpoomjdnlgcnod.json');
-                const data = await response.json();
-                if (data && data.value) {
-                    document.getElementById('edge-version').textContent = data.value;
+                // Fetch the SVG badge from shields.io
+                const response = await fetch('https://img.shields.io/badge/dynamic/json?label=edge%20add-on&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fiigbejclmmandbleldjpoomjdnlgcnod');
+                const svgText = await response.text();
+
+                // Parse the SVG to extract version text
+                const parser = new DOMParser();
+                const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+                const textElements = svgDoc.querySelectorAll('text');
+
+                // The version is in the last text element (after the label)
+                if (textElements.length > 0) {
+                    const lastText = textElements[textElements.length - 1].textContent.trim();
+                    // Check if it's a valid version (starts with 'v' and contains numbers)
+                    if (lastText && lastText.match(/v?\d+\.\d+/) && lastText !== 'resource not found') {
+                        document.getElementById('edge-version').textContent = lastText;
+                    } else {
+                        document.getElementById('edge-version').style.display = 'none';
+                    }
                 } else {
-                    // Fallback: hide the badge if we can't fetch
                     document.getElementById('edge-version').style.display = 'none';
                 }
             } catch (error) {
                 console.log('Could not fetch Edge version:', error);
-                // Hide the badge on error
                 document.getElementById('edge-version').style.display = 'none';
             }
         }
