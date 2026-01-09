@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "openai": "gpt-4o-mini",
     "azure": "gpt-4",
     "anthropic": "claude-3-5-sonnet-20241022",
-    "gemini": "gemini-pro",
+    "gemini": "gemini-2.0-flash-lite",
     "deepseek": "deepseek-chat"
   };
 
