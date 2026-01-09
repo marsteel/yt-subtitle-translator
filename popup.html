@@ -251,12 +251,31 @@
         <span class="section-arrow" id="advancedArrow"></span>
       </div>
       <div class="section-content" id="advancedContent">
+        <label data-i18n="providerLabel">AI Provider:</label>
+        <select id="providerSelect"
+          style="width: 100%; padding: 10px 12px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: #f9fafb; color: #1f2937; transition: all 0.2s ease;">
+          <option value="openai">OpenAI</option>
+          <option value="azure">Azure OpenAI</option>
+          <option value="anthropic">Anthropic (Claude)</option>
+          <option value="gemini">Google Gemini</option>
+          <option value="deepseek">DeepSeek</option>
+          <option value="custom" data-i18n="providerCustom">Custom</option>
+        </select>
+
         <label data-i18n="apiEndpointLabel">API Endpoint URL:</label>
         <input id="apiEndpoint" type="text" data-i18n-placeholder="apiEndpointPlaceholder"
           placeholder="https://api.openai.com/v1/chat/completions" />
 
         <label data-i18n="modelNameLabel">Model Name:</label>
         <input id="modelName" type="text" data-i18n-placeholder="modelNamePlaceholder" placeholder="gpt-4o-mini" />
+
+        <button id="testEndpointBtn" type="button"
+          style="margin-top: 16px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-size: 13px; padding: 10px;"
+          data-i18n="testEndpoint">
+          Test Connection
+        </button>
+        <div id="testStatus"
+          style="margin-top: 8px; font-size: 13px; font-weight: 500; text-align: center; display: none;"></div>
       </div>
     </div>
 
