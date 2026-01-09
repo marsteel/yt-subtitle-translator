@@ -141,7 +141,7 @@
         <a href="index.html" class="back-link">← Back to Home</a>
 
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last Updated: January 8, 2026</p>
+        <p class="last-updated">Last Updated: January 9, 2026</p>
 
         <h2>Overview</h2>
         <p>YouTube Bilingual Subtitle Translator is committed to protecting your privacy. This privacy policy explains
@@ -154,8 +154,10 @@
         <h2>What We Store Locally</h2>
         <p>The following data is stored locally in your browser using the browser's sync storage:</p>
         <ul>
-            <li><strong>OpenAI API Key:</strong> Your API key</li>
+            <li><strong>API Key:</strong> Your AI provider's API key</li>
             <li><strong>Target Language Settings:</strong> Your selected translation target language</li>
+            <li><strong>API Endpoint:</strong> Your custom API endpoint URL (if configured)</li>
+            <li><strong>Model Name:</strong> Your selected AI model name</li>
         </ul>
         <p>All data is stored locally in the browser's sync storage and synced across your devices via browser sync (if
             enabled). We never have access to this data.</p>
@@ -170,10 +172,10 @@
         </ul>
 
         <h2>API Keys</h2>
-        <p>Your OpenAI API key is:</p>
+        <p>Your AI provider's API key is:</p>
         <ul>
             <li>Stored in your browser's encrypted storage</li>
-            <li>Never transmitted to us or any third party (except OpenAI)</li>
+            <li>Never transmitted to us or any third party (except your configured AI provider)</li>
             <li>Only accessible by the extension on your device</li>
         </ul>
 
@@ -181,14 +183,16 @@
         <p>The extension requests the following permissions:</p>
 
         <h3>storage</h3>
-        <p>To save your settings (API key and target language) locally in your browser.</p>
+        <p>To save your settings (API key, target language, API endpoint, and model name) locally in your browser.</p>
 
         <h3>host_permissions</h3>
         <p>To access the following websites:</p>
         <ul>
             <li><strong>*.youtube.com, youtu.be:</strong> To inject subtitle translation functionality on YouTube pages
             </li>
-            <li><strong>api.openai.com:</strong> To communicate with the OpenAI API for subtitle translation</li>
+            <li><strong>https://*/*:</strong> To communicate with any OpenAI-compatible API endpoint you configure
+                (OpenAI, Azure OpenAI, local LLMs, etc.). The extension only connects to endpoints you explicitly
+                specify in settings.</li>
         </ul>
 
         <h2>Data Security</h2>

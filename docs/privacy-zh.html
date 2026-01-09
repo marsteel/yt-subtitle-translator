@@ -114,7 +114,7 @@
         <a href="index-zh.html" class="back-link">← 返回首页</a>
 
         <h1>隐私政策</h1>
-        <p class="last-updated">最后更新：2026年1月8日</p>
+        <p class="last-updated">最后更新：2026年1月9日</p>
 
         <h2>概述</h2>
         <p>YouTube双语字幕翻译助手致力于保护您的隐私。本隐私政策说明了在您使用我们的Chrome/Edge扩展时，我们如何处理您的数据。</p>
@@ -125,8 +125,10 @@
         <h2>本地存储的内容</h2>
         <p>以下数据存储在您的浏览器本地（使用浏览器的sync storage）：</p>
         <ul>
-            <li><strong>OpenAI API密钥：</strong>您的API密钥</li>
+            <li><strong>API密钥：</strong>您的AI服务商API密钥</li>
             <li><strong>目标语言设置：</strong>您选择的翻译目标语言</li>
+            <li><strong>API端点：</strong>您的自定义API端点URL（如已配置）</li>
+            <li><strong>模型名称：</strong>您选择的AI模型名称</li>
         </ul>
         <p>所有数据都存储在浏览器的sync storage中，并通过浏览器同步在您的设备间同步（如果启用）。我们永远无法访问这些数据。</p>
 
@@ -139,10 +141,10 @@
         </ul>
 
         <h2>API密钥</h2>
-        <p>您的OpenAI API密钥：</p>
+        <p>您的AI服务商API密钥：</p>
         <ul>
             <li>存储在您浏览器的加密存储中</li>
-            <li>永远不会传输给我们或任何第三方（除了OpenAI）</li>
+            <li>永远不会传输给我们或任何第三方（除了您配置的AI服务商）</li>
             <li>只能由您设备上的扩展访问</li>
         </ul>
 
@@ -150,13 +152,13 @@
         <p>扩展请求以下权限：</p>
 
         <h3>storage</h3>
-        <p>保存您的设置（API密钥和目标语言）到浏览器本地。</p>
+        <p>保存您的设置（API密钥、目标语言、API端点和模型名称）到浏览器本地。</p>
 
         <h3>host_permissions</h3>
         <p>访问以下网站：</p>
         <ul>
             <li><strong>*.youtube.com, youtu.be:</strong> 在YouTube页面上注入字幕翻译功能</li>
-            <li><strong>api.openai.com:</strong> 与OpenAI API通信以翻译字幕</li>
+            <li><strong>https://*/*：</strong>与您配置的任何OpenAI兼容API端点通信（OpenAI、Azure OpenAI、本地LLM等）。扩展仅连接到您在设置中明确指定的端点。</li>
         </ul>
 
         <h2>数据安全</h2>

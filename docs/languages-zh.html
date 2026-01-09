@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见语言代码 - YouTube双语字幕翻译助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        .language-switcher a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px 8px;
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switcher .active {
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .intro {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .intro p {
+            margin-bottom: 10px;
+            color: #4b5563;
+        }
+
+        .intro code {
+            background: #e0e7ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <a href="languages-zh.html" class="active">中文</a> | <a href="languages.html">English</a>
+    </div>
+
+    <div class="container">
+        <a href="index-zh.html" class="back-link">← 返回首页</a>
+
+        <h1>🌍 常见语言代码</h1>
+
+        <div class="intro">
+            <p><strong>使用方法：</strong>在扩展设置的"目标语言"字段中输入语言名称（例如：<code>中文</code>、<code>英语</code>、<code>日语</code>）。</p>
+            <p>您可以使用英文名称或该语言的本地名称，AI都能理解。</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>语言（中文）</th>
+                    <th>ISO 639-1</th>
+                    <th>本地名称</th>
+                    <th>输入示例</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>简体中文</td>
+                    <td>zh</td>
+                    <td>简体中文</td>
+                    <td>中文, Chinese, zh</td>
+                </tr>
+                <tr>
+                    <td>繁体中文</td>
+                    <td>zh-TW</td>
+                    <td>繁體中文</td>
+                    <td>繁体中文, Traditional Chinese</td>
+                </tr>
+                <tr>
+                    <td>英语</td>
+                    <td>en</td>
+                    <td>English</td>
+                    <td>英语, English, en</td>
+                </tr>
+                <tr>
+                    <td>西班牙语</td>
+                    <td>es</td>
+                    <td>Español</td>
+                    <td>西班牙语, Spanish, es</td>
+                </tr>
+                <tr>
+                    <td>法语</td>
+                    <td>fr</td>
+                    <td>Français</td>
+                    <td>法语, French, fr</td>
+                </tr>
+                <tr>
+                    <td>德语</td>
+                    <td>de</td>
+                    <td>Deutsch</td>
+                    <td>德语, German, de</td>
+                </tr>
+                <tr>
+                    <td>日语</td>
+                    <td>ja</td>
+                    <td>日本語</td>
+                    <td>日语, Japanese, ja</td>
+                </tr>
+                <tr>
+                    <td>韩语</td>
+                    <td>ko</td>
+                    <td>한국어</td>
+                    <td>韩语, Korean, ko</td>
+                </tr>
+                <tr>
+                    <td>葡萄牙语</td>
+                    <td>pt</td>
+                    <td>Português</td>
+                    <td>葡萄牙语, Portuguese, pt</td>
+                </tr>
+                <tr>
+                    <td>俄语</td>
+                    <td>ru</td>
+                    <td>Русский</td>
+                    <td>俄语, Russian, ru</td>
+                </tr>
+                <tr>
+                    <td>阿拉伯语</td>
+                    <td>ar</td>
+                    <td>العربية</td>
+                    <td>阿拉伯语, Arabic, ar</td>
+                </tr>
+                <tr>
+                    <td>印地语</td>
+                    <td>hi</td>
+                    <td>हिन्दी</td>
+                    <td>印地语, Hindi, hi</td>
+                </tr>
+                <tr>
+                    <td>意大利语</td>
+                    <td>it</td>
+                    <td>Italiano</td>
+                    <td>意大利语, Italian, it</td>
+                </tr>
+                <tr>
+                    <td>荷兰语</td>
+                    <td>nl</td>
+                    <td>Nederlands</td>
+                    <td>荷兰语, Dutch, nl</td>
+                </tr>
+                <tr>
+                    <td>波兰语</td>
+                    <td>pl</td>
+                    <td>Polski</td>
+                    <td>波兰语, Polish, pl</td>
+                </tr>
+                <tr>
+                    <td>土耳其语</td>
+                    <td>tr</td>
+                    <td>Türkçe</td>
+                    <td>土耳其语, Turkish, tr</td>
+                </tr>
+                <tr>
+                    <td>越南语</td>
+                    <td>vi</td>
+                    <td>Tiếng Việt</td>
+                    <td>越南语, Vietnamese, vi</td>
+                </tr>
+                <tr>
+                    <td>泰语</td>
+                    <td>th</td>
+                    <td>ไทย</td>
+                    <td>泰语, Thai, th</td>
+                </tr>
+                <tr>
+                    <td>印尼语</td>
+                    <td>id</td>
+                    <td>Bahasa Indonesia</td>
+                    <td>印尼语, Indonesian, id</td>
+                </tr>
+                <tr>
+                    <td>马来语</td>
+                    <td>ms</td>
+                    <td>Bahasa Melayu</td>
+                    <td>马来语, Malay, ms</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <p>&copy; 2026 YouTube双语字幕翻译助手. 采用MIT许可证的开源项目.</p>
+        </div>
+    </div>
+</body>
+
+</html>

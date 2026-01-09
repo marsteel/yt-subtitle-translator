@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Codes Reference - YouTube Bilingual Subtitle Translator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        .language-switcher a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px 8px;
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switcher .active {
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .intro {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .intro p {
+            margin-bottom: 10px;
+            color: #4b5563;
+        }
+
+        .intro code {
+            background: #e0e7ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <a href="languages-zh.html">中文</a> | <a href="languages.html" class="active">English</a>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <h1>🌍 Common Language Codes</h1>
+
+        <div class="intro">
+            <p><strong>How to use:</strong> Enter the language name (e.g., <code>Chinese</code>, <code>Spanish</code>,
+                <code>Japanese</code>) in the "Target Language" field of the extension settings.
+            </p>
+            <p>You can use either the English name or the native name of the language. The AI will understand both.</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Language (English)</th>
+                    <th>ISO 639-1</th>
+                    <th>Native Name</th>
+                    <th>Example Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chinese (Simplified)</td>
+                    <td>zh</td>
+                    <td>简体中文</td>
+                    <td>Chinese, 中文, zh</td>
+                </tr>
+                <tr>
+                    <td>Chinese (Traditional)</td>
+                    <td>zh-TW</td>
+                    <td>繁體中文</td>
+                    <td>Traditional Chinese, 繁體中文</td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td>en</td>
+                    <td>English</td>
+                    <td>English, en</td>
+                </tr>
+                <tr>
+                    <td>Spanish</td>
+                    <td>es</td>
+                    <td>Español</td>
+                    <td>Spanish, Español, es</td>
+                </tr>
+                <tr>
+                    <td>French</td>
+                    <td>fr</td>
+                    <td>Français</td>
+                    <td>French, Français, fr</td>
+                </tr>
+                <tr>
+                    <td>German</td>
+                    <td>de</td>
+                    <td>Deutsch</td>
+                    <td>German, Deutsch, de</td>
+                </tr>
+                <tr>
+                    <td>Japanese</td>
+                    <td>ja</td>
+                    <td>日本語</td>
+                    <td>Japanese, 日本語, ja</td>
+                </tr>
+                <tr>
+                    <td>Korean</td>
+                    <td>ko</td>
+                    <td>한국어</td>
+                    <td>Korean, 한국어, ko</td>
+                </tr>
+                <tr>
+                    <td>Portuguese</td>
+                    <td>pt</td>
+                    <td>Português</td>
+                    <td>Portuguese, Português, pt</td>
+                </tr>
+                <tr>
+                    <td>Russian</td>
+                    <td>ru</td>
+                    <td>Русский</td>
+                    <td>Russian, Русский, ru</td>
+                </tr>
+                <tr>
+                    <td>Arabic</td>
+                    <td>ar</td>
+                    <td>العربية</td>
+                    <td>Arabic, العربية, ar</td>
+                </tr>
+                <tr>
+                    <td>Hindi</td>
+                    <td>hi</td>
+                    <td>हिन्दी</td>
+                    <td>Hindi, हिन्दी, hi</td>
+                </tr>
+                <tr>
+                    <td>Italian</td>
+                    <td>it</td>
+                    <td>Italiano</td>
+                    <td>Italian, Italiano, it</td>
+                </tr>
+                <tr>
+                    <td>Dutch</td>
+                    <td>nl</td>
+                    <td>Nederlands</td>
+                    <td>Dutch, Nederlands, nl</td>
+                </tr>
+                <tr>
+                    <td>Polish</td>
+                    <td>pl</td>
+                    <td>Polski</td>
+                    <td>Polish, Polski, pl</td>
+                </tr>
+                <tr>
+                    <td>Turkish</td>
+                    <td>tr</td>
+                    <td>Türkçe</td>
+                    <td>Turkish, Türkçe, tr</td>
+                </tr>
+                <tr>
+                    <td>Vietnamese</td>
+                    <td>vi</td>
+                    <td>Tiếng Việt</td>
+                    <td>Vietnamese, Tiếng Việt, vi</td>
+                </tr>
+                <tr>
+                    <td>Thai</td>
+                    <td>th</td>
+                    <td>ไทย</td>
+                    <td>Thai, ไทย, th</td>
+                </tr>
+                <tr>
+                    <td>Indonesian</td>
+                    <td>id</td>
+                    <td>Bahasa Indonesia</td>
+                    <td>Indonesian, Bahasa Indonesia, id</td>
+                </tr>
+                <tr>
+                    <td>Malay</td>
+                    <td>ms</td>
+                    <td>Bahasa Melayu</td>
+                    <td>Malay, Bahasa Melayu, ms</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <p>&copy; 2026 YouTube Bilingual Subtitle Translator. Open source under MIT License.</p>
+        </div>
+    </div>
+</body>
+
+</html>
