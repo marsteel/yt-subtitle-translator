@@ -1,0 +1,78 @@
+{
+    "extensionName": {
+        "message": "YouTube Bilingual Subtitle Translator",
+        "description": "Name of the extension"
+    },
+    "extensionDescription": {
+        "message": "Display bilingual subtitles on YouTube, translate using OpenAI API, API key stored locally for privacy.",
+        "description": "Description of the extension"
+    },
+    "popupTitle": {
+        "message": "YouTube Subtitle Helper Settings",
+        "description": "Title of the popup"
+    },
+    "apiKeyLabel": {
+        "message": "API Key for AI Provider:",
+        "description": "Label for API key input"
+    },
+    "apiKeyPlaceholder": {
+        "message": "sk-...",
+        "description": "Placeholder for API key input"
+    },
+    "targetLangLabel": {
+        "message": "Target Language:",
+        "description": "Label for target language input"
+    },
+    "targetLangPlaceholder": {
+        "message": "e.g. Chinese (see language codes)",
+        "description": "Placeholder for target language input"
+    },
+    "subtitleColorLabel": {
+        "message": "Subtitle Color:",
+        "description": "Label for subtitle color picker"
+    },
+    "subtitleFontSizeLabel": {
+        "message": "Subtitle Font Size (px):",
+        "description": "Label for subtitle font size input"
+    },
+    "subtitleBgColorLabel": {
+        "message": "Subtitle Background Color:",
+        "description": "Label for subtitle background color picker"
+    },
+    "advancedSettings": {
+        "message": "Advanced Settings",
+        "description": "Advanced settings section header"
+    },
+    "apiEndpointLabel": {
+        "message": "API Endpoint URL:",
+        "description": "Label for API endpoint input"
+    },
+    "apiEndpointPlaceholder": {
+        "message": "https://api.openai.com/v1/chat/completions",
+        "description": "Placeholder for API endpoint input"
+    },
+    "modelNameLabel": {
+        "message": "Model Name:",
+        "description": "Label for model name input"
+    },
+    "modelNamePlaceholder": {
+        "message": "gpt-4o-mini",
+        "description": "Placeholder for model name input"
+    },
+    "saveButton": {
+        "message": "Save Settings",
+        "description": "Text for save button"
+    },
+    "settingSaved": {
+        "message": "Settings Saved",
+        "description": "Alert message when settings are saved"
+    },
+    "apiKeyNotSet": {
+        "message": "[API Key Not Set]",
+        "description": "Message when API key is not set"
+    },
+    "visitWebsite": {
+        "message": "📖 Visit Website for More Info",
+        "description": "Link text to visit project website"
+    }
+}
