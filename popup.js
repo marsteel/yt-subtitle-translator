@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Provider selection with endpoint presets
   const providerSelect = document.getElementById("providerSelect");
   const apiEndpointInput = document.getElementById("apiEndpoint");
+  const modelNameInput = document.getElementById("modelName");
 
   const providerEndpoints = {
     "openai": "https://api.openai.com/v1/chat/completions",
@@ -46,10 +47,19 @@ document.addEventListener("DOMContentLoaded", () => {
     "deepseek": "https://api.deepseek.com/v1/chat/completions"
   };
 
+  const providerModels = {
+    "openai": "gpt-4o-mini",
+    "azure": "gpt-4",
+    "anthropic": "claude-3-5-sonnet-20241022",
+    "gemini": "gemini-pro",
+    "deepseek": "deepseek-chat"
+  };
+
   providerSelect.addEventListener("change", (e) => {
     const selectedProvider = e.target.value;
     if (selectedProvider !== "custom" && providerEndpoints[selectedProvider]) {
       apiEndpointInput.value = providerEndpoints[selectedProvider];
+      modelNameInput.value = providerModels[selectedProvider];
       apiEndpointInput.disabled = false;
     } else if (selectedProvider === "custom") {
       apiEndpointInput.disabled = false;
