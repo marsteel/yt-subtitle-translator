@@ -4,7 +4,7 @@
         "description": "Name of the extension"
     },
     "extensionDescription": {
-        "message": "显示YouTube双语字幕，调用OpenAI API进行翻译，Key不上传服务器，保护隐私。",
+        "message": "显示YouTube双语字幕，支持多个AI服务商（OpenAI、Gemini、Claude等）进行翻译，API Key本地存储，保护隐私。",
         "description": "Description of the extension"
     },
     "popupTitle": {
