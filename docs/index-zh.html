@@ -305,6 +305,22 @@
     </div>
 
     <script>
+        // Fetch manifest.json version from GitHub to display latest code version
+        async function fetchManifestVersion() {
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/marsteel/yt-subtitle-translator/main/manifest.json');
+                const manifest = await response.json();
+                if (manifest && manifest.version) {
+                    const versionBadge = document.querySelector('.version-badge');
+                    if (versionBadge) {
+                        versionBadge.textContent = 'v' + manifest.version;
+                    }
+                }
+            } catch (error) {
+                console.log('Could not fetch manifest version:', error);
+            }
+        }
+
         // Fetch Chrome Web Store version
         async function fetchChromeVersion() {
             try {
@@ -323,19 +339,15 @@
         // Fetch Edge Add-ons version
         async function fetchEdgeVersion() {
             try {
-                // Fetch the SVG badge from shields.io
                 const response = await fetch('https://img.shields.io/badge/dynamic/json?label=edge%20add-on&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fiigbejclmmandbleldjpoomjdnlgcnod');
                 const svgText = await response.text();
 
-                // Parse the SVG to extract version text
                 const parser = new DOMParser();
                 const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
                 const textElements = svgDoc.querySelectorAll('text');
 
-                // The version is in the last text element (after the label)
                 if (textElements.length > 0) {
                     const lastText = textElements[textElements.length - 1].textContent.trim();
-                    // Check if it's a valid version (starts with 'v' and contains numbers)
                     if (lastText && lastText.match(/v?\d+\.\d+/) && lastText !== 'resource not found') {
                         document.getElementById('edge-version').textContent = lastText;
                     } else {
@@ -350,8 +362,9 @@
             }
         }
 
-        // Fetch versions on page load
-        document.addEventListener('DOMContentLoaded', () => {
+        // Load all versions on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchManifestVersion();
             fetchChromeVersion();
             fetchEdgeVersion();
         });
