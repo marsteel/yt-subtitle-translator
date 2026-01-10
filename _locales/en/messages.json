@@ -4,7 +4,7 @@
         "description": "Name of the extension"
     },
     "extensionDescription": {
-        "message": "Display bilingual subtitles on YouTube, translate using OpenAI API, API key stored locally for privacy.",
+        "message": "Display bilingual subtitles on YouTube with multiple AI providers (OpenAI, Gemini, Claude, etc.). API key stored locally for privacy.",
         "description": "Description of the extension"
     },
     "popupTitle": {
