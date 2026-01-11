@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     // First-time installation / 首次安装
     // Open disclaimer page to ensure user reads important information
     // 打开免责声明页面，确保用户阅读重要信息
-    const disclaimerUrl = chrome.runtime.getURL("docs/disclaimer.html");
+    const disclaimerUrl = "https://yt-subtitle-translator.magang.net/disclaimer.html";
     chrome.tabs.create({ url: disclaimerUrl });
 
     // Show notification / 显示通知
