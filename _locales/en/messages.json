@@ -79,6 +79,10 @@
         "message": "[API Key Not Set]",
         "description": "Message when API key is not set"
     },
+    "disclaimerLink": {
+        "message": "Read Important Disclaimer",
+        "description": "Link to disclaimer page"
+    },
     "visitWebsite": {
         "message": "📖 Visit Website for More Info",
         "description": "Link text to visit project website"
