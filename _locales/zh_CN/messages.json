@@ -79,9 +79,13 @@
         "message": "[未设置 API Key]",
         "description": "Message when API key is not set"
     },
+    "disclaimerLink": {
+        "message": "阅读重要免责声明",
+        "description": "免责声明页面链接"
+    },
     "visitWebsite": {
-        "message": "📖 访问官网获取更多信息",
-        "description": "Link text to visit project website"
+        "message": "📖 访问网站了解更多",
+        "description": "访问网站的链接"
     },
     "testEndpoint": {
         "message": "测试连接",

@@ -1,14 +1,20 @@
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === "install") {
-    // 首次安装
+    // First-time installation / 首次安装
+    // Open disclaimer page to ensure user reads important information
+    // 打开免责声明页面，确保用户阅读重要信息
+    const disclaimerUrl = "https://yt-subtitle-translator.magang.net/disclaimer.html";
+    chrome.tabs.create({ url: disclaimerUrl });
+
+    // Show notification / 显示通知
     chrome.notifications.create({
       type: "basic",
       iconUrl: "icons/128x128.png",
       title: chrome.i18n.getMessage("extensionName") || "感谢安装 - Thank you for installing",
-      message: "请前往扩展选项页设置API Key和目标语言。Please go to the options page to set the API Key and target language.",
+      message: "请阅读免责声明并设置API Key。Please read the disclaimer and set up your API Key.",
     });
   } else if (details.reason === "update") {
-    // 更新时通知用户
+    // Extension updated / 更新时通知用户
     chrome.notifications.create({
       type: "basic",
       iconUrl: "icons/128x128.png",
