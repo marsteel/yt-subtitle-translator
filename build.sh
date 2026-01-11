@@ -6,11 +6,15 @@ VERSION=$(grep '"version"' manifest.json | sed 's/.*"version": "\(.*\)".*/\1/')
 # Get short git commit hash
 COMMIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 
-# Output filename with version and commit hash
-OUTPUT_FILE="yt-subtitle-translator-v${VERSION}-${COMMIT_HASH}.zip"
+# Get current branch name (sanitize for filename)
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD 2>/dev/null | sed 's/\//-/g' || echo "unknown")
+
+# Output filename with version, branch, and commit hash
+OUTPUT_FILE="yt-subtitle-translator-v${VERSION}-${BRANCH_NAME}-${COMMIT_HASH}.zip"
 
 echo "Building extension package..."
 echo "Version: $VERSION"
+echo "Branch: $BRANCH_NAME"
 echo "Commit: $COMMIT_HASH"
 echo "Output: $OUTPUT_FILE"
 
