@@ -3,11 +3,15 @@
 # Extract version from manifest.json
 VERSION=$(grep '"version"' manifest.json | sed 's/.*"version": "\(.*\)".*/\1/')
 
-# Output filename
-OUTPUT_FILE="yt-subtitle-translator-v${VERSION}.zip"
+# Get short git commit hash
+COMMIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+
+# Output filename with version and commit hash
+OUTPUT_FILE="yt-subtitle-translator-v${VERSION}-${COMMIT_HASH}.zip"
 
 echo "Building extension package..."
 echo "Version: $VERSION"
+echo "Commit: $COMMIT_HASH"
 echo "Output: $OUTPUT_FILE"
 
 # Remove old zip file if exists
