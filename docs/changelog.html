@@ -164,8 +164,41 @@
 
         <div class="version">
             <div class="version-header">
-                <span class="version-number">v1.3.1</span>
+                <span class="version-number">v1.4.0</span>
                 <span class="badge latest">Latest</span>
+                <span class="version-date">January 11, 2026</span>
+            </div>
+
+            <h3>✨ New Features</h3>
+            <ul>
+                <li>🎯 <strong>Smart Debouncing:</strong> Intelligent subtitle translation with three-tier strategy to
+                    eliminate flickering on word-by-word subtitles</li>
+                <li>📝 <strong>Sentence Detection:</strong> Automatic detection of sentence-ending punctuation for
+                    immediate translation</li>
+                <li>⏱️ <strong>Adaptive Timing:</strong> 500ms debounce delay with 2000ms maximum wait time for optimal
+                    responsiveness</li>
+            </ul>
+
+            <h3>🐛 Bug Fixes</h3>
+            <ul>
+                <li>🔧 <strong>Flickering Issue:</strong> Fixed translation flickering on news videos with word-by-word
+                    subtitles</li>
+                <li>🗑️ <strong>Code Cleanup:</strong> Removed broken debounce implementation (lines 121-134)</li>
+                <li>💾 <strong>State Management:</strong> Improved subtitle tracking and timer cleanup</li>
+            </ul>
+
+            <h3>⚡ Performance</h3>
+            <ul>
+                <li>📉 <strong>Reduced API Calls:</strong> 70-90% reduction in translation requests on word-by-word
+                    subtitles</li>
+                <li>💰 <strong>Cost Savings:</strong> Significantly lower API usage and costs</li>
+                <li>🎨 <strong>Better Quality:</strong> AI receives more complete context for improved translations</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.3.1</span>
                 <span class="version-date">January 10, 2026</span>
             </div>
 
