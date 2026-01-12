@@ -1,0 +1,106 @@
+{
+    "extensionName": {
+        "message": "Помічник перекладу двомовних субтитрів YouTube",
+        "description": "Name of the extension"
+    },
+    "extensionDescription": {
+        "message": "Відображайте двомовні субтитри на YouTube з кількома постачальниками ШІ (OpenAI, Gemini, Claude тощо). API-ключ зберігається локально для конфіденційності.",
+        "description": "Description of the extension"
+    },
+    "popupTitle": {
+        "message": "Налаштування помічника субтитрів YouTube",
+        "description": "Title of the popup"
+    },
+    "apiKeyLabel": {
+        "message": "API-ключ постачальника ШІ:",
+        "description": "Label for API key input"
+    },
+    "apiKeyPlaceholder": {
+        "message": "sk-...",
+        "description": "Placeholder for API key input"
+    },
+    "targetLangLabel": {
+        "message": "Цільова мова:",
+        "description": "Label for target language input"
+    },
+    "targetLangPlaceholder": {
+        "message": "напр. Українська (див. коди мов)",
+        "description": "Placeholder for target language input"
+    },
+    "subtitleColorLabel": {
+        "message": "Колір субтитрів:",
+        "description": "Label for subtitle color picker"
+    },
+    "subtitleFontSizeLabel": {
+        "message": "Розмір шрифту субтитрів (px):",
+        "description": "Label for subtitle font size input"
+    },
+    "subtitleBgColorLabel": {
+        "message": "Колір фону субтитрів:",
+        "description": "Label for subtitle background color picker"
+    },
+    "advancedSettings": {
+        "message": "Розширені налаштування",
+        "description": "Advanced settings section header"
+    },
+    "apiEndpointLabel": {
+        "message": "URL кінцевої точки API:",
+        "description": "Label for API endpoint input"
+    },
+    "providerLabel": {
+        "message": "Постачальник ШІ:",
+        "description": "Label for AI provider selection"
+    },
+    "providerCustom": {
+        "message": "Користувацький",
+        "description": "Custom provider option"
+    },
+    "apiEndpointPlaceholder": {
+        "message": "https://api.openai.com/v1/chat/completions",
+        "description": "Placeholder for API endpoint input"
+    },
+    "modelNameLabel": {
+        "message": "Назва моделі:",
+        "description": "Label for model name input"
+    },
+    "modelNamePlaceholder": {
+        "message": "gpt-4o-mini",
+        "description": "Placeholder for model name input"
+    },
+    "saveButton": {
+        "message": "Зберегти налаштування",
+        "description": "Text for save button"
+    },
+    "settingSaved": {
+        "message": "Налаштування збережено",
+        "description": "Alert message when settings are saved"
+    },
+    "apiKeyNotSet": {
+        "message": "[API-ключ не встановлено]",
+        "description": "Message when API key is not set"
+    },
+    "disclaimerLink": {
+        "message": "Прочитати важливе застереження",
+        "description": "Посилання на сторінку застереження"
+    },
+    "visitWebsite": {
+        "message": "📖 Відвідайте веб-сайт для отримання додаткової інформації",
+        "description": "Посилання на веб-сайт"
+    },
+    "testEndpoint": {
+        "message": "Перевірити з'єднання",
+        "description": "Button text to test API endpoint"
+    },
+    "testingEndpoint": {
+        "message": "Перевірка...",
+        "description": "Status text while testing endpoint"
+    },
+    "testSuccess": {
+        "message": "✓ З'єднання успішне!",
+        "description": "Success message for endpoint test"
+    },
+    "testFailed": {
+        "message": "✗ З'єднання не вдалося",
+        "description": "Failure message for endpoint test"
+    }
+}

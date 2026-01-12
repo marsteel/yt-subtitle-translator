@@ -1,0 +1,106 @@
+{
+    "extensionName": {
+        "message": "YouTube雙語字幕翻譯助手",
+        "description": "Name of the extension"
+    },
+    "extensionDescription": {
+        "message": "顯示YouTube雙語字幕，支援多個AI服務商（OpenAI、Gemini、Claude等）進行翻譯，API Key本地儲存，保護隱私。",
+        "description": "Description of the extension"
+    },
+    "popupTitle": {
+        "message": "YouTube字幕助手設定",
+        "description": "Title of the popup"
+    },
+    "apiKeyLabel": {
+        "message": "AI服務商API金鑰：",
+        "description": "Label for API key input"
+    },
+    "apiKeyPlaceholder": {
+        "message": "sk-...",
+        "description": "Placeholder for API key input"
+    },
+    "targetLangLabel": {
+        "message": "目標語言：",
+        "description": "Label for target language input"
+    },
+    "targetLangPlaceholder": {
+        "message": "例如：中文 (查看常見語言)",
+        "description": "Placeholder for target language input"
+    },
+    "subtitleColorLabel": {
+        "message": "字幕顏色：",
+        "description": "Label for subtitle color picker"
+    },
+    "subtitleFontSizeLabel": {
+        "message": "字幕字體大小 (px)：",
+        "description": "Label for subtitle font size input"
+    },
+    "subtitleBgColorLabel": {
+        "message": "字幕背景顏色：",
+        "description": "Label for subtitle background color picker"
+    },
+    "advancedSettings": {
+        "message": "進階設定",
+        "description": "Advanced settings section header"
+    },
+    "apiEndpointLabel": {
+        "message": "API端點URL：",
+        "description": "Label for API endpoint input"
+    },
+    "providerLabel": {
+        "message": "AI服務商：",
+        "description": "Label for AI provider selection"
+    },
+    "providerCustom": {
+        "message": "自訂",
+        "description": "Custom provider option"
+    },
+    "apiEndpointPlaceholder": {
+        "message": "https://api.openai.com/v1/chat/completions",
+        "description": "Placeholder for API endpoint input"
+    },
+    "modelNameLabel": {
+        "message": "模型名稱：",
+        "description": "Label for model name input"
+    },
+    "modelNamePlaceholder": {
+        "message": "gpt-4o-mini",
+        "description": "Placeholder for model name input"
+    },
+    "saveButton": {
+        "message": "儲存設定",
+        "description": "Text for save button"
+    },
+    "settingSaved": {
+        "message": "設定已儲存",
+        "description": "Alert message when settings are saved"
+    },
+    "apiKeyNotSet": {
+        "message": "[未設定 API Key]",
+        "description": "Message when API key is not set"
+    },
+    "disclaimerLink": {
+        "message": "閱讀重要免責聲明",
+        "description": "免責聲明頁面連結"
+    },
+    "visitWebsite": {
+        "message": "📖 造訪網站了解更多",
+        "description": "造訪網站的連結"
+    },
+    "testEndpoint": {
+        "message": "測試連線",
+        "description": "Button text to test API endpoint"
+    },
+    "testingEndpoint": {
+        "message": "測試中...",
+        "description": "Status text while testing endpoint"
+    },
+    "testSuccess": {
+        "message": "✓ 連線成功！",
+        "description": "Success message for endpoint test"
+    },
+    "testFailed": {
+        "message": "✗ 連線失敗",
+        "description": "Failure message for endpoint test"
+    }
+}
