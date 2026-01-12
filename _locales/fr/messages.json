@@ -1,0 +1,106 @@
+{
+    "extensionName": {
+        "message": "Assistant de traduction de sous-titres bilingues YouTube",
+        "description": "Name of the extension"
+    },
+    "extensionDescription": {
+        "message": "Afficher des sous-titres bilingues sur YouTube avec plusieurs fournisseurs d'IA (OpenAI, Gemini, Claude, etc.). Clé API stockée localement pour la confidentialité.",
+        "description": "Description of the extension"
+    },
+    "popupTitle": {
+        "message": "Paramètres de l'assistant de sous-titres YouTube",
+        "description": "Title of the popup"
+    },
+    "apiKeyLabel": {
+        "message": "Clé API du fournisseur d'IA :",
+        "description": "Label for API key input"
+    },
+    "apiKeyPlaceholder": {
+        "message": "sk-...",
+        "description": "Placeholder for API key input"
+    },
+    "targetLangLabel": {
+        "message": "Langue cible :",
+        "description": "Label for target language input"
+    },
+    "targetLangPlaceholder": {
+        "message": "par ex. Français (voir codes de langue)",
+        "description": "Placeholder for target language input"
+    },
+    "subtitleColorLabel": {
+        "message": "Couleur des sous-titres :",
+        "description": "Label for subtitle color picker"
+    },
+    "subtitleFontSizeLabel": {
+        "message": "Taille de police des sous-titres (px) :",
+        "description": "Label for subtitle font size input"
+    },
+    "subtitleBgColorLabel": {
+        "message": "Couleur d'arrière-plan des sous-titres :",
+        "description": "Label for subtitle background color picker"
+    },
+    "advancedSettings": {
+        "message": "Paramètres avancés",
+        "description": "Advanced settings section header"
+    },
+    "apiEndpointLabel": {
+        "message": "URL du point de terminaison API :",
+        "description": "Label for API endpoint input"
+    },
+    "providerLabel": {
+        "message": "Fournisseur d'IA :",
+        "description": "Label for AI provider selection"
+    },
+    "providerCustom": {
+        "message": "Personnalisé",
+        "description": "Custom provider option"
+    },
+    "apiEndpointPlaceholder": {
+        "message": "https://api.openai.com/v1/chat/completions",
+        "description": "Placeholder for API endpoint input"
+    },
+    "modelNameLabel": {
+        "message": "Nom du modèle :",
+        "description": "Label for model name input"
+    },
+    "modelNamePlaceholder": {
+        "message": "gpt-4o-mini",
+        "description": "Placeholder for model name input"
+    },
+    "saveButton": {
+        "message": "Enregistrer les paramètres",
+        "description": "Text for save button"
+    },
+    "settingSaved": {
+        "message": "Paramètres enregistrés",
+        "description": "Alert message when settings are saved"
+    },
+    "apiKeyNotSet": {
+        "message": "[Clé API non définie]",
+        "description": "Message when API key is not set"
+    },
+    "disclaimerLink": {
+        "message": "Lire l'avertissement important",
+        "description": "Lien vers la page d'avertissement"
+    },
+    "visitWebsite": {
+        "message": "📖 Visitez le site Web pour plus d'informations",
+        "description": "Lien vers le site Web"
+    },
+    "testEndpoint": {
+        "message": "Tester la connexion",
+        "description": "Button text to test API endpoint"
+    },
+    "testingEndpoint": {
+        "message": "Test en cours...",
+        "description": "Status text while testing endpoint"
+    },
+    "testSuccess": {
+        "message": "✓ Connexion réussie !",
+        "description": "Success message for endpoint test"
+    },
+    "testFailed": {
+        "message": "✗ Échec de la connexion",
+        "description": "Failure message for endpoint test"
+    }
+}

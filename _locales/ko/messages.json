@@ -1,0 +1,106 @@
+{
+    "extensionName": {
+        "message": "YouTube 이중 언어 자막 번역 도우미",
+        "description": "Name of the extension"
+    },
+    "extensionDescription": {
+        "message": "YouTube에서 이중 언어 자막을 표시하고, 여러 AI 제공업체(OpenAI, Gemini, Claude 등)를 통한 번역을 지원합니다. API 키는 로컬에 저장되어 개인정보를 보호합니다.",
+        "description": "Description of the extension"
+    },
+    "popupTitle": {
+        "message": "YouTube 자막 도우미 설정",
+        "description": "Title of the popup"
+    },
+    "apiKeyLabel": {
+        "message": "AI 제공업체 API 키:",
+        "description": "Label for API key input"
+    },
+    "apiKeyPlaceholder": {
+        "message": "sk-...",
+        "description": "Placeholder for API key input"
+    },
+    "targetLangLabel": {
+        "message": "대상 언어:",
+        "description": "Label for target language input"
+    },
+    "targetLangPlaceholder": {
+        "message": "예: 한국어 (언어 코드 참조)",
+        "description": "Placeholder for target language input"
+    },
+    "subtitleColorLabel": {
+        "message": "자막 색상:",
+        "description": "Label for subtitle color picker"
+    },
+    "subtitleFontSizeLabel": {
+        "message": "자막 글꼴 크기 (px):",
+        "description": "Label for subtitle font size input"
+    },
+    "subtitleBgColorLabel": {
+        "message": "자막 배경 색상:",
+        "description": "Label for subtitle background color picker"
+    },
+    "advancedSettings": {
+        "message": "고급 설정",
+        "description": "Advanced settings section header"
+    },
+    "apiEndpointLabel": {
+        "message": "API 엔드포인트 URL:",
+        "description": "Label for API endpoint input"
+    },
+    "providerLabel": {
+        "message": "AI 제공업체:",
+        "description": "Label for AI provider selection"
+    },
+    "providerCustom": {
+        "message": "사용자 정의",
+        "description": "Custom provider option"
+    },
+    "apiEndpointPlaceholder": {
+        "message": "https://api.openai.com/v1/chat/completions",
+        "description": "Placeholder for API endpoint input"
+    },
+    "modelNameLabel": {
+        "message": "모델 이름:",
+        "description": "Label for model name input"
+    },
+    "modelNamePlaceholder": {
+        "message": "gpt-4o-mini",
+        "description": "Placeholder for model name input"
+    },
+    "saveButton": {
+        "message": "설정 저장",
+        "description": "Text for save button"
+    },
+    "settingSaved": {
+        "message": "설정이 저장되었습니다",
+        "description": "Alert message when settings are saved"
+    },
+    "apiKeyNotSet": {
+        "message": "[API 키가 설정되지 않음]",
+        "description": "Message when API key is not set"
+    },
+    "disclaimerLink": {
+        "message": "중요한 면책 조항 읽기",
+        "description": "면책 조항 페이지 링크"
+    },
+    "visitWebsite": {
+        "message": "📖 자세한 내용은 웹사이트 방문",
+        "description": "웹사이트 링크"
+    },
+    "testEndpoint": {
+        "message": "연결 테스트",
+        "description": "Button text to test API endpoint"
+    },
+    "testingEndpoint": {
+        "message": "테스트 중...",
+        "description": "Status text while testing endpoint"
+    },
+    "testSuccess": {
+        "message": "✓ 연결 성공!",
+        "description": "Success message for endpoint test"
+    },
+    "testFailed": {
+        "message": "✗ 연결 실패",
+        "description": "Failure message for endpoint test"
+    }
+}

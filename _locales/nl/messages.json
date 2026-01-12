@@ -1,0 +1,106 @@
+{
+    "extensionName": {
+        "message": "YouTube Tweetalige Ondertiteling Vertaler",
+        "description": "Name of the extension"
+    },
+    "extensionDescription": {
+        "message": "Toon tweetalige ondertitels op YouTube met meerdere AI-providers (OpenAI, Gemini, Claude, etc.). API-sleutel lokaal opgeslagen voor privacy.",
+        "description": "Description of the extension"
+    },
+    "popupTitle": {
+        "message": "YouTube Ondertiteling Helper Instellingen",
+        "description": "Title of the popup"
+    },
+    "apiKeyLabel": {
+        "message": "API-sleutel voor AI-provider:",
+        "description": "Label for API key input"
+    },
+    "apiKeyPlaceholder": {
+        "message": "sk-...",
+        "description": "Placeholder for API key input"
+    },
+    "targetLangLabel": {
+        "message": "Doeltaal:",
+        "description": "Label for target language input"
+    },
+    "targetLangPlaceholder": {
+        "message": "bijv. Nederlands (zie taalcodes)",
+        "description": "Placeholder for target language input"
+    },
+    "subtitleColorLabel": {
+        "message": "Ondertitelkleur:",
+        "description": "Label for subtitle color picker"
+    },
+    "subtitleFontSizeLabel": {
+        "message": "Ondertitel lettergrootte (px):",
+        "description": "Label for subtitle font size input"
+    },
+    "subtitleBgColorLabel": {
+        "message": "Ondertitel achtergrondkleur:",
+        "description": "Label for subtitle background color picker"
+    },
+    "advancedSettings": {
+        "message": "Geavanceerde instellingen",
+        "description": "Advanced settings section header"
+    },
+    "apiEndpointLabel": {
+        "message": "API-eindpunt URL:",
+        "description": "Label for API endpoint input"
+    },
+    "providerLabel": {
+        "message": "AI-provider:",
+        "description": "Label for AI provider selection"
+    },
+    "providerCustom": {
+        "message": "Aangepast",
+        "description": "Custom provider option"
+    },
+    "apiEndpointPlaceholder": {
+        "message": "https://api.openai.com/v1/chat/completions",
+        "description": "Placeholder for API endpoint input"
+    },
+    "modelNameLabel": {
+        "message": "Modelnaam:",
+        "description": "Label for model name input"
+    },
+    "modelNamePlaceholder": {
+        "message": "gpt-4o-mini",
+        "description": "Placeholder for model name input"
+    },
+    "saveButton": {
+        "message": "Instellingen opslaan",
+        "description": "Text for save button"
+    },
+    "settingSaved": {
+        "message": "Instellingen opgeslagen",
+        "description": "Alert message when settings are saved"
+    },
+    "apiKeyNotSet": {
+        "message": "[API-sleutel niet ingesteld]",
+        "description": "Message when API key is not set"
+    },
+    "disclaimerLink": {
+        "message": "Lees belangrijke disclaimer",
+        "description": "Link naar disclaimerpagina"
+    },
+    "visitWebsite": {
+        "message": "📖 Bezoek website voor meer informatie",
+        "description": "Link naar website"
+    },
+    "testEndpoint": {
+        "message": "Verbinding testen",
+        "description": "Button text to test API endpoint"
+    },
+    "testingEndpoint": {
+        "message": "Testen...",
+        "description": "Status text while testing endpoint"
+    },
+    "testSuccess": {
+        "message": "✓ Verbinding geslaagd!",
+        "description": "Success message for endpoint test"
+    },
+    "testFailed": {
+        "message": "✗ Verbinding mislukt",
+        "description": "Failure message for endpoint test"
+    }
+}

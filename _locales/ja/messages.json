@@ -1,0 +1,106 @@
+{
+    "extensionName": {
+        "message": "YouTube二言語字幕翻訳アシスタント",
+        "description": "Name of the extension"
+    },
+    "extensionDescription": {
+        "message": "YouTube動画に二言語字幕を表示し、複数のAIプロバイダー（OpenAI、Gemini、Claudeなど）で翻訳をサポート。APIキーはローカルに保存され、プライバシーを保護します。",
+        "description": "Description of the extension"
+    },
+    "popupTitle": {
+        "message": "YouTube字幕アシスタント設定",
+        "description": "Title of the popup"
+    },
+    "apiKeyLabel": {
+        "message": "AIプロバイダーAPIキー：",
+        "description": "Label for API key input"
+    },
+    "apiKeyPlaceholder": {
+        "message": "sk-...",
+        "description": "Placeholder for API key input"
+    },
+    "targetLangLabel": {
+        "message": "ターゲット言語：",
+        "description": "Label for target language input"
+    },
+    "targetLangPlaceholder": {
+        "message": "例：日本語（言語コードを参照）",
+        "description": "Placeholder for target language input"
+    },
+    "subtitleColorLabel": {
+        "message": "字幕の色：",
+        "description": "Label for subtitle color picker"
+    },
+    "subtitleFontSizeLabel": {
+        "message": "字幕のフォントサイズ (px)：",
+        "description": "Label for subtitle font size input"
+    },
+    "subtitleBgColorLabel": {
+        "message": "字幕の背景色：",
+        "description": "Label for subtitle background color picker"
+    },
+    "advancedSettings": {
+        "message": "詳細設定",
+        "description": "Advanced settings section header"
+    },
+    "apiEndpointLabel": {
+        "message": "APIエンドポイントURL：",
+        "description": "Label for API endpoint input"
+    },
+    "providerLabel": {
+        "message": "AIプロバイダー：",
+        "description": "Label for AI provider selection"
+    },
+    "providerCustom": {
+        "message": "カスタム",
+        "description": "Custom provider option"
+    },
+    "apiEndpointPlaceholder": {
+        "message": "https://api.openai.com/v1/chat/completions",
+        "description": "Placeholder for API endpoint input"
+    },
+    "modelNameLabel": {
+        "message": "モデル名：",
+        "description": "Label for model name input"
+    },
+    "modelNamePlaceholder": {
+        "message": "gpt-4o-mini",
+        "description": "Placeholder for model name input"
+    },
+    "saveButton": {
+        "message": "設定を保存",
+        "description": "Text for save button"
+    },
+    "settingSaved": {
+        "message": "設定が保存されました",
+        "description": "Alert message when settings are saved"
+    },
+    "apiKeyNotSet": {
+        "message": "[APIキーが設定されていません]",
+        "description": "Message when API key is not set"
+    },
+    "disclaimerLink": {
+        "message": "重要な免責事項を読む",
+        "description": "免責事項ページへのリンク"
+    },
+    "visitWebsite": {
+        "message": "📖 詳細はウェブサイトをご覧ください",
+        "description": "ウェブサイトへのリンク"
+    },
+    "testEndpoint": {
+        "message": "接続テスト",
+        "description": "Button text to test API endpoint"
+    },
+    "testingEndpoint": {
+        "message": "テスト中...",
+        "description": "Status text while testing endpoint"
+    },
+    "testSuccess": {
+        "message": "✓ 接続成功！",
+        "description": "Success message for endpoint test"
+    },
+    "testFailed": {
+        "message": "✗ 接続失敗",
+        "description": "Failure message for endpoint test"
+    }
+}
