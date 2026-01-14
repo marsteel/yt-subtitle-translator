@@ -4,9 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Z3ITrO0syDmUSzc60mTPIRBS6Nj8Cz2bUJBoHp6nzoY" />
     <title>YouTube双语字幕翻译助手</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* ========== Design System Tokens ========== */
+        :root {
+            /* Colors */
+            --color-primary: #667eea;
+            --color-primary-dark: #5568d3;
+            --color-secondary: #764ba2;
+            --color-success: #10b981;
+            --color-gray-50: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-200: #e5e7eb;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            --color-gray-900: #1f2937;
+
+            /* Spacing (8px base) */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-6: 48px;
+            --space-8: 64px;
+            --space-12: 96px;
+
+            /* Typography */
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 32px;
+            --font-size-4xl: 40px;
+            --font-size-5xl: 48px;
+
+            /* Layout */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+            --container-2xl: 1400px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+            --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ========== Reset & Base ========== */
         * {
             margin: 0;
             padding: 0;
@@ -14,30 +72,32 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-gray-900);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: var(--space-4) var(--space-2);
         }
 
+        /* ========== Language Switcher ========== */
         .language-switcher {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: var(--space-3);
+            right: var(--space-3);
             background: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
             z-index: 1000;
         }
 
         .language-switcher a {
-            color: #667eea;
+            color: var(--color-primary);
             text-decoration: none;
             font-weight: 500;
-            padding: 4px 8px;
+            padding: 4px var(--space-1);
+            font-size: var(--font-size-sm);
         }
 
         .language-switcher a:hover {
@@ -45,17 +105,75 @@
         }
 
         .language-switcher .active {
-            color: #374151;
+            color: var(--color-gray-700);
             font-weight: 600;
         }
 
+        /* ========== Container ========== */
         .container {
-            max-width: 900px;
+            max-width: var(--container-lg);
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        /* Widescreen optimization */
+        @media (min-width: 1280px) {
+            .container {
+                max-width: var(--container-2xl);
+                padding: var(--space-8) var(--space-12);
+            }
+        }
+
+        /* ========== Header ========== */
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        h1 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: var(--font-size-4xl);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            h1 {
+                font-size: var(--font-size-5xl);
+            }
+        }
+
+        .tagline {
+            color: var(--color-gray-500);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-2);
+        }
+
+        @media (min-width: 1280px) {
+            .tagline {
+                font-size: var(--font-size-xl);
+            }
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--color-success);
+            color: white;
+            padding: 6px var(--space-2);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-top: var(--space-2);
         }
 
         .header {
@@ -119,92 +237,222 @@
             font-size: 14px;
         }
 
+
+        /* ========== Two-Column Layout (Widescreen) ========== */
+        .main-content {
+            display: block;
+        }
+
+        @media (min-width: 1024px) {
+            .main-content {
+                display: grid;
+                grid-template-columns: 1.5fr 1fr;
+                gap: var(--space-8);
+                align-items: start;
+            }
+        }
+
+        .content-left {
+            order: 1;
+        }
+
+        .content-right {
+            order: 2;
+            position: sticky;
+            top: var(--space-4);
+        }
+
+        /* ========== Features Section ========== */
         .features {
-            margin: 40px 0;
+            margin: var(--space-6) 0;
         }
 
         .features h2 {
-            color: #374151;
-            margin-bottom: 20px;
-            font-size: 24px;
+            color: var(--color-gray-700);
+            margin-bottom: var(--space-4);
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+        }
+
+        @media (min-width: 1024px) {
+            .features h2 {
+                font-size: var(--font-size-3xl);
+            }
         }
 
         .features ul {
             list-style: none;
             padding: 0;
+            display: grid;
+            gap: var(--space-3);
+        }
+
+        /* 2-column feature list on widescreen */
+        @media (min-width: 1024px) {
+            .features ul {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-3) var(--space-4);
+            }
         }
 
         .features li {
-            padding: 12px 0;
-            padding-left: 30px;
+            padding: var(--space-2);
+            padding-left: var(--space-4);
             position: relative;
-            color: #4b5563;
+            color: var(--color-gray-600);
+            font-size: var(--font-size-base);
+            background: var(--color-gray-50);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--color-success);
         }
 
         .features li:before {
             content: "✓";
             position: absolute;
-            left: 0;
-            color: #10b981;
+            left: var(--space-1);
+            color: var(--color-success);
             font-weight: bold;
-            font-size: 18px;
+            font-size: var(--font-size-lg);
         }
 
+        /* ========== Install Section ========== */
         .install-section {
-            margin: 30px 0;
-            padding: 24px;
-            background: #f0f9ff;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
+            margin: 0 0 var(--space-6) 0;
+            padding: var(--space-4);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--color-primary);
+            box-shadow: var(--shadow-md);
         }
 
         .install-section h2 {
-            color: #374151;
-            margin-bottom: 15px;
-            font-size: 20px;
+            color: var(--color-gray-700);
+            margin-bottom: var(--space-3);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            text-align: center;
         }
 
         .install-buttons {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: var(--space-2);
         }
 
         .install-btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: #667eea;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3);
+            background: var(--color-primary);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             font-weight: 600;
+            font-size: var(--font-size-base);
             transition: all 0.2s ease;
+            box-shadow: var(--shadow-md);
         }
 
         .install-btn:hover {
-            background: #5568d3;
+            background: var(--color-primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            box-shadow: var(--shadow-lg);
             text-decoration: none;
         }
 
+        .install-btn i {
+            font-size: var(--font-size-xl);
+        }
+
+        /* ========== Link Cards Grid ========== */
+        .links {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-3);
+            margin-top: var(--space-6);
+        }
+
+        /* 2-column on tablet */
+        @media (min-width: 768px) {
+            .links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 3-column on desktop */
+        @media (min-width: 1024px) {
+            .links {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* 4-column on widescreen */
+        @media (min-width: 1536px) {
+            .links {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .link-card {
+            background: var(--color-gray-50);
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--color-gray-200);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .link-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            background: white;
+        }
+
+        .link-card h2 {
+            color: var(--color-primary);
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-1);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .link-card h2 i {
+            font-size: var(--font-size-2xl);
+        }
+
+        .link-card p {
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        /* ========== Footer ========== */
         .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e5e7eb;
+            margin-top: var(--space-8);
+            padding-top: var(--space-4);
+            border-top: 2px solid var(--color-gray-200);
             text-align: center;
-            color: #6b7280;
-            font-size: 14px;
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
         }
 
         a {
-            color: #667eea;
+            color: var(--color-primary);
             text-decoration: none;
+            transition: color 0.2s ease;
         }
 
         a:hover {
+            color: var(--color-primary-dark);
             text-decoration: underline;
         }
 
@@ -307,110 +555,107 @@
     <div id="language-notification" class="language-notification">
         <div class="language-notification-content">
             <span class="language-notification-text">
-                🌏 Your browser language is set to English. Switch to English version?
+                🌏 您的浏览器语言设置为中文。是否切换到中文版本？
             </span>
             <div class="language-notification-buttons">
-                <button class="language-notification-btn primary" onclick="switchLanguage()">Switch to English</button>
-                <button class="language-notification-btn secondary" onclick="dismissNotification(true)">Don't show
-                    again</button>
+                <button class="language-notification-btn primary" onclick="switchLanguage()">切换到中文</button>
+                <button class="language-notification-btn secondary" onclick="dismissNotification(true)">不再显示</button>
             </div>
         </div>
         <button class="language-notification-close" onclick="dismissNotification(false)">×</button>
     </div>
 
     <div class="language-switcher">
-        <a href="index-zh.html" class="active">中文</a> | <a href="index.html">English</a>
+        <a href="index-zh.html">中文</a> | <a href="index.html" class="active">English</a>
     </div>
 
     <div class="container">
         <div class="header">
             <h1>📺 YouTube双语字幕翻译助手</h1>
             <p class="tagline">在YouTube上显示双语字幕，使用AI翻译（支持Chrome和Edge）</p>
-            <span class="version-badge">v1.4.0</span>
         </div>
 
-        <div class="install-section">
-            <h2>🚀 立即安装</h2>
-            <div class="install-buttons">
-                <a href="https://microsoftedge.microsoft.com/addons/detail/youtube%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95%E7%BF%BB%E8%AF%91%E5%8A%A9%E6%89%8B/iigbejclmmandbleldjpoomjdnlgcnod"
-                    class="install-btn" target="_blank">
-                    <i class="fa-brands fa-edge"></i>
-                    安装Edge版
-                    <span id="edge-version"
-                        style="margin-left: 8px; padding: 2px 8px; background: rgba(255,255,255,0.2); border-radius: 12px; font-size: 12px;">...</span>
-                </a>
-                <a href="https://chromewebstore.google.com/detail/youtube%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95%E7%BF%BB%E8%AF%91%E5%8A%A9%E6%89%8B/mklfmioimlpfejandkbnnnfbojflimco"
-                    class="install-btn" target="_blank">
-                    <i class="fa-brands fa-chrome"></i>
-                    安装Chrome版
-                    <span id="chrome-version"
-                        style="margin-left: 8px; padding: 2px 8px; background: rgba(255,255,255,0.2); border-radius: 12px; font-size: 12px;">...</span>
-                </a>
+        <div class="main-content">
+            <!-- Left Column: Features -->
+            <div class="content-left">
+                <div class="features">
+                    <h2>✨ 核心功能</h2>
+                    <ul>
+                        <li>在YouTube视频上显示双语字幕（原文+翻译）</li>
+                        <li>支持多个AI服务商：OpenAI、Azure OpenAI、Anthropic (Claude)、Google Gemini、DeepSeek及自定义端点</li>
+                        <li>快速选择服务商，智能自动填充模型</li>
+                        <li>保存前测试API端点连接</li>
+                        <li>API密钥本地存储，保护隐私安全</li>
+                        <li>支持自定义翻译目标语言（支持20+种语言）</li>
+                        <li>可自定义字幕外观（颜色、大小、背景）</li>
+                        <li>字幕位置可拖动调整</li>
+                        <li>多语言界面（中英文）</li>
+                        <li>简洁美观的现代化用户界面</li>
+                        <li>完全免费开源</li>
+                        <li>支持Chrome和Edge浏览器</li>
+                    </ul>
+                </div>
             </div>
-            <p
-                style="margin-top: 16px; padding: 12px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px; color: #856404; font-size: 14px;">
-                <strong>📌 提示：</strong>由于商店审核流程，扩展商店中的版本可能会略低于最新版本。请查看<a href="changelog-zh.html"
-                    style="color: #856404; text-decoration: underline;">更新日志</a>了解最新功能。
-            </p>
-        </div>
 
-        <div class="features">
-            <h2>✨ 主要功能</h2>
-            <ul>
-                <li>在YouTube视频上显示双语字幕（原文+翻译）</li>
-                <li>支持多个AI服务商：OpenAI、Azure OpenAI、Anthropic (Claude)、Google Gemini、DeepSeek及自定义端点</li>
-                <li>快速选择服务商，智能自动填充模型</li>
-                <li>保存前测试API端点连接</li>
-                <li>API密钥本地存储，保护隐私安全</li>
-                <li>支持自定义翻译目标语言（支持20+种语言）</li>
-                <li>可自定义字幕外观（颜色、大小、背景）</li>
-                <li>字幕位置可拖动调整</li>
-                <li>多语言界面（中英文）</li>
-                <li>简洁美观的现代化用户界面</li>
-                <li>完全免费开源</li>
-                <li>支持Chrome和Edge浏览器</li>
-            </ul>
-        </div>
+            <!-- Right Column: Install & Links -->
+            <div class="content-right">
+                <div class="install-section">
+                    <h2>🚀 立即安装</h2>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="https://microsoftedge.microsoft.com/addons/detail/youtube%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95%E7%BF%BB%E8%AF%91%E5%8A%A9%E6%89%8B/iigbejclmmandbleldjpoomjdnlgcnod"
+                            class="install-btn" target="_blank" style="flex: 1;">
+                            <i class="fa-brands fa-edge"></i>
+                            <span>Edge</span>
+                            <span id="edge-version"
+                                style="margin-left: auto; padding: 2px 8px; background: rgba(255,255,255,0.2); border-radius: 12px; font-size: 11px;">...</span>
+                        </a>
+                        <a href="https://chromewebstore.google.com/detail/youtube%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95%E7%BF%BB%E8%AF%91%E5%8A%A9%E6%89%8B/mklfmioimlpfejandkbnnnfbojflimco"
+                            class="install-btn" target="_blank" style="flex: 1;">
+                            <i class="fa-brands fa-chrome"></i>
+                            <span>Chrome</span>
+                            <span id="chrome-version"
+                                style="margin-left: auto; padding: 2px 8px; background: rgba(255,255,255,0.2); border-radius: 12px; font-size: 11px;">...</span>
+                        </a>
+                    </div>
+                    <div style="margin-top: 12px; text-align: center;">
+                        <a href="https://github.com/marsteel/yt-subtitle-translator" target="_blank"
+                            style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                            <i class="fab fa-github" style="color: #6b7280; font-size: 14px;"></i>
+                            <span style="font-size: 13px; color: #6b7280;">GitHub: </span>
+                            <span class="version-badge" style="margin-top: 0;">v1.4.0</span>
+                        </a>
+                    </div>
+                    <p
+                        style="margin-top: 12px; padding: 10px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px; color: #856404; font-size: 13px;">
+                        <strong>📌 提示：</strong>商店版本可能略有延迟。查看<a href="changelog-zh.html"
+                            style="color: #856404; text-decoration: underline;">更新日志</a>了解最新功能。
+                    </p>
+                </div>
 
-        <div class="links">
-            <a href="privacy-zh.html" class="link-card">
-                <h2>🔒 隐私政策</h2>
-                <p>了解我们如何保护您的数据和隐私</p>
-            </a>
+                <div class="links">
+                    <a href="privacy-zh.html" class="link-card" style="padding: 16px; text-align: center;">
+                        <h2 style="font-size: 16px; margin: 0;">🔒 隐私政策</h2>
+                    </a>
 
-            <a href="disclaimer-zh.html" class="link-card">
-                <h2>⚠️ 免责声明</h2>
-                <p>重要法律信息和责任限制</p>
-            </a>
+                    <a href="changelog-zh.html" class="link-card" style="padding: 16px; text-align: center;">
+                        <h2 style="font-size: 16px; margin: 0;">📝 更新日志</h2>
+                    </a>
 
-            <a href="changelog-zh.html" class="link-card">
-                <h2>📝 更新日志</h2>
-                <p>版本历史和发布说明</p>
-            </a>
+                    <a href="https://github.com/marsteel/yt-subtitle-translator" class="link-card" target="_blank"
+                        style="padding: 16px; text-align: center;">
+                        <h2 style="font-size: 16px; margin: 0;"><i class="fab fa-github"></i> 源代码</h2>
+                    </a>
 
-            <a href="https://github.com/marsteel/yt-subtitle-translator" class="link-card" target="_blank">
-                <h2><i class="fab fa-github"></i> GitHub 仓库</h2>
-                <p>查看源代码并贡献</p>
-            </a>
-
-            <a href="https://github.com/marsteel/yt-subtitle-translator#readme" class="link-card" target="_blank">
-                <h2>📖 使用文档</h2>
-                <p>安装和使用指南</p>
-            </a>
-
-            <a href="languages-zh.html" class="link-card">
-                <h2>🌍 语言代码</h2>
-                <p>常见语言代码参考</p>
-            </a>
-
-            <a href="https://github.com/marsteel/yt-subtitle-translator/issues" class="link-card" target="_blank">
-                <h2>💬 技术支持</h2>
-                <p>获取帮助或报告问题</p>
-            </a>
+                    <a href="https://github.com/marsteel/yt-subtitle-translator/issues" class="link-card"
+                        target="_blank" style="padding: 16px; text-align: center;">
+                        <h2 style="font-size: 16px; margin: 0;">💬 技术支持</h2>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
-            <p>&copy; 2026 YouTube双语字幕翻译助手. 开源项目，采用 <a
+            <p>&copy; 2026 YouTube双语字幕翻译助手. 开源项目，采用<a
                     href="https://github.com/marsteel/yt-subtitle-translator/blob/main/LICENSE"
                     target="_blank">MIT许可证</a>.</p>
         </div>
@@ -429,8 +674,8 @@
             const browserLang = navigator.language || navigator.userLanguage;
             const isChinese = browserLang.startsWith('zh');
 
-            // Show notification if browser is NOT set to Chinese
-            if (!isChinese) {
+            // Show notification if browser is set to Chinese
+            if (isChinese) {
                 const notification = document.getElementById('language-notification');
                 if (notification) {
                     notification.classList.add('show');
@@ -439,7 +684,7 @@
         }
 
         function switchLanguage() {
-            window.location.href = 'index.html';
+            window.location.href = 'index-zh.html';
         }
 
         function dismissNotification(permanent) {
