@@ -99,11 +99,37 @@
             margin-bottom: 20px;
             color: #667eea;
             font-weight: 500;
-            text-decoration: none;
+            transition: color 0.2s;
         }
 
         .back-link:hover {
-            text-decoration: underline;
+            color: #764ba2;
+        }
+
+        .language-switcher {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            text-align: right;
+            padding: 0 20px;
+        }
+
+        .language-switcher a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .language-switcher a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .language-switcher a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
         }
 
         code {
