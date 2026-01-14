@@ -104,28 +104,29 @@
         }
 
         .language-switcher {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            text-align: right;
-            padding: 0 20px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
         }
 
         .language-switcher a {
-            color: #ffffff;
+            color: #667eea;
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: background-color 0.2s;
+            padding: 4px 8px;
         }
 
         .language-switcher a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            text-decoration: none;
+            text-decoration: underline;
         }
 
         .language-switcher a.active {
-            background-color: rgba(255, 255, 255, 0.2);
+            color: #374151;
             font-weight: 600;
         }
     </style>
