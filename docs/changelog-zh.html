@@ -325,14 +325,14 @@
 
         <div class="timeline">
             <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.5.3</span>
-                    <span class="version-date">2026年1月13日</span>
-                    <span class="badge latest">最新</span>
-                </div>
+            <div class="version-header">
+                <span class="version-number">v1.5.3</span>
+                <span class="badge latest">最新版本</span>
+                <span class="version-date">2026年1月13日</span>
+            </div>
 
                 <div class="version-content">
-<h3>🐛 错误修复</h3>
+            <h3>🐛 错误修复</h3>
             <ul>
                 <li>🔤 <strong>字符编码：</strong> 修复弹出窗口中文字符编码问题，添加UTF-8字符集声明</li>
                 <li>📱 <strong>响应式设计：</strong> 添加viewport元标签以改善移动端显示</li>
@@ -537,262 +537,14 @@
                 <li>支持多种目标语言翻译</li>
                 <li>发布到Chrome Web Store和Edge Add-ons</li>
             </ul>
+                </div>
+        </div>
         </div>
 
         <div class="footer">
             <p>&copy; 2026 YouTube双语字幕翻译助手. 采用MIT许可证的开源项目.</p>
-        
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.5.2</span>
-                    <span class="version-date">2026年1月12日</span>
-                </div>
-
-                <div class="version-content">
-                <h3>🐛 错误修复</h3>
-                <ul>
-                    <li>📏 <strong>Description Length:</strong> Fixed English extension description to meet Chrome Web
-                        Store's 132 character limit (was 133 characters)</li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.5.1</span>
-                    <span class="version-date">2026年1月12日</span>
-                </div>
-
-                <div class="version-content">
-                <h3>🔧 配置更改</h3>
-                <ul>
-                    <li>🌐 <strong>Default Locale:</strong> Changed default locale from Chinese (zh_CN) to English (en)
-                        for
-                        broader international audience</li>
-                    <li>📱 <strong>User Experience:</strong> Extension will now default to English UI for users without
-                        a
-                        matching locale</li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.5.0</span>
-                    <span class="version-date">2026年1月12日</span>
-                </div>
-
-                <div class="version-content">
-                <h3>🌍 新功能</h3>
-                <ul>
-                    <li>🗣️ <strong>Multilingual Support:</strong> Added localization for 8 additional languages</li>
-                    <li>🇹🇼 <strong>Traditional Chinese (zh_TW):</strong> Full UI translation for Traditional Chinese
-                        users
-                    </li>
-                    <li>🇯🇵 <strong>Japanese (ja):</strong> Complete Japanese interface localization</li>
-                    <li>🇰🇷 <strong>Korean (ko):</strong> Korean language support throughout the extension</li>
-                    <li>🇳🇱 <strong>Dutch (nl):</strong> Dutch language interface</li>
-                    <li>🇫🇷 <strong>French (fr):</strong> French localization for all UI elements</li>
-                    <li>🇩🇪 <strong>German (de):</strong> German language support</li>
-                    <li>🇪🇸 <strong>Spanish (es):</strong> Spanish interface translation</li>
-                    <li>🇺🇦 <strong>Ukrainian (uk):</strong> Ukrainian language support</li>
-                </ul>
-
-                <h3>🔧 技术改进</h3>
-                <ul>
-                    <li>Added <code>_locales/zh_TW/messages.json</code> for Traditional Chinese</li>
-                    <li>Added <code>_locales/ja/messages.json</code> for Japanese</li>
-                    <li>Added <code>_locales/ko/messages.json</code> for Korean</li>
-                    <li>Added <code>_locales/nl/messages.json</code> for Dutch</li>
-                    <li>Added <code>_locales/fr/messages.json</code> for French</li>
-                    <li>Added <code>_locales/de/messages.json</code> for German</li>
-                    <li>Added <code>_locales/es/messages.json</code> for Spanish</li>
-                    <li>Added <code>_locales/uk/messages.json</code> for Ukrainian</li>
-                    <li>Extension now supports 10 languages total (including existing English and Simplified Chinese)
-                    </li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.4.0</span>
-                    <span class="version-date">2026年1月11日</span>
-                </div>
-
-                <div class="version-content">
-                <h3>✨ 新功能</h3>
-                <ul>
-                    <li>🎯 <strong>Smart Debouncing:</strong> Intelligent subtitle translation with three-tier strategy
-                        to
-                        eliminate flickering on word-by-word subtitles</li>
-                    <li>📝 <strong>Sentence Detection:</strong> Automatic detection of sentence-ending punctuation for
-                        immediate translation</li>
-                    <li>⏱️ <strong>Adaptive Timing:</strong> 500ms debounce delay with 2000ms maximum wait time for
-                        optimal
-                        responsiveness</li>
-                </ul>
-
-                <h3>🐛 错误修复</h3>
-                <ul>
-                    <li>🔧 <strong>Flickering Issue:</strong> Fixed translation flickering on news videos with
-                        word-by-word
-                        subtitles</li>
-                    <li>🗑️ <strong>Code Cleanup:</strong> Removed broken debounce implementation (lines 121-134)</li>
-                    <li>💾 <strong>State Management:</strong> Improved subtitle tracking and timer cleanup</li>
-                </ul>
-
-                <h3>⚡ 性能优化</h3>
-                <ul>
-                    <li>📉 <strong>Reduced API Calls:</strong> 70-90% reduction in translation requests on word-by-word
-                        subtitles</li>
-                    <li>💰 <strong>Cost Savings:</strong> Significantly lower API usage and costs</li>
-                    <li>🎨 <strong>Better Quality:</strong> AI receives more complete context for improved translations
-                    </li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.3.1</span>
-                    <span class="version-date">2026年1月10日</span>
-                </div>
-
-                <div class="version-content">
-                <h3>📝 文档更新</h3>
-                <ul>
-                    <li>📄 <strong>Extension Description:</strong> Updated extension description to reflect support for
-                        multiple AI providers (OpenAI, Gemini, Claude, etc.) instead of just OpenAI</li>
-                    <li>🌐 <strong>Localization:</strong> Updated both English and Chinese descriptions to accurately
-                        represent current capabilities</li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.3.0</span>
-                    <span class="version-date">2026年1月9日</span>
-                </div>
-
-                <div class="version-content">
-                <h3>✨ 新功能</h3>
-                <ul>
-                    <li>🧪 <strong>API Endpoint Testing:</strong> Test connection button to verify API endpoint
-                        configuration before saving</li>
-                    <li>🎯 <strong>AI Provider Quick Selection:</strong> Dropdown menu with presets for OpenAI, Azure
-                        OpenAI, Anthropic (Claude), Google Gemini, and DeepSeek</li>
-                    <li>🤖 <strong>Provider-Specific Models:</strong> Auto-fill appropriate model names based on
-                        selected
-                        provider</li>
-                    <li>🔍 <strong>Smart Provider Detection:</strong> Automatically detect and display current provider
-                        based on stored endpoint URL</li>
-                </ul>
-
-                <h3>🔧 技术改进</h3>
-                <ul>
-                    <li>Added real-time connection testing with detailed error messages</li>
-                    <li>Improved API key handling for testing (supports both new input and stored keys)</li>
-                    <li>Added provider-specific endpoint and model presets</li>
-                    <li>Enhanced UX with visual feedback during testing</li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.2.0</span>
-                    <span class="version-date">2026年1月9日</span>
-                </div>
-
-                <div class="version-content">
-                <h3>✨ 新功能</h3>
-                <ul>
-                    <li>🌍 <strong>Internationalization (i18n) Support:</strong> Extension UI now supports both Chinese
-                        and
-                        English, automatically switching based on browser language</li>
-                    <li>🔧 <strong>Custom API Endpoints:</strong> Support for any OpenAI-compatible API endpoint (Azure
-                        OpenAI, local LLMs, etc.)</li>
-                    <li>⚙️ <strong>Model Configuration:</strong> Customize the AI model name for translation</li>
-                    <li>📱 <strong>Advanced Settings:</strong> New collapsible advanced settings section in popup</li>
-                </ul>
-
-                <h3>🔧 技术改进</h3>
-                <ul>
-                    <li>Added <code>_locales/zh_CN/messages.json</code> and <code>_locales/en/messages.json</code> for
-                        i18n
-                    </li>
-                    <li>Updated manifest.json to use i18n placeholders</li>
-                    <li>Enhanced error handling for custom endpoints</li>
-                    <li>Improved popup UI with better styling and organization</li>
-                    <li>Premium popup design with gradients, shadows, and smooth animations</li>
-                    <li>Enhanced advanced settings toggle with visual cues and arrow indicator</li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.1.2</span>
-                    <span class="version-date">早期版本</span>
-                </div>
-
-                <div class="version-content">
-                <h3>✨ 功能特性</h3>
-                <ul>
-                    <li>Display bilingual subtitles on YouTube videos (original + translation)</li>
-                    <li>High-quality translation using OpenAI API</li>
-                    <li>API key stored locally for privacy protection</li>
-                    <li>Customizable target translation language</li>
-                    <li>Draggable subtitle positioning</li>
-                    <li>Clean and beautiful user interface</li>
-                </ul>
-
-                <h3>🔧 技术实现</h3>
-                <ul>
-                    <li>Manifest V3 architecture</li>
-                    <li>Service Worker background script</li>
-                    <li>Content Script injection on YouTube pages</li>
-                    <li>Chrome Sync Storage for settings</li>
-                </ul>
-
-                <h3>⚠️ 已知问题</h3>
-                <ul>
-                    <li>When subtitles are dragged too low in fullscreen mode, they may not display correctly after
-                        exiting
-                        fullscreen</li>
-                    <li><strong>Workaround:</strong> Drag subtitles to an appropriate position in fullscreen mode, then
-                        switch back to default view</li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="version">
-                <div class="version-header">
-                    <span class="version-number">v1.0.0</span>
-                    <span class="version-date">初始版本</span>
-                </div>
-
-                <div class="version-content">
-                <h3>�� 首次发布</h3>
-                <ul>
-                    <li>Implemented YouTube bilingual subtitle display functionality</li>
-                    <li>Integrated OpenAI API translation service</li>
-                    <li>Local storage of API keys and settings</li>
-                    <li>Support for multiple target languages</li>
-                    <li>Published to Chrome Web Store and Edge Add-ons</li>
-                </ul>
-                </div>
-            </div>
-
-            <div class="footer">
-                <p>&copy; 2026 YouTube双语字幕翻译助手. 开源项目，采用MIT许可证.</p>
-            </div>
         </div>
+    </div>
 </body>
 
 </html>
