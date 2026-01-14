@@ -6,6 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changelog - YouTube Bilingual Subtitle Translator</title>
     <style>
+        /* ========== Design System Tokens ========== */
+        :root {
+            /* Colors */
+            --color-primary: #667eea;
+            --color-primary-dark: #5568d3;
+            --color-secondary: #764ba2;
+            --color-success: #10b981;
+            --color-gray-50: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-200: #e5e7eb;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            --color-gray-900: #1f2937;
+
+            /* Spacing */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-6: 48px;
+            --space-8: 64px;
+
+            /* Typography */
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 32px;
+            --font-size-4xl: 40px;
+
+            /* Layout */
+            --container-lg: 1024px;
+            --container-2xl: 1400px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ========== Reset & Base ========== */
         * {
             margin: 0;
             padding: 0;
@@ -15,28 +66,30 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-gray-900);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: var(--space-4) var(--space-2);
         }
 
+        /* ========== Language Switcher ========== */
         .language-switcher {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: var(--space-3);
+            right: var(--space-3);
             background: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
             z-index: 1000;
         }
 
         .language-switcher a {
-            color: #667eea;
+            color: var(--color-primary);
             text-decoration: none;
             font-weight: 500;
-            padding: 4px 8px;
+            padding: 4px var(--space-1);
+            font-size: var(--font-size-sm);
         }
 
         .language-switcher a:hover {
@@ -44,110 +97,218 @@
         }
 
         .language-switcher .active {
-            color: #374151;
+            color: var(--color-gray-700);
             font-weight: 600;
         }
 
+        /* ========== Container ========== */
         .container {
-            max-width: 800px;
+            max-width: var(--container-lg);
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-2xl);
         }
 
+        @media (min-width: 1280px) {
+            .container {
+                max-width: var(--container-2xl);
+                padding: var(--space-8);
+            }
+        }
+
+        /* ========== Header ========== */
         h1 {
-            color: #667eea;
-            margin-bottom: 30px;
-            font-size: 32px;
+            color: var(--color-primary);
+            margin-bottom: var(--space-6);
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
         }
 
-        .version {
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #e5e7eb;
-        }
-
-        .version:last-of-type {
-            border-bottom: none;
-        }
-
-        .version-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .version-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #374151;
-        }
-
-        .version-date {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .badge {
-            background: #667eea;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .badge.latest {
-            background: #10b981;
-        }
-
-        h3 {
-            color: #4b5563;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        ul {
-            margin-bottom: 15px;
-            padding-left: 30px;
-        }
-
-        li {
-            margin-bottom: 8px;
-            color: #4b5563;
+        @media (min-width: 1280px) {
+            h1 {
+                font-size: var(--font-size-4xl);
+            }
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 20px;
-            color: #667eea;
+            margin-bottom: var(--space-4);
+            color: var(--color-primary);
             font-weight: 500;
             text-decoration: none;
+            font-size: var(--font-size-base);
         }
 
         .back-link:hover {
             text-decoration: underline;
         }
 
+        /* ========== Timeline Layout ========== */
+        .timeline {
+            position: relative;
+            padding-left: 0;
+        }
+
+        /* Timeline vertical line (widescreen only) */
+        @media (min-width: 1024px) {
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 280px;
+                top: 60px;
+                bottom: 60px;
+                width: 2px;
+                background: var(--color-gray-200);
+            }
+        }
+
+        /* ========== Version Entry ========== */
+        .version {
+            margin-bottom: var(--space-8);
+            position: relative;
+        }
+
+        /* Mobile: vertical stack */
+        .version {
+            display: block;
+        }
+
+        /* Widescreen: horizontal layout */
+        @media (min-width: 1024px) {
+            .version {
+                display: grid;
+                grid-template-columns: 260px 1fr;
+                gap: var(--space-8);
+                align-items: start;
+            }
+        }
+
+        /* ========== Version Header (Left Side) ========== */
+        .version-header {
+            margin-bottom: var(--space-3);
+        }
+
+        @media (min-width: 1024px) {
+            .version-header {
+                text-align: right;
+                padding-right: var(--space-4);
+                margin-bottom: 0;
+                position: sticky;
+                top: var(--space-4);
+            }
+        }
+
+        .version-number {
+            display: block;
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-gray-700);
+            margin-bottom: var(--space-1);
+        }
+
+        .version-date {
+            display: block;
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-2);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 4px var(--space-2);
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: var(--space-1);
+        }
+
+        .badge.latest {
+            background: var(--color-success);
+        }
+
+        /* ========== Version Content (Right Side) ========== */
+        .version-content {
+            position: relative;
+        }
+
+        /* Timeline dot (widescreen only) */
+        @media (min-width: 1024px) {
+            .version-content::before {
+                content: '';
+                position: absolute;
+                left: -44px;
+                top: 8px;
+                width: 12px;
+                height: 12px;
+                background: var(--color-primary);
+                border: 3px solid white;
+                border-radius: 50%;
+                box-shadow: 0 0 0 2px var(--color-gray-200);
+                z-index: 1;
+            }
+
+            .version:first-child .version-content::before {
+                background: var(--color-success);
+                box-shadow: 0 0 0 2px var(--color-success), 0 0 0 4px rgba(16, 185, 129, 0.2);
+            }
+        }
+
+        .version-content {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .version:first-child .version-content {
+            border-left-color: var(--color-success);
+        }
+
+        h3 {
+            color: var(--color-gray-700);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-2);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+        }
+
+        .version-content h3:first-child {
+            margin-top: 0;
+        }
+
+        ul {
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-4);
+        }
+
+        li {
+            margin-bottom: var(--space-2);
+            color: var(--color-gray-600);
+            line-height: 1.7;
+        }
+
         code {
-            background: #f3f4f6;
+            background: white;
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', monospace;
-            font-size: 14px;
+            font-size: 13px;
+            color: var(--color-primary);
+            border: 1px solid var(--color-gray-200);
         }
 
+        /* ========== Footer ========== */
         .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e5e7eb;
+            margin-top: var(--space-8);
+            padding-top: var(--space-4);
+            border-top: 2px solid var(--color-gray-200);
             text-align: center;
-            color: #6b7280;
-            font-size: 14px;
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
         }
     </style>
 </head>
@@ -162,245 +323,263 @@
 
         <h1>📝 Changelog</h1>
 
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.5.3</span>
-                <span class="badge latest">Latest</span>
-                <span class="version-date">January 13, 2026</span>
+        <div class="timeline">
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.5.3</span>
+                    <span class="version-date">January 13, 2026</span>
+                    <span class="badge latest">Latest</span>
+                </div>
+
+                <div class="version-content">
+                    <h3>🐛 Bug Fixes</h3>
+                    <ul>
+                        <li>🔤 <strong>Character Encoding:</strong> Fixed Chinese character encoding issue in popup by
+                            adding
+                            UTF-8 charset meta tag</li>
+                        <li>📱 <strong>Responsive Design:</strong> Added viewport meta tag for better mobile display
+                        </li>
+                    </ul>
+
+                    <h3>✨ UI Improvements</h3>
+                    <ul>
+                        <li>🎨 <strong>Simplified Links:</strong> Removed urgent-looking disclaimer link, keeping only
+                            friendly
+                            website link</li>
+                    </ul>
+                </div>
             </div>
 
-            <h3>🐛 Bug Fixes</h3>
-            <ul>
-                <li>🔤 <strong>Character Encoding:</strong> Fixed Chinese character encoding issue in popup by adding
-                    UTF-8 charset meta tag</li>
-                <li>📱 <strong>Responsive Design:</strong> Added viewport meta tag for better mobile display</li>
-            </ul>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.5.2</span>
+                    <span class="version-date">January 12, 2026</span>
+                </div>
 
-            <h3>✨ UI Improvements</h3>
-            <ul>
-                <li>🎨 <strong>Simplified Links:</strong> Removed urgent-looking disclaimer link, keeping only friendly
-                    website link</li>
-            </ul>
-        </div>
-
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.5.2</span>
-                <span class="version-date">January 12, 2026</span>
+                <h3>🐛 Bug Fixes</h3>
+                <ul>
+                    <li>📏 <strong>Description Length:</strong> Fixed English extension description to meet Chrome Web
+                        Store's 132 character limit (was 133 characters)</li>
+                </ul>
             </div>
 
-            <h3>🐛 Bug Fixes</h3>
-            <ul>
-                <li>📏 <strong>Description Length:</strong> Fixed English extension description to meet Chrome Web
-                    Store's 132 character limit (was 133 characters)</li>
-            </ul>
-        </div>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.5.1</span>
+                    <span class="version-date">January 12, 2026</span>
+                </div>
 
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.5.1</span>
-                <span class="version-date">January 12, 2026</span>
+                <h3>🔧 Configuration Changes</h3>
+                <ul>
+                    <li>🌐 <strong>Default Locale:</strong> Changed default locale from Chinese (zh_CN) to English (en)
+                        for
+                        broader international audience</li>
+                    <li>📱 <strong>User Experience:</strong> Extension will now default to English UI for users without
+                        a
+                        matching locale</li>
+                </ul>
             </div>
 
-            <h3>🔧 Configuration Changes</h3>
-            <ul>
-                <li>🌐 <strong>Default Locale:</strong> Changed default locale from Chinese (zh_CN) to English (en) for
-                    broader international audience</li>
-                <li>📱 <strong>User Experience:</strong> Extension will now default to English UI for users without a
-                    matching locale</li>
-            </ul>
-        </div>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.5.0</span>
+                    <span class="version-date">January 12, 2026</span>
+                </div>
 
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.5.0</span>
-                <span class="version-date">January 12, 2026</span>
+                <h3>🌍 New Features</h3>
+                <ul>
+                    <li>🗣️ <strong>Multilingual Support:</strong> Added localization for 8 additional languages</li>
+                    <li>🇹🇼 <strong>Traditional Chinese (zh_TW):</strong> Full UI translation for Traditional Chinese
+                        users
+                    </li>
+                    <li>🇯🇵 <strong>Japanese (ja):</strong> Complete Japanese interface localization</li>
+                    <li>🇰🇷 <strong>Korean (ko):</strong> Korean language support throughout the extension</li>
+                    <li>🇳🇱 <strong>Dutch (nl):</strong> Dutch language interface</li>
+                    <li>🇫🇷 <strong>French (fr):</strong> French localization for all UI elements</li>
+                    <li>🇩🇪 <strong>German (de):</strong> German language support</li>
+                    <li>🇪🇸 <strong>Spanish (es):</strong> Spanish interface translation</li>
+                    <li>🇺🇦 <strong>Ukrainian (uk):</strong> Ukrainian language support</li>
+                </ul>
+
+                <h3>🔧 Technical Improvements</h3>
+                <ul>
+                    <li>Added <code>_locales/zh_TW/messages.json</code> for Traditional Chinese</li>
+                    <li>Added <code>_locales/ja/messages.json</code> for Japanese</li>
+                    <li>Added <code>_locales/ko/messages.json</code> for Korean</li>
+                    <li>Added <code>_locales/nl/messages.json</code> for Dutch</li>
+                    <li>Added <code>_locales/fr/messages.json</code> for French</li>
+                    <li>Added <code>_locales/de/messages.json</code> for German</li>
+                    <li>Added <code>_locales/es/messages.json</code> for Spanish</li>
+                    <li>Added <code>_locales/uk/messages.json</code> for Ukrainian</li>
+                    <li>Extension now supports 10 languages total (including existing English and Simplified Chinese)
+                    </li>
+                </ul>
             </div>
 
-            <h3>🌍 New Features</h3>
-            <ul>
-                <li>🗣️ <strong>Multilingual Support:</strong> Added localization for 8 additional languages</li>
-                <li>🇹🇼 <strong>Traditional Chinese (zh_TW):</strong> Full UI translation for Traditional Chinese users
-                </li>
-                <li>🇯🇵 <strong>Japanese (ja):</strong> Complete Japanese interface localization</li>
-                <li>🇰🇷 <strong>Korean (ko):</strong> Korean language support throughout the extension</li>
-                <li>🇳🇱 <strong>Dutch (nl):</strong> Dutch language interface</li>
-                <li>🇫🇷 <strong>French (fr):</strong> French localization for all UI elements</li>
-                <li>🇩🇪 <strong>German (de):</strong> German language support</li>
-                <li>🇪🇸 <strong>Spanish (es):</strong> Spanish interface translation</li>
-                <li>🇺🇦 <strong>Ukrainian (uk):</strong> Ukrainian language support</li>
-            </ul>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.4.0</span>
+                    <span class="version-date">January 11, 2026</span>
+                </div>
 
-            <h3>🔧 Technical Improvements</h3>
-            <ul>
-                <li>Added <code>_locales/zh_TW/messages.json</code> for Traditional Chinese</li>
-                <li>Added <code>_locales/ja/messages.json</code> for Japanese</li>
-                <li>Added <code>_locales/ko/messages.json</code> for Korean</li>
-                <li>Added <code>_locales/nl/messages.json</code> for Dutch</li>
-                <li>Added <code>_locales/fr/messages.json</code> for French</li>
-                <li>Added <code>_locales/de/messages.json</code> for German</li>
-                <li>Added <code>_locales/es/messages.json</code> for Spanish</li>
-                <li>Added <code>_locales/uk/messages.json</code> for Ukrainian</li>
-                <li>Extension now supports 10 languages total (including existing English and Simplified Chinese)</li>
-            </ul>
-        </div>
+                <h3>✨ New Features</h3>
+                <ul>
+                    <li>🎯 <strong>Smart Debouncing:</strong> Intelligent subtitle translation with three-tier strategy
+                        to
+                        eliminate flickering on word-by-word subtitles</li>
+                    <li>📝 <strong>Sentence Detection:</strong> Automatic detection of sentence-ending punctuation for
+                        immediate translation</li>
+                    <li>⏱️ <strong>Adaptive Timing:</strong> 500ms debounce delay with 2000ms maximum wait time for
+                        optimal
+                        responsiveness</li>
+                </ul>
 
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.4.0</span>
-                <span class="version-date">January 11, 2026</span>
+                <h3>🐛 Bug Fixes</h3>
+                <ul>
+                    <li>🔧 <strong>Flickering Issue:</strong> Fixed translation flickering on news videos with
+                        word-by-word
+                        subtitles</li>
+                    <li>🗑️ <strong>Code Cleanup:</strong> Removed broken debounce implementation (lines 121-134)</li>
+                    <li>💾 <strong>State Management:</strong> Improved subtitle tracking and timer cleanup</li>
+                </ul>
+
+                <h3>⚡ Performance</h3>
+                <ul>
+                    <li>📉 <strong>Reduced API Calls:</strong> 70-90% reduction in translation requests on word-by-word
+                        subtitles</li>
+                    <li>💰 <strong>Cost Savings:</strong> Significantly lower API usage and costs</li>
+                    <li>🎨 <strong>Better Quality:</strong> AI receives more complete context for improved translations
+                    </li>
+                </ul>
             </div>
 
-            <h3>✨ New Features</h3>
-            <ul>
-                <li>🎯 <strong>Smart Debouncing:</strong> Intelligent subtitle translation with three-tier strategy to
-                    eliminate flickering on word-by-word subtitles</li>
-                <li>📝 <strong>Sentence Detection:</strong> Automatic detection of sentence-ending punctuation for
-                    immediate translation</li>
-                <li>⏱️ <strong>Adaptive Timing:</strong> 500ms debounce delay with 2000ms maximum wait time for optimal
-                    responsiveness</li>
-            </ul>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.3.1</span>
+                    <span class="version-date">January 10, 2026</span>
+                </div>
 
-            <h3>🐛 Bug Fixes</h3>
-            <ul>
-                <li>🔧 <strong>Flickering Issue:</strong> Fixed translation flickering on news videos with word-by-word
-                    subtitles</li>
-                <li>🗑️ <strong>Code Cleanup:</strong> Removed broken debounce implementation (lines 121-134)</li>
-                <li>💾 <strong>State Management:</strong> Improved subtitle tracking and timer cleanup</li>
-            </ul>
-
-            <h3>⚡ Performance</h3>
-            <ul>
-                <li>📉 <strong>Reduced API Calls:</strong> 70-90% reduction in translation requests on word-by-word
-                    subtitles</li>
-                <li>💰 <strong>Cost Savings:</strong> Significantly lower API usage and costs</li>
-                <li>🎨 <strong>Better Quality:</strong> AI receives more complete context for improved translations</li>
-            </ul>
-        </div>
-
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.3.1</span>
-                <span class="version-date">January 10, 2026</span>
+                <h3>📝 Documentation Updates</h3>
+                <ul>
+                    <li>📄 <strong>Extension Description:</strong> Updated extension description to reflect support for
+                        multiple AI providers (OpenAI, Gemini, Claude, etc.) instead of just OpenAI</li>
+                    <li>🌐 <strong>Localization:</strong> Updated both English and Chinese descriptions to accurately
+                        represent current capabilities</li>
+                </ul>
             </div>
 
-            <h3>📝 Documentation Updates</h3>
-            <ul>
-                <li>📄 <strong>Extension Description:</strong> Updated extension description to reflect support for
-                    multiple AI providers (OpenAI, Gemini, Claude, etc.) instead of just OpenAI</li>
-                <li>🌐 <strong>Localization:</strong> Updated both English and Chinese descriptions to accurately
-                    represent current capabilities</li>
-            </ul>
-        </div>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.3.0</span>
+                    <span class="version-date">January 9, 2026</span>
+                </div>
 
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.3.0</span>
-                <span class="version-date">January 9, 2026</span>
+                <h3>✨ New Features</h3>
+                <ul>
+                    <li>🧪 <strong>API Endpoint Testing:</strong> Test connection button to verify API endpoint
+                        configuration before saving</li>
+                    <li>🎯 <strong>AI Provider Quick Selection:</strong> Dropdown menu with presets for OpenAI, Azure
+                        OpenAI, Anthropic (Claude), Google Gemini, and DeepSeek</li>
+                    <li>🤖 <strong>Provider-Specific Models:</strong> Auto-fill appropriate model names based on
+                        selected
+                        provider</li>
+                    <li>🔍 <strong>Smart Provider Detection:</strong> Automatically detect and display current provider
+                        based on stored endpoint URL</li>
+                </ul>
+
+                <h3>🔧 Technical Improvements</h3>
+                <ul>
+                    <li>Added real-time connection testing with detailed error messages</li>
+                    <li>Improved API key handling for testing (supports both new input and stored keys)</li>
+                    <li>Added provider-specific endpoint and model presets</li>
+                    <li>Enhanced UX with visual feedback during testing</li>
+                </ul>
             </div>
 
-            <h3>✨ New Features</h3>
-            <ul>
-                <li>🧪 <strong>API Endpoint Testing:</strong> Test connection button to verify API endpoint
-                    configuration before saving</li>
-                <li>🎯 <strong>AI Provider Quick Selection:</strong> Dropdown menu with presets for OpenAI, Azure
-                    OpenAI, Anthropic (Claude), Google Gemini, and DeepSeek</li>
-                <li>🤖 <strong>Provider-Specific Models:</strong> Auto-fill appropriate model names based on selected
-                    provider</li>
-                <li>🔍 <strong>Smart Provider Detection:</strong> Automatically detect and display current provider
-                    based on stored endpoint URL</li>
-            </ul>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.2.0</span>
+                    <span class="version-date">January 9, 2026</span>
+                </div>
 
-            <h3>🔧 Technical Improvements</h3>
-            <ul>
-                <li>Added real-time connection testing with detailed error messages</li>
-                <li>Improved API key handling for testing (supports both new input and stored keys)</li>
-                <li>Added provider-specific endpoint and model presets</li>
-                <li>Enhanced UX with visual feedback during testing</li>
-            </ul>
-        </div>
+                <h3>✨ New Features</h3>
+                <ul>
+                    <li>🌍 <strong>Internationalization (i18n) Support:</strong> Extension UI now supports both Chinese
+                        and
+                        English, automatically switching based on browser language</li>
+                    <li>🔧 <strong>Custom API Endpoints:</strong> Support for any OpenAI-compatible API endpoint (Azure
+                        OpenAI, local LLMs, etc.)</li>
+                    <li>⚙️ <strong>Model Configuration:</strong> Customize the AI model name for translation</li>
+                    <li>📱 <strong>Advanced Settings:</strong> New collapsible advanced settings section in popup</li>
+                </ul>
 
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.2.0</span>
-                <span class="version-date">January 9, 2026</span>
+                <h3>🔧 Technical Improvements</h3>
+                <ul>
+                    <li>Added <code>_locales/zh_CN/messages.json</code> and <code>_locales/en/messages.json</code> for
+                        i18n
+                    </li>
+                    <li>Updated manifest.json to use i18n placeholders</li>
+                    <li>Enhanced error handling for custom endpoints</li>
+                    <li>Improved popup UI with better styling and organization</li>
+                    <li>Premium popup design with gradients, shadows, and smooth animations</li>
+                    <li>Enhanced advanced settings toggle with visual cues and arrow indicator</li>
+                </ul>
             </div>
 
-            <h3>✨ New Features</h3>
-            <ul>
-                <li>🌍 <strong>Internationalization (i18n) Support:</strong> Extension UI now supports both Chinese and
-                    English, automatically switching based on browser language</li>
-                <li>🔧 <strong>Custom API Endpoints:</strong> Support for any OpenAI-compatible API endpoint (Azure
-                    OpenAI, local LLMs, etc.)</li>
-                <li>⚙️ <strong>Model Configuration:</strong> Customize the AI model name for translation</li>
-                <li>📱 <strong>Advanced Settings:</strong> New collapsible advanced settings section in popup</li>
-            </ul>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.1.2</span>
+                    <span class="version-date">Previous Version</span>
+                </div>
 
-            <h3>🔧 Technical Improvements</h3>
-            <ul>
-                <li>Added <code>_locales/zh_CN/messages.json</code> and <code>_locales/en/messages.json</code> for i18n
-                </li>
-                <li>Updated manifest.json to use i18n placeholders</li>
-                <li>Enhanced error handling for custom endpoints</li>
-                <li>Improved popup UI with better styling and organization</li>
-                <li>Premium popup design with gradients, shadows, and smooth animations</li>
-                <li>Enhanced advanced settings toggle with visual cues and arrow indicator</li>
-            </ul>
-        </div>
+                <h3>✨ Features</h3>
+                <ul>
+                    <li>Display bilingual subtitles on YouTube videos (original + translation)</li>
+                    <li>High-quality translation using OpenAI API</li>
+                    <li>API key stored locally for privacy protection</li>
+                    <li>Customizable target translation language</li>
+                    <li>Draggable subtitle positioning</li>
+                    <li>Clean and beautiful user interface</li>
+                </ul>
 
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.1.2</span>
-                <span class="version-date">Previous Version</span>
+                <h3>🔧 Technical Implementation</h3>
+                <ul>
+                    <li>Manifest V3 architecture</li>
+                    <li>Service Worker background script</li>
+                    <li>Content Script injection on YouTube pages</li>
+                    <li>Chrome Sync Storage for settings</li>
+                </ul>
+
+                <h3>⚠️ Known Issues</h3>
+                <ul>
+                    <li>When subtitles are dragged too low in fullscreen mode, they may not display correctly after
+                        exiting
+                        fullscreen</li>
+                    <li><strong>Workaround:</strong> Drag subtitles to an appropriate position in fullscreen mode, then
+                        switch back to default view</li>
+                </ul>
             </div>
 
-            <h3>✨ Features</h3>
-            <ul>
-                <li>Display bilingual subtitles on YouTube videos (original + translation)</li>
-                <li>High-quality translation using OpenAI API</li>
-                <li>API key stored locally for privacy protection</li>
-                <li>Customizable target translation language</li>
-                <li>Draggable subtitle positioning</li>
-                <li>Clean and beautiful user interface</li>
-            </ul>
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.0.0</span>
+                    <span class="version-date">Initial Release</span>
+                </div>
 
-            <h3>🔧 Technical Implementation</h3>
-            <ul>
-                <li>Manifest V3 architecture</li>
-                <li>Service Worker background script</li>
-                <li>Content Script injection on YouTube pages</li>
-                <li>Chrome Sync Storage for settings</li>
-            </ul>
-
-            <h3>⚠️ Known Issues</h3>
-            <ul>
-                <li>When subtitles are dragged too low in fullscreen mode, they may not display correctly after exiting
-                    fullscreen</li>
-                <li><strong>Workaround:</strong> Drag subtitles to an appropriate position in fullscreen mode, then
-                    switch back to default view</li>
-            </ul>
-        </div>
-
-        <div class="version">
-            <div class="version-header">
-                <span class="version-number">v1.0.0</span>
-                <span class="version-date">Initial Release</span>
+                <h3>🎉 First Release</h3>
+                <ul>
+                    <li>Implemented YouTube bilingual subtitle display functionality</li>
+                    <li>Integrated OpenAI API translation service</li>
+                    <li>Local storage of API keys and settings</li>
+                    <li>Support for multiple target languages</li>
+                    <li>Published to Chrome Web Store and Edge Add-ons</li>
+                </ul>
             </div>
 
-            <h3>🎉 First Release</h3>
-            <ul>
-                <li>Implemented YouTube bilingual subtitle display functionality</li>
-                <li>Integrated OpenAI API translation service</li>
-                <li>Local storage of API keys and settings</li>
-                <li>Support for multiple target languages</li>
-                <li>Published to Chrome Web Store and Edge Add-ons</li>
-            </ul>
+            <div class="footer">
+                <p>&copy; 2026 YouTube Bilingual Subtitle Translator. Open source under MIT License.</p>
+            </div>
         </div>
-
-        <div class="footer">
-            <p>&copy; 2026 YouTube Bilingual Subtitle Translator. Open source under MIT License.</p>
-        </div>
-    </div>
 </body>
 
 </html>
