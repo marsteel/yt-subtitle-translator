@@ -6,6 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>隐私政策 - YouTube双语字幕翻译助手</title>
     <style>
+        /* ========== Design System Tokens ========== */
+        :root {
+            /* Colors */
+            --color-primary: #667eea;
+            --color-primary-dark: #5568d3;
+            --color-secondary: #764ba2;
+            --color-success: #10b981;
+            --color-gray-50: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-200: #e5e7eb;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            --color-gray-900: #1f2937;
+
+            /* Spacing */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-6: 48px;
+            --space-8: 64px;
+
+            /* Typography */
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 32px;
+            --font-size-4xl: 40px;
+
+            /* Layout */
+            --container-document: 900px;
+            --container-2xl: 1400px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ========== Reset & Base ========== */
         * {
             margin: 0;
             padding: 0;
@@ -13,62 +64,111 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-gray-900);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: var(--space-4) var(--space-2);
         }
 
+        /* ========== Language Switcher ========== */
+        .language-switcher {
+            position: fixed;
+            top: var(--space-3);
+            right: var(--space-3);
+            background: white;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+        }
+
+        .language-switcher a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px var(--space-1);
+            font-size: var(--font-size-sm);
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switcher .active {
+            color: var(--color-gray-700);
+            font-weight: 600;
+        }
+
+        /* ========== Container ========== */
         .container {
-            max-width: 800px;
+            max-width: var(--container-document);
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-2xl);
         }
 
+        @media (min-width: 1280px) {
+            .container {
+                padding: var(--space-8);
+            }
+        }
+
+        /* ========== Typography ========== */
         h1 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 32px;
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 1280px) {
+            h1 {
+                font-size: var(--font-size-4xl);
+            }
         }
 
         .last-updated {
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 30px;
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-6);
         }
 
         h2 {
-            color: #374151;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 24px;
+            color: var(--color-gray-700);
+            margin-top: var(--space-6);
+            margin-bottom: var(--space-3);
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
         }
 
         h3 {
-            color: #4b5563;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 18px;
+            color: var(--color-gray-600);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-2);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
         }
 
         p {
-            margin-bottom: 15px;
-            color: #4b5563;
+            margin-bottom: var(--space-3);
+            color: var(--color-gray-600);
+            line-height: 1.7;
         }
 
         ul {
-            margin-bottom: 15px;
-            padding-left: 30px;
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-4);
         }
 
         li {
-            margin-bottom: 8px;
-            color: #4b5563;
+            margin-bottom: var(--space-2);
+            color: var(--color-gray-600);
+            line-height: 1.7;
         }
 
         .highlight {
@@ -76,58 +176,37 @@
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 600;
+            color: var(--color-gray-700);
         }
 
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e5e7eb;
-            text-align: center;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
+        /* ========== Links ========== */
         a {
-            color: #667eea;
+            color: var(--color-primary);
             text-decoration: none;
+            transition: color 0.2s ease;
         }
 
         a:hover {
+            color: var(--color-primary-dark);
             text-decoration: underline;
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 20px;
-            color: #667eea;
+            margin-bottom: var(--space-4);
+            color: var(--color-primary);
             font-weight: 500;
+            font-size: var(--font-size-base);
         }
 
-        .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-        }
-
-        .language-switcher a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 4px 8px;
-        }
-
-        .language-switcher a:hover {
-            text-decoration: underline;
-        }
-
-        .language-switcher a.active {
-            color: #374151;
-            font-weight: 600;
+        /* ========== Footer ========== */
+        .footer {
+            margin-top: var(--space-8);
+            padding-top: var(--space-4);
+            border-top: 2px solid var(--color-gray-200);
+            text-align: center;
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
         }
     </style>
 </head>
@@ -141,82 +220,91 @@
         <a href="index-zh.html" class="back-link">← 返回首页</a>
 
         <h1>隐私政策</h1>
-        <p class="last-updated">最后更新：2026年1月9日</p>
+        <p class="last-updated">最后更新： January 9, 2026</p>
 
-        <h2>概述</h2>
-        <p>YouTube双语字幕翻译助手致力于保护您的隐私。本隐私政策说明了在您使用我们的Chrome/Edge扩展时，我们如何处理您的数据。</p>
+        <h2>Overview</h2>
+        <p>YouTube Bilingual Subtitle Translator is committed to protecting your privacy. This privacy policy explains
+            how we handle your data when you use our Chrome/Edge extension.</p>
 
-        <h2>数据收集</h2>
-        <p><strong class="highlight">我们不收集、存储或传输任何个人数据到我们的服务器。</strong>我们没有服务器。</p>
+        <h2>Data Collection</h2>
+        <p><strong class="highlight">We do NOT collect, store, or transmit any personal data to our servers.</strong> We
+            do not have servers.</p>
 
-        <h2>本地存储的内容</h2>
-        <p>以下数据存储在您的浏览器本地（使用浏览器的sync storage）：</p>
+        <h2>What We Store Locally</h2>
+        <p>The following data is stored locally in your browser using the browser's sync storage:</p>
         <ul>
-            <li><strong>API密钥：</strong>您的AI服务商API密钥</li>
-            <li><strong>目标语言设置：</strong>您选择的翻译目标语言</li>
-            <li><strong>API端点：</strong>您的自定义API端点URL（如已配置）</li>
-            <li><strong>模型名称：</strong>您选择的AI模型名称</li>
+            <li><strong>API Key:</strong> Your AI provider's API key</li>
+            <li><strong>Target Language Settings:</strong> Your selected translation target language</li>
+            <li><strong>API Endpoint:</strong> Your custom API endpoint URL (if configured)</li>
+            <li><strong>Model Name:</strong> Your selected AI model name</li>
         </ul>
-        <p>所有数据都存储在浏览器的sync storage中，并通过浏览器同步在您的设备间同步（如果启用）。我们永远无法访问这些数据。</p>
+        <p>All data is stored locally in the browser's sync storage and synced across your devices via browser sync (if
+            enabled). We never have access to this data.</p>
 
-        <h2>第三方服务</h2>
-        <p>当您使用YouTube双语字幕翻译助手翻译字幕时：</p>
+        <h2>Third-Party Services</h2>
+        <p>When you use YouTube Bilingual Subtitle Translator to translate subtitles:</p>
         <ul>
-            <li>字幕文本<strong>直接从您的浏览器</strong>发送到您配置的AI服务商API（OpenAI、Azure OpenAI、Anthropic、Google Gemini、DeepSeek或自定义端点）
-            </li>
-            <li>我们不拦截、存储或访问这些数据</li>
-            <li>请查看您的AI服务商的隐私政策了解他们如何处理数据：
+            <li>Subtitle text is sent <strong>directly from your browser</strong> to your configured AI provider's API
+                (OpenAI, Azure OpenAI, Anthropic, Google Gemini, DeepSeek, or custom endpoint)</li>
+            <li>We do not intercept, store, or have access to this data</li>
+            <li>Please review your AI provider's privacy policy for how they handle data:
                 <ul>
-                    <li><a href="https://openai.com/privacy" target="_blank">OpenAI隐私政策</a></li>
-                    <li><a href="https://privacy.microsoft.com/" target="_blank">微软Azure隐私</a></li>
-                    <li><a href="https://www.anthropic.com/privacy" target="_blank">Anthropic隐私政策</a></li>
-                    <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank">Google Gemini条款</a></li>
+                    <li><a href="https://openai.com/privacy" target="_blank">OpenAI Privacy Policy</a></li>
+                    <li><a href="https://privacy.microsoft.com/" target="_blank">Microsoft Azure Privacy</a></li>
+                    <li><a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></li>
+                    <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank">Google Gemini Terms</a></li>
                     <li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a></li>
                 </ul>
             </li>
         </ul>
 
-        <h2>API密钥</h2>
-        <p>您的AI服务商API密钥：</p>
+        <h2>API Keys</h2>
+        <p>Your AI provider's API key is:</p>
         <ul>
-            <li>存储在您浏览器的加密存储中</li>
-            <li>永远不会传输给我们或任何第三方（除了您配置的AI服务商）</li>
-            <li>只能由您设备上的扩展访问</li>
+            <li>Stored in your browser's encrypted storage</li>
+            <li>Never transmitted to us or any third party (except your configured AI provider)</li>
+            <li>Only accessible by the extension on your device</li>
         </ul>
 
-        <h2>权限说明</h2>
-        <p>扩展请求以下权限：</p>
+        <h2>Permissions Explained</h2>
+        <p>The extension requests the following permissions:</p>
 
         <h3>storage</h3>
-        <p>保存您的设置（API密钥、目标语言、API端点和模型名称）到浏览器本地。</p>
+        <p>To save your settings (API key, target language, API endpoint, and model name) locally in your browser.</p>
 
         <h3>host_permissions</h3>
-        <p>访问以下网站：</p>
+        <p>To access the following websites:</p>
         <ul>
-            <li><strong>*.youtube.com, youtu.be:</strong> 在YouTube页面上注入字幕翻译功能</li>
-            <li><strong>https://*/*：</strong>与您配置的任何OpenAI兼容API端点通信（OpenAI、Azure OpenAI、本地LLM等）。扩展仅连接到您在设置中明确指定的端点。</li>
+            <li><strong>*.youtube.com, youtu.be:</strong> To inject subtitle translation functionality on YouTube pages
+            </li>
+            <li><strong>https://*/*:</strong> To communicate with any OpenAI-compatible API endpoint you configure
+                (OpenAI, Azure OpenAI, local LLMs, etc.). The extension only connects to endpoints you explicitly
+                specify in settings.</li>
         </ul>
 
-        <h2>数据安全</h2>
+        <h2>Data Security</h2>
         <ul>
-            <li>所有设置都使用浏览器的内置加密存储</li>
-            <li>与AI服务商的通信使用HTTPS</li>
-            <li>没有数据传输到我们的服务器（我们没有服务器）</li>
+            <li>All settings are stored using the browser's built-in encrypted storage</li>
+            <li>Communication with OpenAI uses HTTPS</li>
+            <li>No data is transmitted to our servers (we don't have any)</li>
         </ul>
 
-        <h2>开源</h2>
-        <p>YouTube双语字幕翻译助手是开源的。您可以在<a href="https://github.com/marsteel/yt-subtitle-translator"
-                target="_blank">GitHub</a>上查看完整的源代码，以验证我们的隐私声明。</p>
+        <h2>Open Source</h2>
+        <p>YouTube Bilingual Subtitle Translator is open source. You can review the complete source code on <a
+                href="https://github.com/marsteel/yt-subtitle-translator" target="_blank">GitHub</a> to verify our
+            privacy claims.</p>
 
-        <h2>政策变更</h2>
-        <p>我们可能会不时更新此隐私政策。任何更改都将发布在此页面上，并更新"最后更新"日期。</p>
+        <h2>Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. Any changes will be posted on this page with an updated
+            "Last Updated" date.</p>
 
-        <h2>联系方式</h2>
-        <p>如有隐私问题或疑虑，请在我们的<a href="https://github.com/marsteel/yt-subtitle-translator/issues"
-                target="_blank">GitHub仓库</a>上提交issue。</p>
+        <h2>Contact</h2>
+        <p>For privacy questions or concerns, please open an issue on our <a
+                href="https://github.com/marsteel/yt-subtitle-translator/issues" target="_blank">GitHub repository</a>.
+        </p>
 
         <div class="footer">
-            <p>&copy; 2026 YouTube双语字幕翻译助手. 采用MIT许可证的开源项目.</p>
+            <p>&copy; 2026 YouTube双语字幕翻译助手. 开源项目，采用MIT许可证.</p>
         </div>
     </div>
 </body>
