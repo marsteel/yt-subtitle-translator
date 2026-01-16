@@ -70,17 +70,17 @@ async function translate(text, targetLang, apiKey, apiEndpoint, modelName) {
     if (errorMsg.includes('quota') || errorMsg.includes('insufficient_quota')) {
       return chrome.i18n.getMessage('errorQuotaExceeded') || '[Translation failed: API quota exceeded]';
     } else if (errorMsg.includes('invalid_api_key') || errorMsg.includes('Incorrect API key') || errorMsg.includes('401')) {
-      return chrome.i18n.getMessage('errorInvalidApiKey') || '[翻译失败: API 密钥无效，请检查设置]';
+      return chrome.i18n.getMessage('errorInvalidApiKey') || '[Translation failed: Invalid API key, please check settings]';
     } else if (errorMsg.includes('rate_limit') || errorMsg.includes('429')) {
-      return chrome.i18n.getMessage('errorRateLimit') || '[翻译失败: 请求过于频繁，请稍后再试]';
+      return chrome.i18n.getMessage('errorRateLimit') || '[Translation failed: Too many requests, please try again later]';
     } else if (errorMsg.includes('content_filter')) {
       return chrome.i18n.getMessage('errorContentFilter') || '[Translation failed: Content filtered]';
     } else if (errorMsg.includes('Invalid API response format')) {
-      return chrome.i18n.getMessage('errorInvalidResponse') || '[翻译失败: API 响应格式错误]';
+      return chrome.i18n.getMessage('errorInvalidResponse') || '[Translation failed: Invalid API response format]';
     } else if (errorMsg.includes('500') || errorMsg.includes('502') || errorMsg.includes('503')) {
-      return chrome.i18n.getMessage('errorServerError') || '[翻译失败: 服务器错误，请稍后再试]';
+      return chrome.i18n.getMessage('errorServerError') || '[Translation failed: Server error, please try again later]';
     } else {
-      return chrome.i18n.getMessage('errorTranslationFailed') || '[翻译失败: 请检查 API 设置]';
+      return chrome.i18n.getMessage('errorTranslationFailed') || '[Translation failed: Please check API settings]';
     }
   }
 }
