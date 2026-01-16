@@ -326,9 +326,45 @@
         <div class="timeline">
             <div class="version">
                 <div class="version-header">
-                    <span class="version-number">v1.5.4</span>
+                    <span class="version-number">v1.5.5</span>
                     <span class="version-date">January 16, 2026</span>
                     <span class="badge latest">Latest</span>
+                </div>
+
+                <div class="version-content">
+                    <h3>🛡️ Improvements</h3>
+                    <ul>
+                        <li>🔒 <strong>Error Handling:</strong> Implemented comprehensive API error handling to prevent
+                            runtime crashes and provide user-friendly error messages</li>
+                        <li>✅ <strong>HTTP Status Checks:</strong> Added proper validation of API response status codes
+                            (4xx, 5xx errors)</li>
+                        <li>🛟 <strong>Safe Property Access:</strong> Protected against undefined/null values in API
+                            responses</li>
+                    </ul>
+
+                    <h3>📝 Error Messages</h3>
+                    <ul>
+                        <li>Clear messages for API quota exceeded</li>
+                        <li>Specific feedback for invalid API keys</li>
+                        <li>Rate limit notifications</li>
+                        <li>Content filter warnings</li>
+                        <li>Invalid response format alerts</li>
+                    </ul>
+
+                    <h3>🔧 Technical Details</h3>
+                    <ul>
+                        <li>Added try-catch blocks for robust error handling</li>
+                        <li>Implemented safe optional chaining for API response parsing</li>
+                        <li>Enhanced console logging for debugging</li>
+                        <li>Graceful fallback for all error scenarios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version">
+                <div class="version-header">
+                    <span class="version-number">v1.5.4</span>
+                    <span class="version-date">January 16, 2026</span>
                 </div>
 
                 <div class="version-content">
