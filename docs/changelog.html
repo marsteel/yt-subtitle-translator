@@ -326,9 +326,33 @@
         <div class="timeline">
             <div class="version">
                 <div class="version-header">
+                    <span class="version-number">v1.5.4</span>
+                    <span class="version-date">January 16, 2026</span>
+                    <span class="badge latest">Latest</span>
+                </div>
+
+                <div class="version-content">
+                    <h3>🐛 Bug Fixes</h3>
+                    <ul>
+                        <li>🖥️ <strong>Fullscreen Mode:</strong> Fixed subtitle positioning during fullscreen
+                            transitions - subtitles restore to previous position when exiting fullscreen and auto-center
+                            when entering fullscreen, preventing subtitle disappearance or misalignment</li>
+                    </ul>
+
+                    <h3>🔧 Technical Improvements</h3>
+                    <ul>
+                        <li>Added <code>fullscreenchange</code> event listener to handle fullscreen mode transitions
+                        </li>
+                        <li>Implemented position state management using dataset attributes</li>
+                        <li>Enhanced subtitle positioning logic for better cross-mode compatibility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version">
+                <div class="version-header">
                     <span class="version-number">v1.5.3</span>
                     <span class="version-date">January 13, 2026</span>
-                    <span class="badge latest">Latest</span>
                 </div>
 
                 <div class="version-content">
@@ -357,11 +381,12 @@
                 </div>
 
                 <div class="version-content">
-                <h3>🐛 Bug Fixes</h3>
-                <ul>
-                    <li>📏 <strong>Description Length:</strong> Fixed English extension description to meet Chrome Web
-                        Store's 132 character limit (was 133 characters)</li>
-                </ul>
+                    <h3>🐛 Bug Fixes</h3>
+                    <ul>
+                        <li>📏 <strong>Description Length:</strong> Fixed English extension description to meet Chrome
+                            Web
+                            Store's 132 character limit (was 133 characters)</li>
+                    </ul>
                 </div>
             </div>
 
@@ -372,15 +397,17 @@
                 </div>
 
                 <div class="version-content">
-                <h3>🔧 Configuration Changes</h3>
-                <ul>
-                    <li>🌐 <strong>Default Locale:</strong> Changed default locale from Chinese (zh_CN) to English (en)
-                        for
-                        broader international audience</li>
-                    <li>📱 <strong>User Experience:</strong> Extension will now default to English UI for users without
-                        a
-                        matching locale</li>
-                </ul>
+                    <h3>🔧 Configuration Changes</h3>
+                    <ul>
+                        <li>🌐 <strong>Default Locale:</strong> Changed default locale from Chinese (zh_CN) to English
+                            (en)
+                            for
+                            broader international audience</li>
+                        <li>📱 <strong>User Experience:</strong> Extension will now default to English UI for users
+                            without
+                            a
+                            matching locale</li>
+                    </ul>
                 </div>
             </div>
 
@@ -391,34 +418,37 @@
                 </div>
 
                 <div class="version-content">
-                <h3>🌍 New Features</h3>
-                <ul>
-                    <li>🗣️ <strong>Multilingual Support:</strong> Added localization for 8 additional languages</li>
-                    <li>🇹🇼 <strong>Traditional Chinese (zh_TW):</strong> Full UI translation for Traditional Chinese
-                        users
-                    </li>
-                    <li>🇯🇵 <strong>Japanese (ja):</strong> Complete Japanese interface localization</li>
-                    <li>🇰🇷 <strong>Korean (ko):</strong> Korean language support throughout the extension</li>
-                    <li>🇳🇱 <strong>Dutch (nl):</strong> Dutch language interface</li>
-                    <li>🇫🇷 <strong>French (fr):</strong> French localization for all UI elements</li>
-                    <li>🇩🇪 <strong>German (de):</strong> German language support</li>
-                    <li>🇪🇸 <strong>Spanish (es):</strong> Spanish interface translation</li>
-                    <li>🇺🇦 <strong>Ukrainian (uk):</strong> Ukrainian language support</li>
-                </ul>
+                    <h3>🌍 New Features</h3>
+                    <ul>
+                        <li>🗣️ <strong>Multilingual Support:</strong> Added localization for 8 additional languages
+                        </li>
+                        <li>🇹🇼 <strong>Traditional Chinese (zh_TW):</strong> Full UI translation for Traditional
+                            Chinese
+                            users
+                        </li>
+                        <li>🇯🇵 <strong>Japanese (ja):</strong> Complete Japanese interface localization</li>
+                        <li>🇰🇷 <strong>Korean (ko):</strong> Korean language support throughout the extension</li>
+                        <li>🇳🇱 <strong>Dutch (nl):</strong> Dutch language interface</li>
+                        <li>🇫🇷 <strong>French (fr):</strong> French localization for all UI elements</li>
+                        <li>🇩🇪 <strong>German (de):</strong> German language support</li>
+                        <li>🇪🇸 <strong>Spanish (es):</strong> Spanish interface translation</li>
+                        <li>🇺🇦 <strong>Ukrainian (uk):</strong> Ukrainian language support</li>
+                    </ul>
 
-                <h3>🔧 Technical Improvements</h3>
-                <ul>
-                    <li>Added <code>_locales/zh_TW/messages.json</code> for Traditional Chinese</li>
-                    <li>Added <code>_locales/ja/messages.json</code> for Japanese</li>
-                    <li>Added <code>_locales/ko/messages.json</code> for Korean</li>
-                    <li>Added <code>_locales/nl/messages.json</code> for Dutch</li>
-                    <li>Added <code>_locales/fr/messages.json</code> for French</li>
-                    <li>Added <code>_locales/de/messages.json</code> for German</li>
-                    <li>Added <code>_locales/es/messages.json</code> for Spanish</li>
-                    <li>Added <code>_locales/uk/messages.json</code> for Ukrainian</li>
-                    <li>Extension now supports 10 languages total (including existing English and Simplified Chinese)
-                    </li>
-                </ul>
+                    <h3>🔧 Technical Improvements</h3>
+                    <ul>
+                        <li>Added <code>_locales/zh_TW/messages.json</code> for Traditional Chinese</li>
+                        <li>Added <code>_locales/ja/messages.json</code> for Japanese</li>
+                        <li>Added <code>_locales/ko/messages.json</code> for Korean</li>
+                        <li>Added <code>_locales/nl/messages.json</code> for Dutch</li>
+                        <li>Added <code>_locales/fr/messages.json</code> for French</li>
+                        <li>Added <code>_locales/de/messages.json</code> for German</li>
+                        <li>Added <code>_locales/es/messages.json</code> for Spanish</li>
+                        <li>Added <code>_locales/uk/messages.json</code> for Ukrainian</li>
+                        <li>Extension now supports 10 languages total (including existing English and Simplified
+                            Chinese)
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -429,35 +459,40 @@
                 </div>
 
                 <div class="version-content">
-                <h3>✨ New Features</h3>
-                <ul>
-                    <li>🎯 <strong>Smart Debouncing:</strong> Intelligent subtitle translation with three-tier strategy
-                        to
-                        eliminate flickering on word-by-word subtitles</li>
-                    <li>📝 <strong>Sentence Detection:</strong> Automatic detection of sentence-ending punctuation for
-                        immediate translation</li>
-                    <li>⏱️ <strong>Adaptive Timing:</strong> 500ms debounce delay with 2000ms maximum wait time for
-                        optimal
-                        responsiveness</li>
-                </ul>
+                    <h3>✨ New Features</h3>
+                    <ul>
+                        <li>🎯 <strong>Smart Debouncing:</strong> Intelligent subtitle translation with three-tier
+                            strategy
+                            to
+                            eliminate flickering on word-by-word subtitles</li>
+                        <li>📝 <strong>Sentence Detection:</strong> Automatic detection of sentence-ending punctuation
+                            for
+                            immediate translation</li>
+                        <li>⏱️ <strong>Adaptive Timing:</strong> 500ms debounce delay with 2000ms maximum wait time for
+                            optimal
+                            responsiveness</li>
+                    </ul>
 
-                <h3>🐛 Bug Fixes</h3>
-                <ul>
-                    <li>🔧 <strong>Flickering Issue:</strong> Fixed translation flickering on news videos with
-                        word-by-word
-                        subtitles</li>
-                    <li>🗑️ <strong>Code Cleanup:</strong> Removed broken debounce implementation (lines 121-134)</li>
-                    <li>💾 <strong>State Management:</strong> Improved subtitle tracking and timer cleanup</li>
-                </ul>
+                    <h3>🐛 Bug Fixes</h3>
+                    <ul>
+                        <li>🔧 <strong>Flickering Issue:</strong> Fixed translation flickering on news videos with
+                            word-by-word
+                            subtitles</li>
+                        <li>🗑️ <strong>Code Cleanup:</strong> Removed broken debounce implementation (lines 121-134)
+                        </li>
+                        <li>💾 <strong>State Management:</strong> Improved subtitle tracking and timer cleanup</li>
+                    </ul>
 
-                <h3>⚡ Performance</h3>
-                <ul>
-                    <li>📉 <strong>Reduced API Calls:</strong> 70-90% reduction in translation requests on word-by-word
-                        subtitles</li>
-                    <li>💰 <strong>Cost Savings:</strong> Significantly lower API usage and costs</li>
-                    <li>🎨 <strong>Better Quality:</strong> AI receives more complete context for improved translations
-                    </li>
-                </ul>
+                    <h3>⚡ Performance</h3>
+                    <ul>
+                        <li>📉 <strong>Reduced API Calls:</strong> 70-90% reduction in translation requests on
+                            word-by-word
+                            subtitles</li>
+                        <li>💰 <strong>Cost Savings:</strong> Significantly lower API usage and costs</li>
+                        <li>🎨 <strong>Better Quality:</strong> AI receives more complete context for improved
+                            translations
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -468,13 +503,15 @@
                 </div>
 
                 <div class="version-content">
-                <h3>📝 Documentation Updates</h3>
-                <ul>
-                    <li>📄 <strong>Extension Description:</strong> Updated extension description to reflect support for
-                        multiple AI providers (OpenAI, Gemini, Claude, etc.) instead of just OpenAI</li>
-                    <li>🌐 <strong>Localization:</strong> Updated both English and Chinese descriptions to accurately
-                        represent current capabilities</li>
-                </ul>
+                    <h3>📝 Documentation Updates</h3>
+                    <ul>
+                        <li>📄 <strong>Extension Description:</strong> Updated extension description to reflect support
+                            for
+                            multiple AI providers (OpenAI, Gemini, Claude, etc.) instead of just OpenAI</li>
+                        <li>🌐 <strong>Localization:</strong> Updated both English and Chinese descriptions to
+                            accurately
+                            represent current capabilities</li>
+                    </ul>
                 </div>
             </div>
 
@@ -485,26 +522,28 @@
                 </div>
 
                 <div class="version-content">
-                <h3>✨ New Features</h3>
-                <ul>
-                    <li>🧪 <strong>API Endpoint Testing:</strong> Test connection button to verify API endpoint
-                        configuration before saving</li>
-                    <li>🎯 <strong>AI Provider Quick Selection:</strong> Dropdown menu with presets for OpenAI, Azure
-                        OpenAI, Anthropic (Claude), Google Gemini, and DeepSeek</li>
-                    <li>🤖 <strong>Provider-Specific Models:</strong> Auto-fill appropriate model names based on
-                        selected
-                        provider</li>
-                    <li>🔍 <strong>Smart Provider Detection:</strong> Automatically detect and display current provider
-                        based on stored endpoint URL</li>
-                </ul>
+                    <h3>✨ New Features</h3>
+                    <ul>
+                        <li>🧪 <strong>API Endpoint Testing:</strong> Test connection button to verify API endpoint
+                            configuration before saving</li>
+                        <li>🎯 <strong>AI Provider Quick Selection:</strong> Dropdown menu with presets for OpenAI,
+                            Azure
+                            OpenAI, Anthropic (Claude), Google Gemini, and DeepSeek</li>
+                        <li>🤖 <strong>Provider-Specific Models:</strong> Auto-fill appropriate model names based on
+                            selected
+                            provider</li>
+                        <li>🔍 <strong>Smart Provider Detection:</strong> Automatically detect and display current
+                            provider
+                            based on stored endpoint URL</li>
+                    </ul>
 
-                <h3>🔧 Technical Improvements</h3>
-                <ul>
-                    <li>Added real-time connection testing with detailed error messages</li>
-                    <li>Improved API key handling for testing (supports both new input and stored keys)</li>
-                    <li>Added provider-specific endpoint and model presets</li>
-                    <li>Enhanced UX with visual feedback during testing</li>
-                </ul>
+                    <h3>🔧 Technical Improvements</h3>
+                    <ul>
+                        <li>Added real-time connection testing with detailed error messages</li>
+                        <li>Improved API key handling for testing (supports both new input and stored keys)</li>
+                        <li>Added provider-specific endpoint and model presets</li>
+                        <li>Enhanced UX with visual feedback during testing</li>
+                    </ul>
                 </div>
             </div>
 
@@ -515,28 +554,32 @@
                 </div>
 
                 <div class="version-content">
-                <h3>✨ New Features</h3>
-                <ul>
-                    <li>🌍 <strong>Internationalization (i18n) Support:</strong> Extension UI now supports both Chinese
-                        and
-                        English, automatically switching based on browser language</li>
-                    <li>🔧 <strong>Custom API Endpoints:</strong> Support for any OpenAI-compatible API endpoint (Azure
-                        OpenAI, local LLMs, etc.)</li>
-                    <li>⚙️ <strong>Model Configuration:</strong> Customize the AI model name for translation</li>
-                    <li>📱 <strong>Advanced Settings:</strong> New collapsible advanced settings section in popup</li>
-                </ul>
+                    <h3>✨ New Features</h3>
+                    <ul>
+                        <li>🌍 <strong>Internationalization (i18n) Support:</strong> Extension UI now supports both
+                            Chinese
+                            and
+                            English, automatically switching based on browser language</li>
+                        <li>🔧 <strong>Custom API Endpoints:</strong> Support for any OpenAI-compatible API endpoint
+                            (Azure
+                            OpenAI, local LLMs, etc.)</li>
+                        <li>⚙️ <strong>Model Configuration:</strong> Customize the AI model name for translation</li>
+                        <li>📱 <strong>Advanced Settings:</strong> New collapsible advanced settings section in popup
+                        </li>
+                    </ul>
 
-                <h3>🔧 Technical Improvements</h3>
-                <ul>
-                    <li>Added <code>_locales/zh_CN/messages.json</code> and <code>_locales/en/messages.json</code> for
-                        i18n
-                    </li>
-                    <li>Updated manifest.json to use i18n placeholders</li>
-                    <li>Enhanced error handling for custom endpoints</li>
-                    <li>Improved popup UI with better styling and organization</li>
-                    <li>Premium popup design with gradients, shadows, and smooth animations</li>
-                    <li>Enhanced advanced settings toggle with visual cues and arrow indicator</li>
-                </ul>
+                    <h3>🔧 Technical Improvements</h3>
+                    <ul>
+                        <li>Added <code>_locales/zh_CN/messages.json</code> and <code>_locales/en/messages.json</code>
+                            for
+                            i18n
+                        </li>
+                        <li>Updated manifest.json to use i18n placeholders</li>
+                        <li>Enhanced error handling for custom endpoints</li>
+                        <li>Improved popup UI with better styling and organization</li>
+                        <li>Premium popup design with gradients, shadows, and smooth animations</li>
+                        <li>Enhanced advanced settings toggle with visual cues and arrow indicator</li>
+                    </ul>
                 </div>
             </div>
 
@@ -547,32 +590,33 @@
                 </div>
 
                 <div class="version-content">
-                <h3>✨ Features</h3>
-                <ul>
-                    <li>Display bilingual subtitles on YouTube videos (original + translation)</li>
-                    <li>High-quality translation using OpenAI API</li>
-                    <li>API key stored locally for privacy protection</li>
-                    <li>Customizable target translation language</li>
-                    <li>Draggable subtitle positioning</li>
-                    <li>Clean and beautiful user interface</li>
-                </ul>
+                    <h3>✨ Features</h3>
+                    <ul>
+                        <li>Display bilingual subtitles on YouTube videos (original + translation)</li>
+                        <li>High-quality translation using OpenAI API</li>
+                        <li>API key stored locally for privacy protection</li>
+                        <li>Customizable target translation language</li>
+                        <li>Draggable subtitle positioning</li>
+                        <li>Clean and beautiful user interface</li>
+                    </ul>
 
-                <h3>🔧 Technical Implementation</h3>
-                <ul>
-                    <li>Manifest V3 architecture</li>
-                    <li>Service Worker background script</li>
-                    <li>Content Script injection on YouTube pages</li>
-                    <li>Chrome Sync Storage for settings</li>
-                </ul>
+                    <h3>🔧 Technical Implementation</h3>
+                    <ul>
+                        <li>Manifest V3 architecture</li>
+                        <li>Service Worker background script</li>
+                        <li>Content Script injection on YouTube pages</li>
+                        <li>Chrome Sync Storage for settings</li>
+                    </ul>
 
-                <h3>⚠️ Known Issues</h3>
-                <ul>
-                    <li>When subtitles are dragged too low in fullscreen mode, they may not display correctly after
-                        exiting
-                        fullscreen</li>
-                    <li><strong>Workaround:</strong> Drag subtitles to an appropriate position in fullscreen mode, then
-                        switch back to default view</li>
-                </ul>
+                    <h3>⚠️ Known Issues</h3>
+                    <ul>
+                        <li>When subtitles are dragged too low in fullscreen mode, they may not display correctly after
+                            exiting
+                            fullscreen</li>
+                        <li><strong>Workaround:</strong> Drag subtitles to an appropriate position in fullscreen mode,
+                            then
+                            switch back to default view</li>
+                    </ul>
                 </div>
             </div>
 
@@ -583,14 +627,14 @@
                 </div>
 
                 <div class="version-content">
-                <h3>🎉 First Release</h3>
-                <ul>
-                    <li>Implemented YouTube bilingual subtitle display functionality</li>
-                    <li>Integrated OpenAI API translation service</li>
-                    <li>Local storage of API keys and settings</li>
-                    <li>Support for multiple target languages</li>
-                    <li>Published to Chrome Web Store and Edge Add-ons</li>
-                </ul>
+                    <h3>🎉 First Release</h3>
+                    <ul>
+                        <li>Implemented YouTube bilingual subtitle display functionality</li>
+                        <li>Integrated OpenAI API translation service</li>
+                        <li>Local storage of API keys and settings</li>
+                        <li>Support for multiple target languages</li>
+                        <li>Published to Chrome Web Store and Edge Add-ons</li>
+                    </ul>
                 </div>
             </div>
 
