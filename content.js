@@ -142,6 +142,34 @@ function showBilingualSubtitle(original, translated) {
       document.addEventListener("mouseup", () => {
         isDragging = false;
       });
+
+      // Fullscreen mode handler / 全屏模式处理
+      // Fixes subtitle display issues when toggling fullscreen
+      // 修复全屏切换时字幕显示问题
+      document.addEventListener('fullscreenchange', () => {
+        if (document.fullscreenElement) {
+          // Entering fullscreen: save current position and reset to default
+          // 进入全屏：保存当前位置并重置为默认位置
+          customDiv.dataset.normalLeft = customDiv.style.left;
+          customDiv.dataset.normalTop = customDiv.style.top;
+          customDiv.dataset.normalBottom = customDiv.style.bottom;
+          customDiv.dataset.normalTransform = customDiv.style.transform;
+
+          customDiv.style.left = '50%';
+          customDiv.style.top = 'auto';
+          customDiv.style.bottom = '15%';
+          customDiv.style.transform = 'translateX(-50%)';
+        } else {
+          // Exiting fullscreen: restore saved position
+          // 退出全屏：恢复保存的位置
+          if (customDiv.dataset.normalLeft) {
+            customDiv.style.left = customDiv.dataset.normalLeft;
+            customDiv.style.top = customDiv.dataset.normalTop || 'auto';
+            customDiv.style.bottom = customDiv.dataset.normalBottom || 'auto';
+            customDiv.style.transform = customDiv.dataset.normalTransform || '';
+          }
+        }
+      });
     }
 
     customDiv.style.fontSize = fontSize + "px";
