@@ -102,5 +102,33 @@
     "testFailed": {
         "message": "✗ 连接失败",
         "description": "Failure message for endpoint test"
+    },
+    "errorQuotaExceeded": {
+        "message": "[翻译失败: API 配额已用尽]",
+        "description": "Error message when API quota is exceeded"
+    },
+    "errorInvalidApiKey": {
+        "message": "[翻译失败: API 密钥无效，请检查设置]",
+        "description": "Error message when API key is invalid"
+    },
+    "errorRateLimit": {
+        "message": "[翻译失败: 请求过于频繁，请稍后再试]",
+        "description": "Error message when rate limit is exceeded"
+    },
+    "errorContentFilter": {
+        "message": "[翻译失败: 内容被过滤]",
+        "description": "Error message when content is filtered"
+    },
+    "errorInvalidResponse": {
+        "message": "[翻译失败: API 响应格式错误]",
+        "description": "Error message when API response format is invalid"
+    },
+    "errorServerError": {
+        "message": "[翻译失败: 服务器错误，请稍后再试]",
+        "description": "Error message when server error occurs"
+    },
+    "errorTranslationFailed": {
+        "message": "[翻译失败: 请检查 API 设置]",
+        "description": "Generic error message for translation failure"
     }
 }
