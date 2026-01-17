@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "openai": "https://api.openai.com/v1/chat/completions",
     "azure": "https://YOUR-RESOURCE.openai.azure.com/openai/deployments/YOUR-DEPLOYMENT/chat/completions?api-version=2024-02-15-preview",
     "anthropic": "https://api.anthropic.com/v1/messages",
-    "gemini": "https://generativelanguage.googleapis.com/v1beta/models",
+    "gemini": "https://generativelanguage.googleapis.com/v1/models",
     "deepseek": "https://api.deepseek.com/v1/chat/completions"
   };
 
