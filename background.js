@@ -219,26 +219,31 @@ async function translate(text, targetLang, apiKey, apiEndpoint, modelName, provi
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === "translate") {
-    chrome.storage.sync.get(["targetLang", "apiKey", "apiEndpoint", "modelName", "provider"], async (res) => {
+    chrome.storage.sync.get(["targetLang", "apiKey", "apiEndpoint", "modelName", "provider"], (res) => {
       if (!res.apiKey) {
         const notSetMsg = chrome.i18n.getMessage("apiKeyNotSet") || "[未设置 API Key]";
         sendResponse({ translated: notSetMsg });
         return;
       }
-      try {
-        const translated = await translate(
-          msg.text,
-          res.targetLang || "zh",
-          res.apiKey,
-          res.apiEndpoint,
-          res.modelName,
-          res.provider
-        );
-        sendResponse({ translated });
-      } catch (error) {
-        console.error("Translation error:", error);
-        sendResponse({ translated: `[翻译错误: ${error.message}]` });
-      }
+
+      // Use async IIFE to handle async translate function
+      // 使用异步立即执行函数来处理异步翻译
+      (async () => {
+        try {
+          const translated = await translate(
+            msg.text,
+            res.targetLang || "zh",
+            res.apiKey,
+            res.apiEndpoint,
+            res.modelName,
+            res.provider
+          );
+          sendResponse({ translated });
+        } catch (error) {
+          console.error("Translation error:", error);
+          sendResponse({ translated: `[翻译错误: ${error.message}]` });
+        }
+      })();
     });
     return true; // 保持异步
   }
