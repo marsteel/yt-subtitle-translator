@@ -5,7 +5,8 @@
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "permissions": [
-    "storage"
+    "storage",
+    "notifications"
   ],
   "host_permissions": [
     "*://*.youtube.com/*",
