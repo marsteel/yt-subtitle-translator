@@ -175,7 +175,13 @@ async function translate(text, targetLang, apiKey, apiEndpoint, modelName, provi
   try {
     const requestBody = adapter.buildRequest(text, targetLang, model);
     const headers = adapter.getHeaders(apiKey);
-    const finalEndpoint = adapter.getEndpoint(endpoint, apiKey);
+    let finalEndpoint = adapter.getEndpoint(endpoint, apiKey);
+    
+    // Special handling for Gemini: add model name to URL path and API key as query parameter
+    // Gemini 特殊处理：在 URL 路径中添加模型名称，并将 API key 作为查询参数
+    if (providerType === 'gemini') {
+      finalEndpoint = `${endpoint}/${model}:generateContent?key=${apiKey}`;
+    }
 
     const response = await fetch(finalEndpoint, {
       method: "POST",
