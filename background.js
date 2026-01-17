@@ -15,33 +15,172 @@ chrome.runtime.onInstalled.addListener((details) => {
     });
   } else if (details.reason === "update") {
     // Extension updated / 更新时通知用户
+    const previousVersion = details.previousVersion;
+    const currentVersion = chrome.runtime.getManifest().version;
+
+    // Show notification for major updates
     chrome.notifications.create({
       type: "basic",
       iconUrl: "icons/128x128.png",
-      title: "扩展已更新 - Extension Updated",
-      message: "新增i18n支持和自定义API端点。Added i18n support and custom API endpoints.",
+      title: chrome.i18n.getMessage("updateNotificationTitle") || "扩展已更新 - Extension Updated",
+      message: chrome.i18n.getMessage("updateNotificationMessage") || "新增完整多提供商支持！现在原生支持 Anthropic Claude 和 Google Gemini。Added full multi-provider support! Now natively supports Anthropic Claude and Google Gemini.",
+      buttons: [
+        { title: chrome.i18n.getMessage("viewChangelog") || "查看更新日志 - View Changelog" }
+      ]
     });
+
+    // Open changelog page for major version updates (e.g., 1.5.x -> 1.6.0)
+    if (previousVersion && previousVersion.startsWith("1.5")) {
+      const changelogUrl = "https://yt-subtitle-translator.magang.net/changelog.html";
+      chrome.tabs.create({ url: changelogUrl });
+    }
   }
 });
 
-async function translate(text, targetLang, apiKey, apiEndpoint, modelName) {
+// Handle notification button clicks
+chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) => {
+  if (buttonIndex === 0) {
+    // Open changelog page
+    const changelogUrl = "https://yt-subtitle-translator.magang.net/changelog.html";
+    chrome.tabs.create({ url: changelogUrl });
+  }
+});
+
+// Provider adapters for different AI services
+// 不同AI服务的提供商适配器
+const providerAdapters = {
+  // OpenAI and OpenAI-compatible providers (Azure, DeepSeek, Ollama, etc.)
+  // OpenAI 及兼容提供商（Azure、DeepSeek、Ollama 等）
+  openai: {
+    buildRequest: (text, targetLang, model) => ({
+      model: model,
+      messages: [
+        { role: "system", content: `你是一个字幕翻译助手，把用户的字幕翻译成${targetLang}，保持简洁自然。` },
+        { role: "user", content: text }
+      ]
+    }),
+    parseResponse: (data) => {
+      if (!data?.choices?.[0]?.message?.content) {
+        throw new Error('Invalid API response format');
+      }
+      return data.choices[0].message.content.trim();
+    },
+    getHeaders: (apiKey) => ({
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json"
+    }),
+    getEndpoint: (baseEndpoint, apiKey) => baseEndpoint
+  },
+
+  // Azure OpenAI uses the same format as OpenAI
+  // Azure OpenAI 使用与 OpenAI 相同的格式
+  azure: {
+    buildRequest: (text, targetLang, model) =>
+      providerAdapters.openai.buildRequest(text, targetLang, model),
+    parseResponse: (data) =>
+      providerAdapters.openai.parseResponse(data),
+    getHeaders: (apiKey) => ({
+      "api-key": apiKey,
+      "Content-Type": "application/json"
+    }),
+    getEndpoint: (baseEndpoint, apiKey) => baseEndpoint
+  },
+
+  // DeepSeek uses OpenAI-compatible format
+  // DeepSeek 使用 OpenAI 兼容格式
+  deepseek: {
+    buildRequest: (text, targetLang, model) =>
+      providerAdapters.openai.buildRequest(text, targetLang, model),
+    parseResponse: (data) =>
+      providerAdapters.openai.parseResponse(data),
+    getHeaders: (apiKey) =>
+      providerAdapters.openai.getHeaders(apiKey),
+    getEndpoint: (baseEndpoint, apiKey) => baseEndpoint
+  },
+
+  // Anthropic Claude
+  anthropic: {
+    buildRequest: (text, targetLang, model) => ({
+      model: model,
+      max_tokens: 1024,
+      messages: [
+        { role: "user", content: text }
+      ],
+      system: `你是一个字幕翻译助手，把用户的字幕翻译成${targetLang}，保持简洁自然。`
+    }),
+    parseResponse: (data) => {
+      if (!data?.content?.[0]?.text) {
+        throw new Error('Invalid API response format');
+      }
+      return data.content[0].text.trim();
+    },
+    getHeaders: (apiKey) => ({
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+      "Content-Type": "application/json"
+    }),
+    getEndpoint: (baseEndpoint, apiKey) => baseEndpoint
+  },
+
+  // Google Gemini
+  gemini: {
+    buildRequest: (text, targetLang, model) => ({
+      contents: [
+        {
+          parts: [
+            { text: text }
+          ]
+        }
+      ],
+      systemInstruction: {
+        parts: [
+          { text: `你是一个字幕翻译助手，把用户的字幕翻译成${targetLang}，保持简洁自然。` }
+        ]
+      }
+    }),
+    parseResponse: (data) => {
+      if (!data?.candidates?.[0]?.content?.parts?.[0]?.text) {
+        throw new Error('Invalid API response format');
+      }
+      return data.candidates[0].content.parts[0].text.trim();
+    },
+    getHeaders: (apiKey) => ({
+      "Content-Type": "application/json"
+    }),
+    getEndpoint: (baseEndpoint, apiKey) => `${baseEndpoint}?key=${apiKey}`
+  },
+
+  // Custom provider defaults to OpenAI-compatible format
+  // 自定义提供商默认使用 OpenAI 兼容格式
+  custom: {
+    buildRequest: (text, targetLang, model) =>
+      providerAdapters.openai.buildRequest(text, targetLang, model),
+    parseResponse: (data) =>
+      providerAdapters.openai.parseResponse(data),
+    getHeaders: (apiKey) =>
+      providerAdapters.openai.getHeaders(apiKey),
+    getEndpoint: (baseEndpoint, apiKey) => baseEndpoint
+  }
+};
+
+async function translate(text, targetLang, apiKey, apiEndpoint, modelName, provider) {
   const endpoint = apiEndpoint || "https://api.openai.com/v1/chat/completions";
   const model = modelName || "gpt-4o-mini";
+  const providerType = provider || "openai";
+
+  // Get the appropriate adapter, fallback to OpenAI if provider not found
+  // 获取适当的适配器，如果找不到提供商则回退到 OpenAI
+  const adapter = providerAdapters[providerType] || providerAdapters.openai;
 
   try {
-    const response = await fetch(endpoint, {
+    const requestBody = adapter.buildRequest(text, targetLang, model);
+    const headers = adapter.getHeaders(apiKey);
+    const finalEndpoint = adapter.getEndpoint(endpoint, apiKey);
+
+    const response = await fetch(finalEndpoint, {
       method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: model,
-        messages: [
-          { role: "system", content: `你是一个字幕翻译助手，把用户的字幕翻译成${targetLang}，保持简洁自然。` },
-          { role: "user", content: text }
-        ]
-      })
+      headers: headers,
+      body: JSON.stringify(requestBody)
     });
 
     // Check HTTP status
@@ -52,14 +191,7 @@ async function translate(text, targetLang, apiKey, apiEndpoint, modelName) {
     }
 
     const data = await response.json();
-
-    // Safe property access with validation
-    if (!data?.choices?.[0]?.message?.content) {
-      console.error('Invalid API response:', data);
-      throw new Error('Invalid API response format');
-    }
-
-    return data.choices[0].message.content.trim();
+    return adapter.parseResponse(data);
 
   } catch (error) {
     console.error('Translation error:', error);
@@ -87,7 +219,7 @@ async function translate(text, targetLang, apiKey, apiEndpoint, modelName) {
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === "translate") {
-    chrome.storage.sync.get(["targetLang", "apiKey", "apiEndpoint", "modelName"], async (res) => {
+    chrome.storage.sync.get(["targetLang", "apiKey", "apiEndpoint", "modelName", "provider"], async (res) => {
       if (!res.apiKey) {
         const notSetMsg = chrome.i18n.getMessage("apiKeyNotSet") || "[未设置 API Key]";
         sendResponse({ translated: notSetMsg });
@@ -99,7 +231,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           res.targetLang || "zh",
           res.apiKey,
           res.apiEndpoint,
-          res.modelName
+          res.modelName,
+          res.provider
         );
         sendResponse({ translated });
       } catch (error) {

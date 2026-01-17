@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 - YouTube双语字幕翻译助手</title>
+    <style>
+        /* ========== Design System Tokens ========== */
+        :root {
+            /* Colors */
+            --color-primary: #667eea;
+            --color-primary-dark: #5568d3;
+            --color-secondary: #764ba2;
+            --color-success: #10b981;
+            --color-gray-50: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-200: #e5e7eb;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            --color-gray-900: #1f2937;
+
+            /* Spacing */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-6: 48px;
+            --space-8: 64px;
+
+            /* Typography */
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 32px;
+            --font-size-4xl: 40px;
+
+            /* Layout */
+            --container-lg: 1024px;
+            --container-2xl: 1400px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ========== Reset & Base ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--color-gray-900);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            min-height: 100vh;
+            padding: var(--space-4) var(--space-2);
+        }
+
+        /* ========== Language Switcher ========== */
+        .language-switcher {
+            position: fixed;
+            top: var(--space-3);
+            right: var(--space-3);
+            background: white;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+        }
+
+        .language-switcher a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px var(--space-1);
+            font-size: var(--font-size-sm);
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switcher .active {
+            color: var(--color-gray-700);
+            font-weight: 600;
+        }
+
+        /* ========== Container ========== */
+        .container {
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            background: white;
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: var(--container-2xl);
+                padding: var(--space-8);
+            }
+        }
+
+        /* ========== Header ========== */
+        h1 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-6);
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+        }
+
+        @media (min-width: 1280px) {
+            h1 {
+                font-size: var(--font-size-4xl);
+            }
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: var(--space-4);
+            color: var(--color-primary);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: var(--font-size-base);
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== Timeline Layout ========== */
+        .timeline {
+            position: relative;
+            padding-left: 0;
+        }
+
+        /* Timeline vertical line (widescreen only) */
+        @media (min-width: 1024px) {
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 280px;
+                top: 60px;
+                bottom: 60px;
+                width: 2px;
+                background: var(--color-gray-200);
+            }
+        }
+
+        /* ========== Version Entry ========== */
+        .version {
+            margin-bottom: var(--space-8);
+            position: relative;
+        }
+
+        /* Mobile: vertical stack */
+        .version {
+            display: block;
+        }
+
+        /* Widescreen: horizontal layout */
+        @media (min-width: 1024px) {
+            .version {
+                display: grid;
+                grid-template-columns: 260px 1fr;
+                gap: var(--space-8);
+                align-items: start;
+            }
+        }
+
+        /* ========== Version Header (Left Side) ========== */
+        .version-header {
+            margin-bottom: var(--space-3);
+        }
+
+        @media (min-width: 1024px) {
+            .version-header {
+                text-align: right;
+                padding-right: var(--space-4);
+                margin-bottom: 0;
+                position: sticky;
+                top: var(--space-4);
+            }
+        }
+
+        .version-number {
+            display: block;
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-gray-700);
+            margin-bottom: var(--space-1);
+        }
+
+        .version-date {
+            display: block;
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-2);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 4px var(--space-2);
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: var(--space-1);
+        }
+
+        .badge.latest {
+            background: var(--color-success);
+        }
+
+        /* ========== Version Content (Right Side) ========== */
+        .version-content {
+            position: relative;
+        }
+
+        /* Timeline dot (widescreen only) */
+        @media (min-width: 1024px) {
+            .version-content::before {
+                content: '';
+                position: absolute;
+                left: -44px;
+                top: 8px;
+                width: 12px;
+                height: 12px;
+                background: var(--color-primary);
+                border: 3px solid white;
+                border-radius: 50%;
+                box-shadow: 0 0 0 2px var(--color-gray-200);
+                z-index: 1;
+            }
+
+            .version:first-child .version-content::before {
+                background: var(--color-success);
+                box-shadow: 0 0 0 2px var(--color-success), 0 0 0 4px rgba(16, 185, 129, 0.2);
+            }
+        }
+
+        .version-content {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .version:first-child .version-content {
+            border-left-color: var(--color-success);
+        }
+
+        h3 {
+            color: var(--color-gray-700);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-2);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+        }
+
+        .version-content h3:first-child {
+            margin-top: 0;
+        }
+
+        ul {
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-4);
+        }
+
+        li {
+            margin-bottom: var(--space-2);
+            color: var(--color-gray-600);
+            line-height: 1.7;
+        }
+
+        code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--color-primary);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            margin-top: var(--space-8);
+            padding-top: var(--space-4);
+            border-top: 2px solid var(--color-gray-200);
+            text-align: center;
+            color: var(--color-gray-500);
+            font-size: var(--font-size-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <a href="changelog-zh.html" class="active">中文</a> | <a href="changelog.html">English</a>
+    </div>
+
+    <div class="container">
+        <a href="index-zh.html" class="back-link">← 返回首页</a>
+
+        <h1>📝 更新日志</h1>
+
+        <div class="timeline">
+            <div class="version">
+                <div class="version-header">
+                <span class="version-number">v1.5.3</span>
+                <span class="badge latest">最新版本</span>
+                <span class="version-date">2026年1月13日</span>
+            </div>
+
+            <h3>🐛 错误修复</h3>
+            <ul>
+                <li>🔤 <strong>字符编码：</strong> 修复弹出窗口中文字符编码问题，添加UTF-8字符集声明</li>
+                <li>📱 <strong>响应式设计：</strong> 添加viewport元标签以改善移动端显示</li>
+            </ul>
+
+            <h3>✨ 界面改进</h3>
+            <ul>
+                <li>🎨 <strong>简化链接：</strong> 移除看起来过于紧急的免责声明链接，保留友好的网站链接</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.5.2</span>
+                <span class="version-date">2026年1月12日</span>
+            </div>
+
+            <h3>🐛 错误修复</h3>
+            <ul>
+                <li>📏 <strong>描述长度：</strong> 修复英文扩展描述以符合Chrome网上应用店132字符限制（之前为133字符）</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.5.1</span>
+                <span class="version-date">2026年1月12日</span>
+            </div>
+
+            <h3>🔧 配置更改</h3>
+            <ul>
+                <li>🌐 <strong>默认语言：</strong> 将默认语言从中文（zh_CN）更改为英语（en），以服务更广泛的国际用户</li>
+                <li>📱 <strong>用户体验：</strong> 对于没有匹配语言的用户，扩展现在将默认使用英语界面</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.5.0</span>
+                <span class="version-date">2026年1月12日</span>
+            </div>
+
+            <h3>🌍 新功能</h3>
+            <ul>
+                <li>🗣️ <strong>多语言支持：</strong> 新增8种语言的本地化支持</li>
+                <li>🇹🇼 <strong>繁体中文 (zh_TW)：</strong> 为繁体中文用户提供完整的界面翻译</li>
+                <li>🇯🇵 <strong>日语 (ja)：</strong> 完整的日语界面本地化</li>
+                <li>🇰🇷 <strong>韩语 (ko)：</strong> 扩展全面支持韩语</li>
+                <li>🇳🇱 <strong>荷兰语 (nl)：</strong> 荷兰语界面</li>
+                <li>🇫🇷 <strong>法语 (fr)：</strong> 所有界面元素的法语本地化</li>
+                <li>🇩🇪 <strong>德语 (de)：</strong> 德语支持</li>
+                <li>🇪🇸 <strong>西班牙语 (es)：</strong> 西班牙语界面翻译</li>
+                <li>🇺🇦 <strong>乌克兰语 (uk)：</strong> 乌克兰语支持</li>
+            </ul>
+
+            <h3>🔧 技术改进</h3>
+            <ul>
+                <li>添加了<code>_locales/zh_TW/messages.json</code>繁体中文本地化</li>
+                <li>添加了<code>_locales/ja/messages.json</code>日语本地化</li>
+                <li>添加了<code>_locales/ko/messages.json</code>韩语本地化</li>
+                <li>添加了<code>_locales/nl/messages.json</code>荷兰语本地化</li>
+                <li>添加了<code>_locales/fr/messages.json</code>法语本地化</li>
+                <li>添加了<code>_locales/de/messages.json</code>德语本地化</li>
+                <li>添加了<code>_locales/es/messages.json</code>西班牙语本地化</li>
+                <li>添加了<code>_locales/uk/messages.json</code>乌克兰语本地化</li>
+                <li>扩展现在总共支持10种语言（包括现有的英语和简体中文）</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.4.0</span>
+                <span class="version-date">2026年1月11日</span>
+            </div>
+
+            <h3>✨ 新功能</h3>
+            <ul>
+                <li>🎯 <strong>智能防抖：</strong>采用三层策略的智能字幕翻译，彻底消除逐字字幕的抖动问题</li>
+                <li>📝 <strong>句子检测：</strong>自动检测句子结束标点符号，实现即时翻译</li>
+                <li>⏱️ <strong>自适应时序：</strong>500ms防抖延迟配合2000ms最大等待时间，实现最佳响应速度</li>
+            </ul>
+
+            <h3>🐛 错误修复</h3>
+            <ul>
+                <li>🔧 <strong>抖动问题：</strong>修复新闻视频逐字字幕导致的翻译抖动</li>
+                <li>🗑️ <strong>代码清理：</strong>移除损坏的防抖实现代码（第121-134行）</li>
+                <li>💾 <strong>状态管理：</strong>改进字幕跟踪和计时器清理机制</li>
+            </ul>
+
+            <h3>⚡ 性能优化</h3>
+            <ul>
+                <li>📉 <strong>减少API调用：</strong>逐字字幕场景下翻译请求减少70-90%</li>
+                <li>💰 <strong>节省成本：</strong>显著降低API使用量和费用</li>
+                <li>🎨 <strong>质量提升：</strong>AI获得更完整的上下文，翻译质量更佳</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.3.1</span>
+                <span class="version-date">2026年1月10日</span>
+            </div>
+
+            <h3>📝 文档更新</h3>
+            <ul>
+                <li>📄 <strong>扩展描述：</strong>更新扩展描述以反映对多个AI服务商（OpenAI、Gemini、Claude等）的支持，而不仅仅是OpenAI</li>
+                <li>🌐 <strong>本地化：</strong>更新中英文描述以准确表示当前功能</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.3.0</span>
+                <span class="version-date">2026年1月9日</span>
+            </div>
+
+            <h3>✨ 新功能</h3>
+            <ul>
+                <li>🧪 <strong>API端点测试：</strong>测试连接按钮，在保存前验证API端点配置</li>
+                <li>🎯 <strong>AI服务商快速选择：</strong>下拉菜单提供OpenAI、Azure OpenAI、Anthropic (Claude)、Google Gemini和DeepSeek预设
+                </li>
+                <li>🤖 <strong>服务商专属模型：</strong>根据选择的服务商自动填充适当的模型名称</li>
+                <li>🔍 <strong>智能服务商检测：</strong>根据存储的端点URL自动检测并显示当前服务商</li>
+            </ul>
+
+            <h3>🔧 技术改进</h3>
+            <ul>
+                <li>添加了实时连接测试，提供详细错误信息</li>
+                <li>改进API密钥处理，支持新输入和已存储的密钥</li>
+                <li>添加了服务商专属端点和模型预设</li>
+                <li>增强用户体验，测试时提供视觉反馈</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.2.0</span>
+                <span class="version-date">2026年1月9日</span>
+            </div>
+
+            <h3>✨ 新功能</h3>
+            <ul>
+                <li>🌍 <strong>国际化（i18n）支持：</strong>扩展界面现在支持中英文双语，根据浏览器语言自动切换</li>
+                <li>🔧 <strong>自定义API端点：</strong>支持任意OpenAI兼容的API端点（Azure OpenAI、本地LLM等）</li>
+                <li>⚙️ <strong>模型配置：</strong>可自定义用于翻译的AI模型名称</li>
+                <li>📱 <strong>高级设置：</strong>弹出窗口新增可折叠的高级设置区域</li>
+            </ul>
+
+            <h3>🔧 技术改进</h3>
+            <ul>
+                <li>添加了<code>_locales/zh_CN/messages.json</code>和<code>_locales/en/messages.json</code>用于国际化</li>
+                <li>更新manifest.json使用i18n占位符</li>
+                <li>增强了自定义端点的错误处理</li>
+                <li>改进了弹出窗口UI，样式更美观，组织更清晰</li>
+                <li>高级弹窗设计，采用渐变、阴影和流畅动画</li>
+                <li>增强高级设置切换，添加视觉提示和箭头指示器</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.1.2</span>
+                <span class="version-date">上一版本</span>
+            </div>
+
+            <h3>✨ 功能特性</h3>
+            <ul>
+                <li>在YouTube视频上显示双语字幕（原文+翻译）</li>
+                <li>使用OpenAI API进行高质量翻译</li>
+                <li>API密钥本地存储，保护隐私安全</li>
+                <li>支持自定义翻译目标语言</li>
+                <li>字幕位置可拖动调整</li>
+                <li>简洁美观的用户界面</li>
+            </ul>
+
+            <h3>🔧 技术实现</h3>
+            <ul>
+                <li>Manifest V3架构</li>
+                <li>Service Worker后台脚本</li>
+                <li>Content Script注入YouTube页面</li>
+                <li>Chrome Sync Storage存储设置</li>
+            </ul>
+
+            <h3>⚠️ 已知问题</h3>
+            <ul>
+                <li>视频全屏模式时字幕被拖拽到过低位置，退出全屏后字幕有时无法正常显示</li>
+                <li><strong>临时解决方法：</strong>切换到全屏模式后可拖动字幕到合适位置，再切回默认视图</li>
+            </ul>
+        </div>
+
+        <div class="version">
+            <div class="version-header">
+                <span class="version-number">v1.0.0</span>
+                <span class="version-date">初始发布</span>
+            </div>
+
+            <h3>🎉 首次发布</h3>
+            <ul>
+                <li>实现YouTube双语字幕显示功能</li>
+                <li>集成OpenAI API翻译服务</li>
+                <li>本地存储API密钥和设置</li>
+                <li>支持多种目标语言翻译</li>
+                <li>发布到Chrome Web Store和Edge Add-ons</li>
+            </ul>
+        </div>
+
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 YouTube双语字幕翻译助手. 采用MIT许可证的开源项目.</p>
+        </div>
+    </div>
+</body>
+
+</html>

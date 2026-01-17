@@ -22,7 +22,18 @@ YouTube双语字幕翻译助手让你在观看 YouTube 视频时轻松显示第�
 - 🎨 **自定义样式** - 可调整字幕颜色、字体大小、背景颜色
 - 🖱️ **可拖动字幕** - 字幕位置可以自由拖动调整
 
-### v1.3.0 新功能 (2026-01-09)
+### v1.6.0 新功能 (2026-01-17)
+- 🚀 **完整多提供商支持** - 原生支持多个AI服务商的专用API格式
+  - ✅ **Anthropic Claude** - 使用原生 Anthropic API
+  - ✅ **Google Gemini** - 使用原生 Google Gemini API
+  - ✅ **OpenAI** - 官方 OpenAI API
+  - ✅ **Azure OpenAI** - 微软 Azure 托管的 OpenAI
+  - ✅ **DeepSeek** - DeepSeek AI（OpenAI 兼容）
+  - ✅ **自定义端点** - 支持任何 OpenAI 兼容的 API（包括 Ollama 本地模型）
+- 🔧 **提供商适配器架构** - 易于扩展，未来可轻松添加更多AI服务商
+- 📢 **智能更新通知** - 主要版本更新时自动通知用户并提供更新日志链接
+
+### v1.3.0 功能 (2026-01-09)
 - 🧪 **API端点测试** - 测试连接按钮，在保存前验证API端点配置
 - 🎯 **AI服务商快速选择** - 下拉菜单提供多个AI服务商预设
   - OpenAI
@@ -66,14 +77,18 @@ YouTube双语字幕翻译助手让你在观看 YouTube 视频时轻松显示第�
 
 ### 支持的AI服务商
 
-| 服务商 | 默认模型 | 说明 |
-|--------|---------|------|
-| OpenAI | gpt-4o-mini | 官方OpenAI服务 |
-| Azure OpenAI | gpt-4 | 微软Azure托管的OpenAI |
-| Anthropic | claude-3-5-sonnet-20241022 | Claude AI |
-| Google Gemini | gemini-2.0-flash-lite | Google最新AI模型 |
-| DeepSeek | deepseek-chat | DeepSeek AI |
-| 自定义 | - | 任意OpenAI兼容端点 |
+| 服务商 | 默认模型 | API格式 | 说明 |
+|--------|---------|---------|------|
+| OpenAI | gpt-4o-mini | 原生 | 官方OpenAI服务 |
+| Azure OpenAI | gpt-4 | 原生 | 微软Azure托管的OpenAI |
+| Anthropic | claude-3-5-sonnet-20241022 | 原生 | Claude AI，使用专用API格式 |
+| Google Gemini | gemini-2.0-flash-exp | 原生 | Google最新AI模型，使用专用API格式 |
+| DeepSeek | deepseek-chat | OpenAI兼容 | DeepSeek AI |
+| 自定义 | - | OpenAI兼容 | 任意OpenAI兼容端点（包括Ollama） |
+
+**API格式说明：**
+- **原生** - 使用该服务商的专用API格式，完全兼容所有特性
+- **OpenAI兼容** - 使用OpenAI API格式，适用于大多数兼容服务
 
 ## 📝 注意事项
 

@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load stored values and display them on popup open
   chrome.storage.sync.get([
     "targetLang", "apiKey", "subtitleColor", "subtitleFontSize", "subtitleBgColor",
-    "apiEndpoint", "modelName"
+    "apiEndpoint", "modelName", "provider"
   ], (data) => {
     if (data.targetLang) {
       document.getElementById("targetLang").value = data.targetLang;
@@ -92,23 +92,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (data.apiEndpoint) {
       document.getElementById("apiEndpoint").value = data.apiEndpoint;
 
-      // Detect provider based on endpoint
+      // Detect provider based on endpoint if provider is not explicitly set
+      // 如果未明确设置提供商，则根据端点检测提供商
       const endpoint = data.apiEndpoint;
-      let detectedProvider = "custom";
+      let detectedProvider = data.provider || "custom";
 
-      if (endpoint.includes("api.openai.com")) {
-        detectedProvider = "openai";
-      } else if (endpoint.includes("openai.azure.com")) {
-        detectedProvider = "azure";
-      } else if (endpoint.includes("api.anthropic.com")) {
-        detectedProvider = "anthropic";
-      } else if (endpoint.includes("generativelanguage.googleapis.com")) {
-        detectedProvider = "gemini";
-      } else if (endpoint.includes("api.deepseek.com")) {
-        detectedProvider = "deepseek";
+      if (!data.provider) {
+        // Auto-detect provider from endpoint URL
+        if (endpoint.includes("api.openai.com")) {
+          detectedProvider = "openai";
+        } else if (endpoint.includes("openai.azure.com")) {
+          detectedProvider = "azure";
+        } else if (endpoint.includes("api.anthropic.com")) {
+          detectedProvider = "anthropic";
+        } else if (endpoint.includes("generativelanguage.googleapis.com")) {
+          detectedProvider = "gemini";
+        } else if (endpoint.includes("api.deepseek.com")) {
+          detectedProvider = "deepseek";
+        }
       }
 
       document.getElementById("providerSelect").value = detectedProvider;
+    } else if (data.provider) {
+      // If provider is set but no endpoint, use the provider value
+      document.getElementById("providerSelect").value = data.provider;
     }
     if (data.modelName) {
       document.getElementById("modelName").value = data.modelName;
@@ -126,6 +133,7 @@ document.getElementById("saveBtn").addEventListener("click", () => {
   const subtitleBgColor = document.getElementById("subtitleBgColor").value;
   const apiEndpoint = document.getElementById("apiEndpoint").value.trim() || "https://api.openai.com/v1/chat/completions";
   const modelName = document.getElementById("modelName").value.trim() || "gpt-4o-mini";
+  const provider = document.getElementById("providerSelect").value;
 
   let apiKey = apiKeyInput.value;
 
@@ -141,7 +149,8 @@ document.getElementById("saveBtn").addEventListener("click", () => {
       subtitleFontSize: subtitleFontSize,
       subtitleBgColor: subtitleBgColor,
       apiEndpoint: apiEndpoint,
-      modelName: modelName
+      modelName: modelName,
+      provider: provider
     }, () => {
       alert(chrome.i18n.getMessage('settingSaved'));
     });
