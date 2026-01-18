@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ Connection failed",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "Extension Updated to v1.6.0",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "Added full multi-provider support! Now natively supports Anthropic Claude and Google Gemini.",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "View Changelog",
+        "description": "Button text to view changelog"
     }
 }

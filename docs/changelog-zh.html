@@ -326,9 +326,51 @@
         <div class="timeline">
             <div class="version">
                 <div class="version-header">
+                    <span class="version-number">v1.6.0</span>
+                    <span class="version-date">2026年1月17日</span>
+                    <span class="badge latest">最新</span>
+                </div>
+
+                <div class="version-content">
+                    <h3>🚀 重大功能</h3>
+                    <ul>
+                        <li>🎯 <strong>完整多提供商支持：</strong> 原生支持多个AI服务商的专用API格式</li>
+                        <li>✅ <strong>Anthropic Claude：</strong> 原生集成Anthropic API (claude-3-5-sonnet-20241022)</li>
+                        <li>✅ <strong>Google Gemini：</strong> 原生集成Google Gemini API (gemini-2.5-flash)</li>
+                        <li>✅ <strong>OpenAI：</strong> 官方OpenAI API支持 (gpt-4o-mini)</li>
+                        <li>✅ <strong>Azure OpenAI：</strong> 微软Azure托管的OpenAI支持</li>
+                        <li>✅ <strong>DeepSeek：</strong> DeepSeek AI，使用OpenAI兼容格式</li>
+                        <li>✅ <strong>自定义端点：</strong> 支持任何OpenAI兼容的API（包括Ollama本地模型）</li>
+                    </ul>
+
+                    <h3>🔧 技术改进</h3>
+                    <ul>
+                        <li>🏗️ <strong>提供商适配器架构：</strong> 可扩展的适配器模式使添加新提供商变得简单</li>
+                        <li>💾 <strong>提供商持久化：</strong> 选定的提供商现在会跨会话保存和恢复</li>
+                        <li>🔍 <strong>智能提供商检测：</strong> 自动从端点URL检测提供商，确保向后兼容</li>
+                        <li>📝 <strong>提供商专用请求格式：</strong> 每个提供商使用其原生API格式以获得最佳兼容性</li>
+                        <li>🎨 <strong>提供商专用响应解析：</strong> 正确处理每个提供商的不同响应结构</li>
+                    </ul>
+
+                    <h3>📢 用户体验</h3>
+                    <ul>
+                        <li>🔔 <strong>智能更新通知：</strong> 用户会收到重大更新通知并提供更新日志链接</li>
+                        <li>🌐 <strong>国际化通知：</strong> 更新消息支持多种语言</li>
+                        <li>📖 <strong>自动打开更新日志：</strong> 主要版本更新时自动打开更新日志页面</li>
+                    </ul>
+
+                    <h3>🔮 面向未来</h3>
+                    <ul>
+                        <li>📦 <strong>轻松添加提供商：</strong> 添加新AI提供商只需3个简单步骤</li>
+                        <li>🛠️ <strong>可扩展设计：</strong> 架构支持未来的提供商，如Cohere、Mistral、Perplexity等</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version">
+                <div class="version-header">
                     <span class="version-number">v1.5.5</span>
                     <span class="version-date">2026年1月16日</span>
-                    <span class="badge latest">最新</span>
                 </div>
 
                 <div class="version-content">

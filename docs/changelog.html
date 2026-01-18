@@ -326,9 +326,65 @@
         <div class="timeline">
             <div class="version">
                 <div class="version-header">
+                    <span class="version-number">v1.6.0</span>
+                    <span class="version-date">January 17, 2026</span>
+                    <span class="badge latest">Latest</span>
+                </div>
+
+                <div class="version-content">
+                    <h3>🚀 Major Features</h3>
+                    <ul>
+                        <li>🎯 <strong>Full Multi-Provider Support:</strong> Native support for multiple AI providers
+                            with their dedicated API formats</li>
+                        <li>✅ <strong>Anthropic Claude:</strong> Native integration with Anthropic API
+                            (claude-3-5-sonnet-20241022)</li>
+                        <li>✅ <strong>Google Gemini:</strong> Native integration with Google Gemini API
+                            (gemini-2.5-flash)</li>
+                        <li>✅ <strong>OpenAI:</strong> Official OpenAI API support (gpt-4o-mini)</li>
+                        <li>✅ <strong>Azure OpenAI:</strong> Microsoft Azure-hosted OpenAI support</li>
+                        <li>✅ <strong>DeepSeek:</strong> DeepSeek AI with OpenAI-compatible format</li>
+                        <li>✅ <strong>Custom Endpoints:</strong> Support for any OpenAI-compatible API (including Ollama
+                            local models)</li>
+                    </ul>
+
+                    <h3>🔧 Technical Improvements</h3>
+                    <ul>
+                        <li>🏗️ <strong>Provider Adapter Architecture:</strong> Extensible adapter pattern makes adding
+                            new providers easy</li>
+                        <li>💾 <strong>Provider Persistence:</strong> Selected provider is now saved and restored across
+                            sessions</li>
+                        <li>🔍 <strong>Smart Provider Detection:</strong> Automatically detects provider from endpoint
+                            URL for backward compatibility</li>
+                        <li>📝 <strong>Provider-Specific Request Formats:</strong> Each provider uses its native API
+                            format for optimal compatibility</li>
+                        <li>🎨 <strong>Provider-Specific Response Parsing:</strong> Correctly handles different response
+                            structures from each provider</li>
+                    </ul>
+
+                    <h3>📢 User Experience</h3>
+                    <ul>
+                        <li>🔔 <strong>Smart Update Notifications:</strong> Users are notified of major updates with
+                            changelog link</li>
+                        <li>🌐 <strong>Internationalized Notifications:</strong> Update messages support multiple
+                            languages</li>
+                        <li>📖 <strong>Automatic Changelog:</strong> Major version updates automatically open changelog
+                            page</li>
+                    </ul>
+
+                    <h3>🔮 Future-Ready</h3>
+                    <ul>
+                        <li>📦 <strong>Easy Provider Addition:</strong> Adding new AI providers requires only 3 simple
+                            steps</li>
+                        <li>🛠️ <strong>Extensible Design:</strong> Architecture supports future providers like Cohere,
+                            Mistral, Perplexity, etc.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version">
+                <div class="version-header">
                     <span class="version-number">v1.5.5</span>
                     <span class="version-date">January 16, 2026</span>
-                    <span class="badge latest">Latest</span>
                 </div>
 
                 <div class="version-content">

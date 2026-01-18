@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "openai": "https://api.openai.com/v1/chat/completions",
     "azure": "https://YOUR-RESOURCE.openai.azure.com/openai/deployments/YOUR-DEPLOYMENT/chat/completions?api-version=2024-02-15-preview",
     "anthropic": "https://api.anthropic.com/v1/messages",
-    "gemini": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
+    "gemini": "https://generativelanguage.googleapis.com/v1beta/models",
     "deepseek": "https://api.deepseek.com/v1/chat/completions"
   };
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "openai": "gpt-4o-mini",
     "azure": "gpt-4",
     "anthropic": "claude-3-5-sonnet-20241022",
-    "gemini": "gemini-2.0-flash-lite",
+    "gemini": "gemini-2.5-flash",
     "deepseek": "deepseek-chat"
   };
 
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load stored values and display them on popup open
   chrome.storage.sync.get([
     "targetLang", "apiKey", "subtitleColor", "subtitleFontSize", "subtitleBgColor",
-    "apiEndpoint", "modelName"
+    "apiEndpoint", "modelName", "provider"
   ], (data) => {
     if (data.targetLang) {
       document.getElementById("targetLang").value = data.targetLang;
@@ -92,23 +92,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (data.apiEndpoint) {
       document.getElementById("apiEndpoint").value = data.apiEndpoint;
 
-      // Detect provider based on endpoint
+      // Detect provider based on endpoint if provider is not explicitly set
+      // 如果未明确设置提供商，则根据端点检测提供商
       const endpoint = data.apiEndpoint;
-      let detectedProvider = "custom";
+      let detectedProvider = data.provider || "custom";
 
-      if (endpoint.includes("api.openai.com")) {
-        detectedProvider = "openai";
-      } else if (endpoint.includes("openai.azure.com")) {
-        detectedProvider = "azure";
-      } else if (endpoint.includes("api.anthropic.com")) {
-        detectedProvider = "anthropic";
-      } else if (endpoint.includes("generativelanguage.googleapis.com")) {
-        detectedProvider = "gemini";
-      } else if (endpoint.includes("api.deepseek.com")) {
-        detectedProvider = "deepseek";
+      if (!data.provider) {
+        // Auto-detect provider from endpoint URL
+        if (endpoint.includes("api.openai.com")) {
+          detectedProvider = "openai";
+        } else if (endpoint.includes("openai.azure.com")) {
+          detectedProvider = "azure";
+        } else if (endpoint.includes("api.anthropic.com")) {
+          detectedProvider = "anthropic";
+        } else if (endpoint.includes("generativelanguage.googleapis.com")) {
+          detectedProvider = "gemini";
+        } else if (endpoint.includes("api.deepseek.com")) {
+          detectedProvider = "deepseek";
+        }
       }
 
       document.getElementById("providerSelect").value = detectedProvider;
+    } else if (data.provider) {
+      // If provider is set but no endpoint, use the provider value
+      document.getElementById("providerSelect").value = data.provider;
     }
     if (data.modelName) {
       document.getElementById("modelName").value = data.modelName;
@@ -126,6 +133,7 @@ document.getElementById("saveBtn").addEventListener("click", () => {
   const subtitleBgColor = document.getElementById("subtitleBgColor").value;
   const apiEndpoint = document.getElementById("apiEndpoint").value.trim() || "https://api.openai.com/v1/chat/completions";
   const modelName = document.getElementById("modelName").value.trim() || "gpt-4o-mini";
+  const provider = document.getElementById("providerSelect").value;
 
   let apiKey = apiKeyInput.value;
 
@@ -141,7 +149,8 @@ document.getElementById("saveBtn").addEventListener("click", () => {
       subtitleFontSize: subtitleFontSize,
       subtitleBgColor: subtitleBgColor,
       apiEndpoint: apiEndpoint,
-      modelName: modelName
+      modelName: modelName,
+      provider: provider
     }, () => {
       alert(chrome.i18n.getMessage('settingSaved'));
     });
@@ -153,6 +162,7 @@ document.getElementById("testEndpointBtn").addEventListener("click", async () =>
   const apiKeyInput = document.getElementById("apiKey").value;
   const endpoint = document.getElementById("apiEndpoint").value.trim() || "https://api.openai.com/v1/chat/completions";
   const model = document.getElementById("modelName").value.trim() || "gpt-4o-mini";
+  const provider = document.getElementById("providerSelect").value || "openai";
   const testStatus = document.getElementById("testStatus");
   const testBtn = document.getElementById("testEndpointBtn");
 
@@ -181,19 +191,59 @@ document.getElementById("testEndpointBtn").addEventListener("click", async () =>
     testStatus.textContent = "";
 
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
+      // Build provider-specific request
+      let requestBody, headers, testEndpoint;
+
+      if (provider === "gemini") {
+        // Gemini format
+        testEndpoint = `${endpoint}/${model}:generateContent?key=${apiKey}`;
+        headers = { "Content-Type": "application/json" };
+        requestBody = {
+          contents: [{ parts: [{ text: "Hello" }] }]
+        };
+      } else if (provider === "anthropic") {
+        // Anthropic format
+        testEndpoint = endpoint;
+        headers = {
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+          "Content-Type": "application/json"
+        };
+        requestBody = {
+          model: model,
+          max_tokens: 10,
+          messages: [{ role: "user", content: "Hello" }]
+        };
+      } else if (provider === "azure") {
+        // Azure OpenAI format
+        testEndpoint = endpoint;
+        headers = {
+          "api-key": apiKey,
+          "Content-Type": "application/json"
+        };
+        requestBody = {
+          model: model,
+          messages: [{ role: "user", content: "Hello" }],
+          max_tokens: 5
+        };
+      } else {
+        // OpenAI, DeepSeek, and other OpenAI-compatible formats
+        testEndpoint = endpoint;
+        headers = {
           "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+        };
+        requestBody = {
           model: model,
-          messages: [
-            { role: "user", content: "Hello" }
-          ],
+          messages: [{ role: "user", content: "Hello" }],
           max_tokens: 5
-        })
+        };
+      }
+
+      const response = await fetch(testEndpoint, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(requestBody)
       });
 
       if (response.ok) {
