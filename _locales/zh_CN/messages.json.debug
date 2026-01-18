@@ -114,7 +114,6 @@
     "viewChangelog": {
         "message": "查看更新日志",
         "description": "Button text to view changelog"
-    },
     "errorQuotaExceeded": {
         "message": "[翻译失败: API 配额已用尽]",
         "description": "Error message when API quota is exceeded"

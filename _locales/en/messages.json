@@ -103,7 +103,6 @@
         "message": "✗ Connection failed",
         "description": "Failure message for endpoint test"
     },
-<<<<<<< HEAD
     "updateNotificationTitle": {
         "message": "Extension Updated to v1.6.0",
         "description": "Title for update notification"
@@ -115,7 +114,7 @@
     "viewChangelog": {
         "message": "View Changelog",
         "description": "Button text to view changelog"
-=======
+    },
     "errorQuotaExceeded": {
         "message": "[Translation failed: API quota exceeded]",
         "description": "Error message when API quota is exceeded"
@@ -143,6 +142,5 @@
     "errorTranslationFailed": {
         "message": "[Translation failed: Please check API settings]",
         "description": "Generic error message for translation failure"
->>>>>>> origin/main
     }
 }

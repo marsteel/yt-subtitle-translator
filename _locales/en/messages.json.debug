@@ -1,18 +1,18 @@
 {
     "extensionName": {
-        "message": "YouTube双语字幕翻译助手",
+        "message": "YouTube Bilingual Subtitle Translator",
         "description": "Name of the extension"
     },
     "extensionDescription": {
-        "message": "显示YouTube双语字幕，支持多个AI服务商（OpenAI、Gemini、Claude等）进行翻译，API Key本地存储，保护隐私。",
+        "message": "Display bilingual subtitles on YouTube with multiple AI providers (OpenAI, Gemini, Claude). API key stored locally.",
         "description": "Description of the extension"
     },
     "popupTitle": {
-        "message": "YouTube字幕助手设置",
+        "message": "YouTube Subtitle Helper Settings",
         "description": "Title of the popup"
     },
     "apiKeyLabel": {
-        "message": "AI服务商API密钥：",
+        "message": "API Key for AI Provider:",
         "description": "Label for API key input"
     },
     "apiKeyPlaceholder": {
@@ -20,39 +20,39 @@
         "description": "Placeholder for API key input"
     },
     "targetLangLabel": {
-        "message": "目标语言：",
+        "message": "Target Language:",
         "description": "Label for target language input"
     },
     "targetLangPlaceholder": {
-        "message": "例如：中文 (查看常见语言)",
+        "message": "e.g. Chinese (see language codes)",
         "description": "Placeholder for target language input"
     },
     "subtitleColorLabel": {
-        "message": "字幕颜色：",
+        "message": "Subtitle Color:",
         "description": "Label for subtitle color picker"
     },
     "subtitleFontSizeLabel": {
-        "message": "字幕字体大小 (px)：",
+        "message": "Subtitle Font Size (px):",
         "description": "Label for subtitle font size input"
     },
     "subtitleBgColorLabel": {
-        "message": "字幕背景颜色：",
+        "message": "Subtitle Background Color:",
         "description": "Label for subtitle background color picker"
     },
     "advancedSettings": {
-        "message": "高级设置",
+        "message": "Advanced Settings",
         "description": "Advanced settings section header"
     },
     "apiEndpointLabel": {
-        "message": "API端点URL：",
+        "message": "API Endpoint URL:",
         "description": "Label for API endpoint input"
     },
     "providerLabel": {
-        "message": "AI服务商：",
+        "message": "AI Provider:",
         "description": "Label for AI provider selection"
     },
     "providerCustom": {
-        "message": "自定义",
+        "message": "Custom",
         "description": "Custom provider option"
     },
     "apiEndpointPlaceholder": {
@@ -60,7 +60,7 @@
         "description": "Placeholder for API endpoint input"
     },
     "modelNameLabel": {
-        "message": "模型名称：",
+        "message": "Model Name:",
         "description": "Label for model name input"
     },
     "modelNamePlaceholder": {
@@ -68,79 +68,78 @@
         "description": "Placeholder for model name input"
     },
     "saveButton": {
-        "message": "保存设置",
+        "message": "Save Settings",
         "description": "Text for save button"
     },
     "settingSaved": {
-        "message": "设置已保存",
+        "message": "Settings Saved",
         "description": "Alert message when settings are saved"
     },
     "apiKeyNotSet": {
-        "message": "[未设置 API Key]",
+        "message": "[API Key Not Set]",
         "description": "Message when API key is not set"
     },
     "disclaimerLink": {
-        "message": "阅读重要免责声明",
-        "description": "免责声明页面链接"
+        "message": "Read Important Disclaimer",
+        "description": "Link to disclaimer page"
     },
     "visitWebsite": {
-        "message": "📖 访问网站了解更多",
-        "description": "访问网站的链接"
+        "message": "📖 Visit Website for More Info",
+        "description": "Link text to visit project website"
     },
     "testEndpoint": {
-        "message": "测试连接",
+        "message": "Test Connection",
         "description": "Button text to test API endpoint"
     },
     "testingEndpoint": {
-        "message": "测试中...",
+        "message": "Testing...",
         "description": "Status text while testing endpoint"
     },
     "testSuccess": {
-        "message": "✓ 连接成功！",
+        "message": "✓ Connection successful!",
         "description": "Success message for endpoint test"
     },
     "testFailed": {
-        "message": "✗ 连接失败",
+        "message": "✗ Connection failed",
         "description": "Failure message for endpoint test"
     },
     "updateNotificationTitle": {
-        "message": "扩展已更新至 v1.6.0",
+        "message": "Extension Updated to v1.6.0",
         "description": "Title for update notification"
     },
     "updateNotificationMessage": {
-        "message": "新增完整多提供商支持！现在原生支持 Anthropic Claude 和 Google Gemini。",
+        "message": "Added full multi-provider support! Now natively supports Anthropic Claude and Google Gemini.",
         "description": "Message for update notification"
     },
     "viewChangelog": {
-        "message": "查看更新日志",
+        "message": "View Changelog",
         "description": "Button text to view changelog"
-    },
     "errorQuotaExceeded": {
-        "message": "[翻译失败: API 配额已用尽]",
+        "message": "[Translation failed: API quota exceeded]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[翻译失败: API 密钥无效，请检查设置]",
+        "message": "[Translation failed: Invalid API key, please check settings]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[翻译失败: 请求过于频繁，请稍后再试]",
+        "message": "[Translation failed: Too many requests, please try again later]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[翻译失败: 内容被过滤]",
+        "message": "[Translation failed: Content filtered]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[翻译失败: API 响应格式错误]",
+        "message": "[Translation failed: Invalid API response format]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[翻译失败: 服务器错误，请稍后再试]",
+        "message": "[Translation failed: Server error, please try again later]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[翻译失败: 请检查 API 设置]",
+        "message": "[Translation failed: Please check API settings]",
         "description": "Generic error message for translation failure"
     }
 }
