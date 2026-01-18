@@ -103,6 +103,7 @@
         "message": "✗ 連線失敗",
         "description": "Failure message for endpoint test"
     },
+<<<<<<< HEAD
     "updateNotificationTitle": {
         "message": "擴充功能已更新至 v1.6.0",
         "description": "Title for update notification"
@@ -114,5 +115,34 @@
     "viewChangelog": {
         "message": "查看更新日誌",
         "description": "Button text for viewing changelog"
+=======
+    "errorQuotaExceeded": {
+        "message": "[翻譯失敗: API 配額已用盡]",
+        "description": "Error message when API quota is exceeded"
+    },
+    "errorInvalidApiKey": {
+        "message": "[翻譯失敗: API 金鑰無效，請檢查設定]",
+        "description": "Error message when API key is invalid"
+    },
+    "errorRateLimit": {
+        "message": "[翻譯失敗: 請求過於頻繁，請稍後再試]",
+        "description": "Error message when rate limit is exceeded"
+    },
+    "errorContentFilter": {
+        "message": "[翻譯失敗: 內容被過濾]",
+        "description": "Error message when content is filtered"
+    },
+    "errorInvalidResponse": {
+        "message": "[翻譯失敗: API 回應格式錯誤]",
+        "description": "Error message when API response format is invalid"
+    },
+    "errorServerError": {
+        "message": "[翻譯失敗: 伺服器錯誤，請稍後再試]",
+        "description": "Error message when server error occurs"
+    },
+    "errorTranslationFailed": {
+        "message": "[翻譯失敗: 請檢查 API 設定]",
+        "description": "Generic error message for translation failure"
+>>>>>>> origin/main
     }
 }
