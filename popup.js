@@ -162,6 +162,7 @@ document.getElementById("testEndpointBtn").addEventListener("click", async () =>
   const apiKeyInput = document.getElementById("apiKey").value;
   const endpoint = document.getElementById("apiEndpoint").value.trim() || "https://api.openai.com/v1/chat/completions";
   const model = document.getElementById("modelName").value.trim() || "gpt-4o-mini";
+  const provider = document.getElementById("providerSelect").value || "openai";
   const testStatus = document.getElementById("testStatus");
   const testBtn = document.getElementById("testEndpointBtn");
 
@@ -190,19 +191,59 @@ document.getElementById("testEndpointBtn").addEventListener("click", async () =>
     testStatus.textContent = "";
 
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
+      // Build provider-specific request
+      let requestBody, headers, testEndpoint;
+
+      if (provider === "gemini") {
+        // Gemini format
+        testEndpoint = `${endpoint}/${model}:generateContent?key=${apiKey}`;
+        headers = { "Content-Type": "application/json" };
+        requestBody = {
+          contents: [{ parts: [{ text: "Hello" }] }]
+        };
+      } else if (provider === "anthropic") {
+        // Anthropic format
+        testEndpoint = endpoint;
+        headers = {
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+          "Content-Type": "application/json"
+        };
+        requestBody = {
+          model: model,
+          max_tokens: 10,
+          messages: [{ role: "user", content: "Hello" }]
+        };
+      } else if (provider === "azure") {
+        // Azure OpenAI format
+        testEndpoint = endpoint;
+        headers = {
+          "api-key": apiKey,
+          "Content-Type": "application/json"
+        };
+        requestBody = {
+          model: model,
+          messages: [{ role: "user", content: "Hello" }],
+          max_tokens: 5
+        };
+      } else {
+        // OpenAI, DeepSeek, and other OpenAI-compatible formats
+        testEndpoint = endpoint;
+        headers = {
           "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+        };
+        requestBody = {
           model: model,
-          messages: [
-            { role: "user", content: "Hello" }
-          ],
+          messages: [{ role: "user", content: "Hello" }],
           max_tokens: 5
-        })
+        };
+      }
+
+      const response = await fetch(testEndpoint, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(requestBody)
       });
 
       if (response.ok) {
