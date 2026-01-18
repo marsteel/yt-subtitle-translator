@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ 接続失敗",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "拡張機能がv1.6.0に更新されました",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "完全なマルチプロバイダーサポートを追加しました！Anthropic ClaudeとGoogle Geminiをネイティブサポートします。",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "変更履歴を表示",
+        "description": "Button text for viewing changelog"
     }
 }

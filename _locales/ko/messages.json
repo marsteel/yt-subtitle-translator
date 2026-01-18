@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ 연결 실패",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "확장 프로그램이 v1.6.0으로 업데이트되었습니다",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "전체 다중 공급자 지원이 추가되었습니다! 이제 Anthropic Claude 및 Google Gemini를 기본적으로 지원합니다.",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "변경 로그 보기",
+        "description": "Button text for viewing changelog"
     }
 }

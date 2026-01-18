@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ Verbindung fehlgeschlagen",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "Erweiterung auf v1.6.0 aktualisiert",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "Vollständige Multi-Provider-Unterstützung hinzugefügt! Unterstützt jetzt nativ Anthropic Claude und Google Gemini.",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "Änderungsprotokoll anzeigen",
+        "description": "Button text for viewing changelog"
     }
 }

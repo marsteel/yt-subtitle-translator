@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ Conexión fallida",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "Extensión actualizada a v1.6.0",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "¡Se agregó soporte completo para múltiples proveedores! Ahora es compatible de forma nativa con Anthropic Claude y Google Gemini.",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "Ver registro de cambios",
+        "description": "Button text for viewing changelog"
     }
 }

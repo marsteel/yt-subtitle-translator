@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ Échec de la connexion",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "Extension mise à jour vers v1.6.0",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "Prise en charge complète de plusieurs fournisseurs ajoutée ! Prend désormais en charge nativement Anthropic Claude et Google Gemini.",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "Voir le journal des modifications",
+        "description": "Button text for viewing changelog"
     }
 }

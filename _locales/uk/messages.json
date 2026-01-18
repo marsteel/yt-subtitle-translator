@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ З'єднання не вдалося",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "Розширення оновлено до v1.6.0",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "Додано повну підтримку кількох провайдерів! Тепер нативно підтримує Anthropic Claude та Google Gemini.",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "Переглянути журнал змін",
+        "description": "Button text for viewing changelog"
     }
 }

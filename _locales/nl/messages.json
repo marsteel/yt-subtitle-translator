@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ Verbinding mislukt",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "Extensie bijgewerkt naar v1.6.0",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "Volledige ondersteuning voor meerdere providers toegevoegd! Ondersteunt nu native Anthropic Claude en Google Gemini.",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "Wijzigingslogboek bekijken",
+        "description": "Button text for viewing changelog"
     }
 }

@@ -102,5 +102,17 @@
     "testFailed": {
         "message": "✗ 連線失敗",
         "description": "Failure message for endpoint test"
+    },
+    "updateNotificationTitle": {
+        "message": "擴充功能已更新至 v1.6.0",
+        "description": "Title for update notification"
+    },
+    "updateNotificationMessage": {
+        "message": "新增完整多提供商支援！現在原生支援 Anthropic Claude 和 Google Gemini。",
+        "description": "Message for update notification"
+    },
+    "viewChangelog": {
+        "message": "查看更新日誌",
+        "description": "Button text for viewing changelog"
     }
 }
