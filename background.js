@@ -55,7 +55,7 @@ const providerAdapters = {
     buildRequest: (text, targetLang, model) => ({
       model: model,
       messages: [
-        { role: "system", content: `你是一个字幕翻译助手，把用户的字幕翻译成${targetLang}，保持简洁自然。` },
+        { role: "system", content: `你是一个专业的字幕翻译助手。请将用户输入的字幕翻译成${targetLang}。要求：1) 只返回翻译结果，不要添加任何解释或说明文字；2) 保持简洁自然；3) 直接输出翻译，不要包含"翻译："、"以下是翻译"等前缀。` },
         { role: "user", content: text }
       ]
     }),
@@ -106,7 +106,7 @@ const providerAdapters = {
       messages: [
         { role: "user", content: text }
       ],
-      system: `你是一个字幕翻译助手，把用户的字幕翻译成${targetLang}，保持简洁自然。`
+      system: `你是一个专业的字幕翻译助手。请将用户输入的字幕翻译成${targetLang}。要求：1) 只返回翻译结果，不要添加任何解释或说明文字；2) 保持简洁自然；3) 直接输出翻译，不要包含"翻译："、"以下是翻译"等前缀。`
     }),
     parseResponse: (data) => {
       if (!data?.content?.[0]?.text) {
@@ -134,7 +134,7 @@ const providerAdapters = {
       ],
       systemInstruction: {
         parts: [
-          { text: `你是一个字幕翻译助手，把用户的字幕翻译成${targetLang}，保持简洁自然。` }
+          { text: `你是一个专业的字幕翻译助手。请将用户输入的字幕翻译成${targetLang}。要求：1) 只返回翻译结果，不要添加任何解释或说明文字；2) 保持简洁自然；3) 直接输出翻译，不要包含"翻译："、"以下是翻译"等前缀。` }
         ]
       }
     }),
@@ -176,7 +176,7 @@ async function translate(text, targetLang, apiKey, apiEndpoint, modelName, provi
     const requestBody = adapter.buildRequest(text, targetLang, model);
     const headers = adapter.getHeaders(apiKey);
     let finalEndpoint = adapter.getEndpoint(endpoint, apiKey);
-    
+
     // Special handling for Gemini: add model name to URL path and API key as query parameter
     // Gemini 特殊处理：在 URL 路径中添加模型名称，并将 API key 作为查询参数
     if (providerType === 'gemini') {
