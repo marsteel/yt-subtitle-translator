@@ -74,11 +74,15 @@
       margin-bottom: 20px;
       padding-bottom: 12px;
       border-bottom: 2px solid var(--border-color);
+      \n transition: border-color 0.3s ease;
+    }
+
+    /* Gradient text effect only in light mode */
+    body:not(.dark-mode) h3 {
       background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      transition: border-color 0.3s ease;
     }
 
     label {
