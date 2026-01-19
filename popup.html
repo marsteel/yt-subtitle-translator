@@ -260,6 +260,20 @@
       box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
     }
 
+    /* Green button for save actions */
+    button.btn-success {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    button.btn-success:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    button.btn-success:active {
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    }
+
     .website-link {
       display: block;
       margin-top: 16px;
@@ -344,9 +358,8 @@
         <label data-i18n="modelNameLabel">Model Name:</label>
         <input id="modelName" type="text" data-i18n-placeholder="modelNamePlaceholder" placeholder="gpt-4o-mini" />
 
-        <button id="testEndpointBtn" type="button"
-          style="margin-top: 16px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-size: 13px; padding: 10px;"
-          data-i18n="testEndpoint">
+        <button id="testEndpointBtn" type="button" class="btn-success"
+          style="margin-top: 16px; font-size: 13px; padding: 10px;" data-i18n="testEndpoint">
           Test Connection
         </button>
         <div id="testStatus"
@@ -354,7 +367,7 @@
       </div>
     </div>
 
-    <button id="saveBtn" data-i18n="saveButton">Save Settings</button>
+    <button id="saveBtn" class="btn-success" data-i18n="saveButton">Save Settings</button>
 
     <a href="https://yt-subtitle-translator.magang.net/" target="_blank" class="website-link" data-i18n="visitWebsite">
       📖 Visit Website for More Info
