@@ -6,6 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="popupTitle">Subtitle Translator Settings</title>
   <style>
+    /* CSS Variables for Theming */
+    :root {
+      /* Light mode (default) */
+      --bg-gradient-start: #667eea;
+      --bg-gradient-end: #764ba2;
+      --container-bg: white;
+      --text-primary: #1f2937;
+      --text-secondary: #4b5563;
+      --text-muted: #6b7280;
+      --input-bg: #f9fafb;
+      --input-bg-focus: white;
+      --input-border: #e5e7eb;
+      --section-bg-start: #f9fafb;
+      --section-bg-end: #f3f4f6;
+      --border-color: #e5e7eb;
+      --scrollbar-track: #f1f1f1;
+      --scrollbar-thumb: #667eea;
+      --scrollbar-thumb-hover: #5568d3;
+    }
+
+    body.dark-mode {
+      /* Dark mode - matching ai-text-polisher style */
+      --bg-gradient-start: #1e1b4b;
+      --bg-gradient-end: #312e81;
+      --container-bg: rgba(30, 27, 75, 0.95);
+      --text-primary: #f9fafb;
+      --text-secondary: #e5e7eb;
+      --text-muted: #9ca3af;
+      --input-bg: rgba(17, 24, 39, 0.8);
+      --input-bg-focus: rgba(31, 41, 55, 0.9);
+      --input-border: #4b5563;
+      --section-bg-start: rgba(55, 65, 81, 0.5);
+      --section-bg-end: rgba(75, 85, 99, 0.5);
+      --border-color: #4b5563;
+      --scrollbar-track: #374151;
+      --scrollbar-thumb: #667eea;
+      --scrollbar-thumb-hover: #764ba2;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -16,24 +55,31 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       width: 340px;
       padding: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #333;
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text-primary);
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .container {
-      background: white;
+      background: var(--container-bg);
       padding: 24px;
       border-radius: 0;
+      transition: background 0.3s ease;
     }
 
     h3 {
       font-size: 18px;
       font-weight: 700;
-      color: #1f2937;
+      color: var(--text-primary);
       margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 2px solid #e5e7eb;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-bottom: 2px solid var(--border-color);
+      transition: border-color 0.3s ease;
+    }
+
+    /* Gradient text effect only in light mode */
+    body:not(.dark-mode) h3 {
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -45,8 +91,9 @@
       margin-bottom: 6px;
       font-weight: 600;
       font-size: 13px;
-      color: #4b5563;
+      color: var(--text-secondary);
       letter-spacing: 0.3px;
+      transition: color 0.3s ease;
     }
 
     input[type="text"],
@@ -54,30 +101,31 @@
     input[type="number"] {
       width: 100%;
       padding: 10px 12px;
-      border: 1.5px solid #e5e7eb;
+      border: 1.5px solid var(--input-border);
       border-radius: 8px;
       font-size: 14px;
       transition: all 0.2s ease;
-      background: #f9fafb;
-      color: #1f2937;
+      background: var(--input-bg);
+      color: var(--text-primary);
     }
 
     input[type="text"]:focus,
     input[type="password"]:focus,
     input[type="number"]:focus {
       outline: none;
-      border-color: #667eea;
-      background: white;
+      border-color: var(--bg-gradient-start);
+      background: var(--input-bg-focus);
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
     input[type="color"] {
       width: 100%;
       height: 40px;
-      border: 1.5px solid #e5e7eb;
+      border: 1.5px solid var(--input-border);
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s ease;
+      background: var(--input-bg);
     }
 
     input[type="color"]:hover {
@@ -85,25 +133,51 @@
       box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
     }
 
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--input-border);
+      border-radius: 8px;
+      font-size: 14px;
+      background: var(--input-bg);
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--bg-gradient-start);
+      background: var(--input-bg-focus);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    select option {
+      background: var(--container-bg);
+      color: var(--text-primary);
+    }
+
     .section {
       margin-top: 20px;
       padding-top: 20px;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--border-color);
+      transition: border-color 0.3s ease;
     }
 
     .section-header {
       cursor: pointer;
       user-select: none;
       padding: 12px 14px;
-      background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+      background: linear-gradient(135deg, var(--section-bg-start) 0%, var(--section-bg-end) 100%);
       border-radius: 10px;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1.5px solid #e5e7eb;
+      border: 1.5px solid var(--border-color);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      color: var(--text-primary);
     }
 
     .section-header:hover {
@@ -186,6 +260,20 @@
       box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
     }
 
+    /* Green button for save actions */
+    button.btn-success {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    button.btn-success:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    button.btn-success:active {
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    }
+
     .website-link {
       display: block;
       margin-top: 16px;
@@ -193,18 +281,18 @@
       text-align: center;
       background: transparent;
       border-radius: 8px;
-      border: 1.5px solid #e5e7eb;
+      border: 1.5px solid var(--border-color);
       text-decoration: none;
-      color: #6b7280;
+      color: var(--text-muted);
       font-size: 12px;
       font-weight: 500;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .website-link:hover {
-      background: #f9fafb;
-      border-color: #667eea;
-      color: #667eea;
+      background: var(--input-bg);
+      border-color: var(--bg-gradient-start);
+      color: var(--bg-gradient-start);
       transform: translateY(-1px);
     }
 
@@ -214,16 +302,16 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #f1f1f1;
+      background: var(--scrollbar-track);
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #667eea;
+      background: var(--scrollbar-thumb);
       border-radius: 3px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: #5568d3;
+      background: var(--scrollbar-thumb-hover);
     }
   </style>
 </head>
@@ -254,8 +342,7 @@
       </div>
       <div class="section-content" id="advancedContent">
         <label data-i18n="providerLabel">AI Provider:</label>
-        <select id="providerSelect"
-          style="width: 100%; padding: 10px 12px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: #f9fafb; color: #1f2937; transition: all 0.2s ease;">
+        <select id="providerSelect">
           <option value="openai">OpenAI</option>
           <option value="azure">Azure OpenAI</option>
           <option value="anthropic">Anthropic (Claude)</option>
@@ -271,9 +358,8 @@
         <label data-i18n="modelNameLabel">Model Name:</label>
         <input id="modelName" type="text" data-i18n-placeholder="modelNamePlaceholder" placeholder="gpt-4o-mini" />
 
-        <button id="testEndpointBtn" type="button"
-          style="margin-top: 16px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-size: 13px; padding: 10px;"
-          data-i18n="testEndpoint">
+        <button id="testEndpointBtn" type="button" class="btn-success"
+          style="margin-top: 16px; font-size: 13px; padding: 10px;" data-i18n="testEndpoint">
           Test Connection
         </button>
         <div id="testStatus"
@@ -281,7 +367,7 @@
       </div>
     </div>
 
-    <button id="saveBtn" data-i18n="saveButton">Save Settings</button>
+    <button id="saveBtn" class="btn-success" data-i18n="saveButton">Save Settings</button>
 
     <a href="https://yt-subtitle-translator.magang.net/" target="_blank" class="website-link" data-i18n="visitWebsite">
       📖 Visit Website for More Info
