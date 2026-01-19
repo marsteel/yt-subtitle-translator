@@ -133,6 +133,30 @@
       box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
     }
 
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--input-border);
+      border-radius: 8px;
+      font-size: 14px;
+      background: var(--input-bg);
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--bg-gradient-start);
+      background: var(--input-bg-focus);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    select option {
+      background: var(--container-bg);
+      color: var(--text-primary);
+    }
+
     .section {
       margin-top: 20px;
       padding-top: 20px;
@@ -304,8 +328,7 @@
       </div>
       <div class="section-content" id="advancedContent">
         <label data-i18n="providerLabel">AI Provider:</label>
-        <select id="providerSelect"
-          style="width: 100%; padding: 10px 12px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: #f9fafb; color: #1f2937; transition: all 0.2s ease;">
+        <select id="providerSelect">
           <option value="openai">OpenAI</option>
           <option value="azure">Azure OpenAI</option>
           <option value="anthropic">Anthropic (Claude)</option>
