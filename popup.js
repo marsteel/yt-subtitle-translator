@@ -181,7 +181,16 @@ document.getElementById("saveBtn").addEventListener("click", () => {
       modelName: modelName,
       provider: provider
     }, () => {
-      alert(chrome.i18n.getMessage('settingSaved'));
+      // Show inline success message on button
+      const saveBtn = document.getElementById('saveBtn');
+      const originalText = saveBtn.textContent;
+      saveBtn.textContent = '✓ ' + chrome.i18n.getMessage('settingSaved');
+      saveBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+
+      setTimeout(() => {
+        saveBtn.textContent = originalText;
+        saveBtn.style.background = '';
+      }, 2000);
     });
   });
 });
