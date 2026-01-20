@@ -363,7 +363,7 @@ function handleApiKeyInput(e) {
     const providerSelect = document.getElementById("providerSelect");
     const modelNameInput = document.getElementById("modelName");
 
-    // Only update if provider has changed
+    // Update provider if it has changed
     if (providerSelect && providerSelect.value !== detectedProvider) {
       providerSelect.value = detectedProvider;
 
@@ -371,36 +371,36 @@ function handleApiKeyInput(e) {
       providerSelect.dispatchEvent(new Event('change'));
 
       console.log(`[Smart Detection] Auto-switched to provider: ${detectedProvider}`);
+    }
 
-      // Show inline notification
-      if (detectionStatus && modelNameInput) {
-        const providerNames = {
-          'openai': 'OpenAI',
-          'anthropic': 'Anthropic (Claude)',
-          'gemini': 'Google Gemini',
-          'deepseek': 'DeepSeek'
-        };
+    // Always show inline notification when a provider is detected
+    if (detectionStatus && modelNameInput) {
+      const providerNames = {
+        'openai': 'OpenAI',
+        'anthropic': 'Anthropic (Claude)',
+        'gemini': 'Google Gemini',
+        'deepseek': 'DeepSeek'
+      };
 
-        const providerName = providerNames[detectedProvider] || detectedProvider;
-        const modelName = modelNameInput.value || 'default';
+      const providerName = providerNames[detectedProvider] || detectedProvider;
+      const modelName = modelNameInput.value || 'default';
 
-        detectionStatus.style.display = 'block';
-        detectionStatus.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-        detectionStatus.style.color = 'white';
-        detectionStatus.style.border = 'none';
-        detectionStatus.innerHTML = `
-          <strong>✓ ${chrome.i18n.getMessage('detectedProvider', [providerName])}</strong><br>
-          ${chrome.i18n.getMessage('defaultModelSet')} <code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">${modelName}</code><br>
-          <span style="font-size: 12px; opacity: 0.9;">${chrome.i18n.getMessage('checkAdvancedSettings')}</span>
-        `;
+      detectionStatus.style.display = 'block';
+      detectionStatus.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+      detectionStatus.style.color = 'white';
+      detectionStatus.style.border = 'none';
+      detectionStatus.innerHTML = `
+        <strong>✓ ${chrome.i18n.getMessage('detectedProvider', [providerName])}</strong><br>
+        ${chrome.i18n.getMessage('defaultModelSet')} <code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">${modelName}</code><br>
+        <span style="font-size: 12px; opacity: 0.9;">${chrome.i18n.getMessage('checkAdvancedSettings')}</span>
+      `;
 
-        // Auto-hide after 8 seconds
-        setTimeout(() => {
-          if (detectionStatus) {
-            detectionStatus.style.display = 'none';
-          }
-        }, 8000);
-      }
+      // Auto-hide after 8 seconds
+      setTimeout(() => {
+        if (detectionStatus) {
+          detectionStatus.style.display = 'none';
+        }
+      }, 8000);
     }
   } else if (detectionStatus && key.length > 10 && !key.startsWith('*')) {
     // Show warning if key doesn't match any pattern
@@ -409,8 +409,8 @@ function handleApiKeyInput(e) {
     detectionStatus.style.color = '#92400e';
     detectionStatus.style.border = '1px solid #fbbf24';
     detectionStatus.innerHTML = `
-      <strong>⚠️ ${chrome.i18n.getMessage('unrecognizedKey')}</strong><br>
-      <span style="font-size: 12px;">${chrome.i18n.getMessage('manualSelection')}</span>
+      <strong>⚠️ 无法自动识别服务商</strong><br>
+      <span style="font-size: 12px;">请手动在下方选择 AI 服务商</span>
     `;
 
     setTimeout(() => {
