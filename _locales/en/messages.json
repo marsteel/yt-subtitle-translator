@@ -142,31 +142,5 @@
     "errorTranslationFailed": {
         "message": "[Translation failed: Please check API settings]",
         "description": "Generic error message for translation failure"
-    },
-    "detectedProvider": {
-        "message": "Auto-detected as $PROVIDER$",
-        "description": "Message when provider is auto-detected",
-        "placeholders": {
-            "provider": {
-                "content": "$1",
-                "example": "OpenAI"
-            }
-        }
-    },
-    "defaultModelSet": {
-        "message": "Default model set to:",
-        "description": "Label for default model in detection feedback"
-    },
-    "checkAdvancedSettings": {
-        "message": "You can confirm, modify, or test the configuration in Advanced Settings below and save",
-        "description": "Hint to check advanced settings"
-    },
-    "unrecognizedKey": {
-        "message": "Unable to auto-detect provider",
-        "description": "Warning when API key is not recognized"
-    },
-    "manualSelection": {
-        "message": "Please manually select AI Provider below",
-        "description": "Instruction to manually select provider"
     }
 }
