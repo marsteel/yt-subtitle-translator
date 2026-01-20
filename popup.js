@@ -389,9 +389,9 @@ function handleApiKeyInput(e) {
         detectionStatus.style.color = 'white';
         detectionStatus.style.border = 'none';
         detectionStatus.innerHTML = `
-          <strong>✓ 已自动识别为 ${providerName}</strong><br>
-          默认模型已设置为: <code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">${modelName}</code><br>
-          <span style="font-size: 12px; opacity: 0.9;">您可以在下方"高级设置"中确认或修改配置</span>
+          <strong>✓ ${chrome.i18n.getMessage('detectedProvider', [providerName])}</strong><br>
+          ${chrome.i18n.getMessage('defaultModelSet')} <code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">${modelName}</code><br>
+          <span style="font-size: 12px; opacity: 0.9;">${chrome.i18n.getMessage('checkAdvancedSettings')}</span>
         `;
 
         // Auto-hide after 8 seconds
@@ -409,8 +409,8 @@ function handleApiKeyInput(e) {
     detectionStatus.style.color = '#92400e';
     detectionStatus.style.border = '1px solid #fbbf24';
     detectionStatus.innerHTML = `
-      <strong>⚠️ 无法自动识别服务商</strong><br>
-      <span style="font-size: 12px;">请手动在下方选择 AI 服务商</span>
+      <strong>⚠️ ${chrome.i18n.getMessage('unrecognizedKey')}</strong><br>
+      <span style="font-size: 12px;">${chrome.i18n.getMessage('manualSelection')}</span>
     `;
 
     setTimeout(() => {
