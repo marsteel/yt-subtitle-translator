@@ -116,31 +116,31 @@
         "description": "Button text for viewing changelog"
     },
     "errorQuotaExceeded": {
-        "message": "[Translation failed: API quota exceeded]",
+        "message": "[Traducción fallida: Cuota de API excedida]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[Translation failed: Invalid API key, please check settings]",
+        "message": "[Traducción fallida: Clave API inválida, por favor verifique la configuración]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[Translation failed: Too many requests, please try again later]",
+        "message": "[Traducción fallida: Demasiadas solicitudes, por favor intente más tarde]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[Translation failed: Content filtered]",
+        "message": "[Traducción fallida: Contenido filtrado]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[Translation failed: Invalid API response format]",
+        "message": "[Traducción fallida: Formato de respuesta API inválido]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[Translation failed: Server error, please try again later]",
+        "message": "[Traducción fallida: Error del servidor, por favor intente más tarde]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[Translation failed: Please check API settings]",
+        "message": "[Traducción fallida: Por favor verifique la configuración de API]",
         "description": "Generic error message for translation failure"
     },
     "detectedProvider": {

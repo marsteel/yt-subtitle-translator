@@ -116,31 +116,31 @@
         "description": "Button text for viewing changelog"
     },
     "errorQuotaExceeded": {
-        "message": "[Translation failed: API quota exceeded]",
+        "message": "[번역 실패: API 할당량 초과]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[Translation failed: Invalid API key, please check settings]",
+        "message": "[번역 실패: API 키가 유효하지 않습니다. 설정을 확인하세요]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[Translation failed: Too many requests, please try again later]",
+        "message": "[번역 실패: 요청이 너무 많습니다. 나중에 다시 시도하세요]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[Translation failed: Content filtered]",
+        "message": "[번역 실패: 콘텐츠가 필터링됨]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[Translation failed: Invalid API response format]",
+        "message": "[번역 실패: API 응답 형식이 잘못됨]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[Translation failed: Server error, please try again later]",
+        "message": "[번역 실패: 서버 오류, 나중에 다시 시도하세요]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[Translation failed: Please check API settings]",
+        "message": "[번역 실패: API 설정을 확인하세요]",
         "description": "Generic error message for translation failure"
     },
     "detectedProvider": {

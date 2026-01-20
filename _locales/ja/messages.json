@@ -116,31 +116,31 @@
         "description": "Button text for viewing changelog"
     },
     "errorQuotaExceeded": {
-        "message": "[Translation failed: API quota exceeded]",
+        "message": "[翻訳失敗: APIクォータを超過しました]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[Translation failed: Invalid API key, please check settings]",
+        "message": "[翻訳失敗: APIキーが無効です。設定を確認してください]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[Translation failed: Too many requests, please try again later]",
+        "message": "[翻訳失敗: リクエストが多すぎます。後でもう一度お試しください]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[Translation failed: Content filtered]",
+        "message": "[翻訳失敗: コンテンツがフィルタリングされました]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[Translation failed: Invalid API response format]",
+        "message": "[翻訳失敗: API応答形式が無効です]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[Translation failed: Server error, please try again later]",
+        "message": "[翻訳失敗: サーバーエラー、後でもう一度お試しください]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[Translation failed: Please check API settings]",
+        "message": "[翻訳失敗: API設定を確認してください]",
         "description": "Generic error message for translation failure"
     },
     "detectedProvider": {
