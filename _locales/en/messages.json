@@ -158,7 +158,7 @@
         "description": "Label for default model in detection feedback"
     },
     "checkAdvancedSettings": {
-        "message": "You can confirm or modify in Advanced Settings below",
+        "message": "You can confirm, modify, or test the configuration in Advanced Settings below and save",
         "description": "Hint to check advanced settings"
     },
     "unrecognizedKey": {
