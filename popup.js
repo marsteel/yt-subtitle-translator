@@ -319,19 +319,19 @@ document.getElementById("testEndpointBtn").addEventListener("click", async () =>
  */
 function detectProviderFromKey(key) {
   key = key.trim();
-  
+
   // Ignore empty keys or masked keys (asterisks)
   if (!key || key.startsWith('*')) return null;
 
   // Anthropic Claude: sk-ant-
   if (key.startsWith('sk-ant-')) return 'anthropic';
-  
+
   // OpenAI Project keys: sk-proj-
   if (key.startsWith('sk-proj-')) return 'openai';
-  
+
   // Google Gemini: AIzaSy
   if (key.startsWith('AIzaSy')) return 'gemini';
-  
+
   // DeepSeek: sk- followed by exactly 30 hex characters (total 32)
   if (key.startsWith('sk-') && key.length === 32) {
     const hexPart = key.substring(3);
@@ -339,12 +339,12 @@ function detectProviderFromKey(key) {
       return 'deepseek';
     }
   }
-  
+
   // OpenAI standard keys: sk- with length > 40
   if (key.startsWith('sk-') && key.length > 40) {
     return 'openai';
   }
-  
+
   return null;
 }
 
@@ -357,18 +357,66 @@ function detectProviderFromKey(key) {
 function handleApiKeyInput(e) {
   const key = e.target.value;
   const detectedProvider = detectProviderFromKey(key);
-  
+  const detectionStatus = document.getElementById("detectionStatus");
+
   if (detectedProvider) {
     const providerSelect = document.getElementById("providerSelect");
-    
+    const modelNameInput = document.getElementById("modelName");
+
     // Only update if provider has changed
     if (providerSelect && providerSelect.value !== detectedProvider) {
       providerSelect.value = detectedProvider;
-      
+
       // Trigger change event to auto-fill endpoint and model
       providerSelect.dispatchEvent(new Event('change'));
-      
+
       console.log(`[Smart Detection] Auto-switched to provider: ${detectedProvider}`);
+
+      // Show inline notification
+      if (detectionStatus && modelNameInput) {
+        const providerNames = {
+          'openai': 'OpenAI',
+          'anthropic': 'Anthropic (Claude)',
+          'gemini': 'Google Gemini',
+          'deepseek': 'DeepSeek'
+        };
+
+        const providerName = providerNames[detectedProvider] || detectedProvider;
+        const modelName = modelNameInput.value || 'default';
+
+        detectionStatus.style.display = 'block';
+        detectionStatus.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        detectionStatus.style.color = 'white';
+        detectionStatus.style.border = 'none';
+        detectionStatus.innerHTML = `
+          <strong>✓ 已自动识别为 ${providerName}</strong><br>
+          默认模型已设置为: <code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">${modelName}</code><br>
+          <span style="font-size: 12px; opacity: 0.9;">您可以在下方"高级设置"中确认或修改配置</span>
+        `;
+
+        // Auto-hide after 8 seconds
+        setTimeout(() => {
+          if (detectionStatus) {
+            detectionStatus.style.display = 'none';
+          }
+        }, 8000);
+      }
     }
+  } else if (detectionStatus && key.length > 10 && !key.startsWith('*')) {
+    // Show warning if key doesn't match any pattern
+    detectionStatus.style.display = 'block';
+    detectionStatus.style.background = '#fef3c7';
+    detectionStatus.style.color = '#92400e';
+    detectionStatus.style.border = '1px solid #fbbf24';
+    detectionStatus.innerHTML = `
+      <strong>⚠️ 无法自动识别服务商</strong><br>
+      <span style="font-size: 12px;">请手动在下方选择 AI 服务商</span>
+    `;
+
+    setTimeout(() => {
+      if (detectionStatus) {
+        detectionStatus.style.display = 'none';
+      }
+    }, 5000);
   }
 }
