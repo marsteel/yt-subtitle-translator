@@ -53,6 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load and apply dark mode
   loadDarkMode();
 
+  // Smart API key detection
+  const apiKeyInput = document.getElementById("apiKey");
+  if (apiKeyInput) {
+    apiKeyInput.addEventListener("input", handleApiKeyInput);
+  }
+
+
   // Advanced settings toggle
   const advancedToggle = document.getElementById("advancedToggle");
   const advancedContent = document.getElementById("advancedContent");
@@ -302,3 +309,66 @@ document.getElementById("testEndpointBtn").addEventListener("click", async () =>
   });
 });
 
+
+/**
+ * Detect AI provider from API key patterns
+ * 根据 API Key 的特征模式识别 AI 服务商
+ * 
+ * @param {string} key - The API key to analyze
+ * @returns {string|null} - Provider name or null if not detected
+ */
+function detectProviderFromKey(key) {
+  key = key.trim();
+  
+  // Ignore empty keys or masked keys (asterisks)
+  if (!key || key.startsWith('*')) return null;
+
+  // Anthropic Claude: sk-ant-
+  if (key.startsWith('sk-ant-')) return 'anthropic';
+  
+  // OpenAI Project keys: sk-proj-
+  if (key.startsWith('sk-proj-')) return 'openai';
+  
+  // Google Gemini: AIzaSy
+  if (key.startsWith('AIzaSy')) return 'gemini';
+  
+  // DeepSeek: sk- followed by exactly 30 hex characters (total 32)
+  if (key.startsWith('sk-') && key.length === 32) {
+    const hexPart = key.substring(3);
+    if (/^[0-9a-fA-F]{30}$/.test(hexPart)) {
+      return 'deepseek';
+    }
+  }
+  
+  // OpenAI standard keys: sk- with length > 40
+  if (key.startsWith('sk-') && key.length > 40) {
+    return 'openai';
+  }
+  
+  return null;
+}
+
+/**
+ * Handle API key input and auto-detect provider
+ * 处理 API Key 输入并自动检测服务商
+ * 
+ * @param {Event} e - Input event
+ */
+function handleApiKeyInput(e) {
+  const key = e.target.value;
+  const detectedProvider = detectProviderFromKey(key);
+  
+  if (detectedProvider) {
+    const providerSelect = document.getElementById("providerSelect");
+    
+    // Only update if provider has changed
+    if (providerSelect && providerSelect.value !== detectedProvider) {
+      providerSelect.value = detectedProvider;
+      
+      // Trigger change event to auto-fill endpoint and model
+      providerSelect.dispatchEvent(new Event('change'));
+      
+      console.log(`[Smart Detection] Auto-switched to provider: ${detectedProvider}`);
+    }
+  }
+}
