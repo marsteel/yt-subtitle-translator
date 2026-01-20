@@ -142,5 +142,31 @@
     "errorTranslationFailed": {
         "message": "[翻译失败: 请检查 API 设置]",
         "description": "Generic error message for translation failure"
+    },
+    "detectedProvider": {
+        "message": "已自动识别为 $PROVIDER$",
+        "description": "Message when provider is auto-detected",
+        "placeholders": {
+            "provider": {
+                "content": "$1",
+                "example": "OpenAI"
+            }
+        }
+    },
+    "defaultModelSet": {
+        "message": "默认模型已设置为:",
+        "description": "Label for default model in detection feedback"
+    },
+    "checkAdvancedSettings": {
+        "message": "您可以在下方「高级设置」中确认修改或测试配置并保存",
+        "description": "Hint to check advanced settings"
+    },
+    "unrecognizedKey": {
+        "message": "无法自动识别服务商",
+        "description": "Warning when API key is not recognized"
+    },
+    "manualSelection": {
+        "message": "请手动在下方选择 AI 服务商",
+        "description": "Instruction to manually select provider"
     }
 }

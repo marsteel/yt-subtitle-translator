@@ -326,9 +326,47 @@
         <div class="timeline">
             <div class="version">
                 <div class="version-header">
+                    <span class="version-number">v1.8.0</span>
+                    <span class="version-date">January 20, 2026</span>
+                    <span class="badge latest">Latest</span>
+                </div>
+
+                <div class="version-content">
+                    <h3>✨ New Features</h3>
+                    <ul>
+                        <li>🧠 <strong>Smart API Key Detection:</strong> Automatically identifies AI providers (OpenAI,
+                            Anthropic, Gemini, DeepSeek) when you paste your API key</li>
+                        <li>⚡ <strong>Auto-Configuration:</strong> Provider dropdown, API endpoint, and recommended
+                            model are instantly updated based on the detected provider</li>
+                        <li>💬 <strong>Inline Feedback:</strong> Visual confirmation showing detected provider and
+                            configured model with helpful guidance</li>
+                        <li>🎯 <strong>Zero Manual Selection:</strong> No need to manually select the provider anymore -
+                            just paste and go!</li>
+                    </ul>
+
+                    <h3>🎨 UI/UX Improvements</h3>
+                    <ul>
+                        <li>🌐 <strong>Landing Page Update:</strong> Refreshed version information on documentation site
+                        </li>
+                        <li>🛠️ <strong>Streamlined Onboarding:</strong> Simplified initial configuration for new users
+                        </li>
+                    </ul>
+
+                    <h3>🔧 Technical Details</h3>
+                    <ul>
+                        <li>Pattern-based key detection for OpenAI (sk-proj-, sk- with 50+ chars)</li>
+                        <li>Anthropic Claude detection (sk-ant- prefix)</li>
+                        <li>Google Gemini detection (AIzaSy prefix)</li>
+                        <li>DeepSeek detection (sk- with 32 hex characters)</li>
+                        <li>Real-time input listener with automatic provider switching</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version">
+                <div class="version-header">
                     <span class="version-number">v1.7.0</span>
                     <span class="version-date">January 19, 2026</span>
-                    <span class="badge latest">Latest</span>
                 </div>
 
                 <div class="version-content">

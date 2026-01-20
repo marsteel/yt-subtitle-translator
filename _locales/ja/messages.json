@@ -114,34 +114,59 @@
     "viewChangelog": {
         "message": "変更履歴を表示",
         "description": "Button text for viewing changelog"
-    }
-,
+    },
     "errorQuotaExceeded": {
-        "message": "[Translation failed: API quota exceeded]",
+        "message": "[翻訳失敗: APIクォータを超過しました]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[Translation failed: Invalid API key, please check settings]",
+        "message": "[翻訳失敗: APIキーが無効です。設定を確認してください]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[Translation failed: Too many requests, please try again later]",
+        "message": "[翻訳失敗: リクエストが多すぎます。後でもう一度お試しください]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[Translation failed: Content filtered]",
+        "message": "[翻訳失敗: コンテンツがフィルタリングされました]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[Translation failed: Invalid API response format]",
+        "message": "[翻訳失敗: API応答形式が無効です]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[Translation failed: Server error, please try again later]",
+        "message": "[翻訳失敗: サーバーエラー、後でもう一度お試しください]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[Translation failed: Please check API settings]",
+        "message": "[翻訳失敗: API設定を確認してください]",
         "description": "Generic error message for translation failure"
+    },
+    "detectedProvider": {
+        "message": "$PROVIDER$として自動検出されました",
+        "description": "Message when provider is auto-detected",
+        "placeholders": {
+            "provider": {
+                "content": "$1",
+                "example": "OpenAI"
+            }
+        }
+    },
+    "defaultModelSet": {
+        "message": "デフォルトモデルが設定されました:",
+        "description": "Label for default model in detection feedback"
+    },
+    "checkAdvancedSettings": {
+        "message": "下記の「詳細設定」で確認、変更、またはテストして保存できます",
+        "description": "Hint to check advanced settings"
+    },
+    "unrecognizedKey": {
+        "message": "プロバイダーを自動検出できません",
+        "description": "Warning when API key is not recognized"
+    },
+    "manualSelection": {
+        "message": "下記からAIプロバイダーを手動で選択してください",
+        "description": "Instruction to manually select provider"
     }
 }

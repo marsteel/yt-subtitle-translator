@@ -114,34 +114,59 @@
     "viewChangelog": {
         "message": "Wijzigingslogboek bekijken",
         "description": "Button text for viewing changelog"
-    }
-,
+    },
     "errorQuotaExceeded": {
-        "message": "[Translation failed: API quota exceeded]",
+        "message": "[Vertaling mislukt: API-quotum overschreden]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[Translation failed: Invalid API key, please check settings]",
+        "message": "[Vertaling mislukt: Ongeldige API-sleutel, controleer instellingen]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[Translation failed: Too many requests, please try again later]",
+        "message": "[Vertaling mislukt: Te veel verzoeken, probeer later opnieuw]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[Translation failed: Content filtered]",
+        "message": "[Vertaling mislukt: Inhoud gefilterd]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[Translation failed: Invalid API response format]",
+        "message": "[Vertaling mislukt: Ongeldig API-antwoordformaat]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[Translation failed: Server error, please try again later]",
+        "message": "[Vertaling mislukt: Serverfout, probeer later opnieuw]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[Translation failed: Please check API settings]",
+        "message": "[Vertaling mislukt: Controleer API-instellingen]",
         "description": "Generic error message for translation failure"
+    },
+    "detectedProvider": {
+        "message": "Automatisch gedetecteerd als $PROVIDER$",
+        "description": "Message when provider is auto-detected",
+        "placeholders": {
+            "provider": {
+                "content": "$1",
+                "example": "OpenAI"
+            }
+        }
+    },
+    "defaultModelSet": {
+        "message": "Standaardmodel ingesteld op:",
+        "description": "Label for default model in detection feedback"
+    },
+    "checkAdvancedSettings": {
+        "message": "U kunt de configuratie bevestigen, wijzigen of testen in Geavanceerde instellingen hieronder en opslaan",
+        "description": "Hint to check advanced settings"
+    },
+    "unrecognizedKey": {
+        "message": "Kan provider niet automatisch detecteren",
+        "description": "Warning when API key is not recognized"
+    },
+    "manualSelection": {
+        "message": "Selecteer hieronder handmatig een AI-provider",
+        "description": "Instruction to manually select provider"
     }
 }

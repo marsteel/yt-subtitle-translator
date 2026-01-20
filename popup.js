@@ -53,6 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load and apply dark mode
   loadDarkMode();
 
+  // Smart API key detection
+  const apiKeyInput = document.getElementById("apiKey");
+  if (apiKeyInput) {
+    apiKeyInput.addEventListener("input", handleApiKeyInput);
+  }
+
+
   // Advanced settings toggle
   const advancedToggle = document.getElementById("advancedToggle");
   const advancedContent = document.getElementById("advancedContent");
@@ -302,3 +309,120 @@ document.getElementById("testEndpointBtn").addEventListener("click", async () =>
   });
 });
 
+
+/**
+ * Detect AI provider from API key patterns
+ * 根据 API Key 的特征模式识别 AI 服务商
+ * 
+ * @param {string} key - The API key to analyze
+ * @returns {string|null} - Provider name or null if not detected
+ */
+function detectProviderFromKey(key) {
+  key = key.trim();
+
+  // Ignore empty keys or masked keys (asterisks)
+  if (!key || key.startsWith('*')) return null;
+
+  // Anthropic Claude: sk-ant-
+  if (key.startsWith('sk-ant-')) return 'anthropic';
+
+  // OpenAI Project keys: sk-proj-
+  if (key.startsWith('sk-proj-')) return 'openai';
+
+  // Google Gemini: AIzaSy
+  if (key.startsWith('AIzaSy')) return 'gemini';
+
+  // DeepSeek: sk- followed by exactly 30 hex characters (total 32)
+  if (key.startsWith('sk-') && key.length === 32) {
+    const hexPart = key.substring(3);
+    if (/^[0-9a-fA-F]{30}$/.test(hexPart)) {
+      return 'deepseek';
+    }
+  }
+
+  // OpenAI standard keys: sk- with length > 40
+  if (key.startsWith('sk-') && key.length > 40) {
+    return 'openai';
+  }
+
+  return null;
+}
+
+/**
+ * Handle API key input and auto-detect provider
+ * 处理 API Key 输入并自动检测服务商
+ * 
+ * @param {Event} e - Input event
+ */
+function handleApiKeyInput(e) {
+  const key = e.target.value;
+  const detectedProvider = detectProviderFromKey(key);
+  const detectionStatus = document.getElementById("detectionStatus");
+
+  if (detectedProvider) {
+    const providerSelect = document.getElementById("providerSelect");
+    const modelNameInput = document.getElementById("modelName");
+
+    // Only update provider and trigger change if it's different
+    // This respects user's current configuration when provider matches
+    if (providerSelect && providerSelect.value !== detectedProvider) {
+      providerSelect.value = detectedProvider;
+
+      // Trigger change event to auto-fill endpoint and model
+      providerSelect.dispatchEvent(new Event('change'));
+
+      console.log(`[Smart Detection] Auto-switched to provider: ${detectedProvider}`);
+    } else {
+      console.log(`[Smart Detection] Detected provider matches current selection: ${detectedProvider}`);
+    }
+
+    // Show inline notification after a brief delay to ensure model value is populated
+    // This provides confirmation feedback to the user
+    setTimeout(() => {
+      if (detectionStatus && modelNameInput) {
+        const providerNames = {
+          'openai': 'OpenAI',
+          'anthropic': 'Anthropic (Claude)',
+          'gemini': 'Google Gemini',
+          'deepseek': 'DeepSeek'
+        };
+
+        const providerName = providerNames[detectedProvider] || detectedProvider;
+        const modelName = modelNameInput.value || 'default';
+
+        detectionStatus.style.display = 'block';
+        detectionStatus.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        detectionStatus.style.color = 'white';
+        detectionStatus.style.border = 'none';
+        detectionStatus.innerHTML = `
+          <strong>✓ ${chrome.i18n.getMessage('detectedProvider', [providerName])}</strong><br>
+          ${chrome.i18n.getMessage('defaultModelSet')} <code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">${modelName}</code><br>
+          <span style="font-size: 12px; opacity: 0.9;">${chrome.i18n.getMessage('checkAdvancedSettings')}</span>
+        `;
+
+        // Auto-hide after 8 seconds
+        setTimeout(() => {
+          if (detectionStatus) {
+            detectionStatus.style.display = 'none';
+          }
+        }, 8000);
+      }
+    }, 100); // Small delay to let the change event complete
+  } else if (detectionStatus && key.length > 10 && !key.startsWith('*')) {
+    // Show warning if key doesn't match any pattern
+    detectionStatus.style.display = 'block';
+    detectionStatus.style.background = '#fef3c7';
+    detectionStatus.style.color = '#92400e';
+    detectionStatus.style.border = '1px solid #fbbf24';
+    detectionStatus.innerHTML = `
+      <strong>⚠️ 无法自动识别服务商</strong><br>
+      <span style="font-size: 12px;">请手动在下方选择 AI 服务商</span>
+    `;
+
+    setTimeout(() => {
+      if (detectionStatus) {
+        detectionStatus.style.display = 'none';
+      }
+    }, 5000);
+  }
+}

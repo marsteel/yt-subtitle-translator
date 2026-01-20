@@ -114,34 +114,59 @@
     "viewChangelog": {
         "message": "Voir le journal des modifications",
         "description": "Button text for viewing changelog"
-    }
-,
+    },
     "errorQuotaExceeded": {
-        "message": "[Translation failed: API quota exceeded]",
+        "message": "[Traduction échouée: Quota API dépassé]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[Translation failed: Invalid API key, please check settings]",
+        "message": "[Traduction échouée: Clé API invalide, veuillez vérifier les paramètres]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[Translation failed: Too many requests, please try again later]",
+        "message": "[Traduction échouée: Trop de requêtes, veuillez réessayer plus tard]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[Translation failed: Content filtered]",
+        "message": "[Traduction échouée: Contenu filtré]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[Translation failed: Invalid API response format]",
+        "message": "[Traduction échouée: Format de réponse API invalide]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[Translation failed: Server error, please try again later]",
+        "message": "[Traduction échouée: Erreur serveur, veuillez réessayer plus tard]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[Translation failed: Please check API settings]",
+        "message": "[Traduction échouée: Veuillez vérifier les paramètres API]",
         "description": "Generic error message for translation failure"
+    },
+    "detectedProvider": {
+        "message": "Détecté automatiquement comme $PROVIDER$",
+        "description": "Message when provider is auto-detected",
+        "placeholders": {
+            "provider": {
+                "content": "$1",
+                "example": "OpenAI"
+            }
+        }
+    },
+    "defaultModelSet": {
+        "message": "Modèle par défaut défini sur:",
+        "description": "Label for default model in detection feedback"
+    },
+    "checkAdvancedSettings": {
+        "message": "Vous pouvez confirmer, modifier ou tester la configuration dans les paramètres avancés ci-dessous et enregistrer",
+        "description": "Hint to check advanced settings"
+    },
+    "unrecognizedKey": {
+        "message": "Impossible de détecter automatiquement le fournisseur",
+        "description": "Warning when API key is not recognized"
+    },
+    "manualSelection": {
+        "message": "Veuillez sélectionner manuellement le fournisseur d'IA ci-dessous",
+        "description": "Instruction to manually select provider"
     }
 }

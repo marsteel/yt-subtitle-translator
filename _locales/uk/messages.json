@@ -114,34 +114,59 @@
     "viewChangelog": {
         "message": "Переглянути журнал змін",
         "description": "Button text for viewing changelog"
-    }
-,
+    },
     "errorQuotaExceeded": {
-        "message": "[Translation failed: API quota exceeded]",
+        "message": "[Помилка перекладу: Перевищено квоту API]",
         "description": "Error message when API quota is exceeded"
     },
     "errorInvalidApiKey": {
-        "message": "[Translation failed: Invalid API key, please check settings]",
+        "message": "[Помилка перекладу: Недійсний ключ API, перевірте налаштування]",
         "description": "Error message when API key is invalid"
     },
     "errorRateLimit": {
-        "message": "[Translation failed: Too many requests, please try again later]",
+        "message": "[Помилка перекладу: Занадто багато запитів, спробуйте пізніше]",
         "description": "Error message when rate limit is exceeded"
     },
     "errorContentFilter": {
-        "message": "[Translation failed: Content filtered]",
+        "message": "[Помилка перекладу: Вміст відфільтровано]",
         "description": "Error message when content is filtered"
     },
     "errorInvalidResponse": {
-        "message": "[Translation failed: Invalid API response format]",
+        "message": "[Помилка перекладу: Недійсний формат відповіді API]",
         "description": "Error message when API response format is invalid"
     },
     "errorServerError": {
-        "message": "[Translation failed: Server error, please try again later]",
+        "message": "[Помилка перекладу: Помилка сервера, спробуйте пізніше]",
         "description": "Error message when server error occurs"
     },
     "errorTranslationFailed": {
-        "message": "[Translation failed: Please check API settings]",
+        "message": "[Помилка перекладу: Перевірте налаштування API]",
         "description": "Generic error message for translation failure"
+    },
+    "detectedProvider": {
+        "message": "Автоматично визначено як $PROVIDER$",
+        "description": "Message when provider is auto-detected",
+        "placeholders": {
+            "provider": {
+                "content": "$1",
+                "example": "OpenAI"
+            }
+        }
+    },
+    "defaultModelSet": {
+        "message": "Модель за замовчуванням встановлено на:",
+        "description": "Label for default model in detection feedback"
+    },
+    "checkAdvancedSettings": {
+        "message": "Ви можете підтвердити, змінити або протестувати конфігурацію в розширених налаштуваннях нижче та зберегти",
+        "description": "Hint to check advanced settings"
+    },
+    "unrecognizedKey": {
+        "message": "Не вдається автоматично визначити провайдера",
+        "description": "Warning when API key is not recognized"
+    },
+    "manualSelection": {
+        "message": "Будь ласка, виберіть провайдера AI вручну нижче",
+        "description": "Instruction to manually select provider"
     }
 }

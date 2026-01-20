@@ -326,9 +326,42 @@
         <div class="timeline">
             <div class="version">
                 <div class="version-header">
+                    <span class="version-number">v1.8.0</span>
+                    <span class="version-date">2026年1月20日</span>
+                    <span class="badge latest">最新</span>
+                </div>
+
+                <div class="version-content">
+                    <h3>✨ 新功能</h3>
+                    <ul>
+                        <li>🧠 <strong>智能 API Key 识别：</strong> 粘贴 API Key 时自动识别 AI 服务商（OpenAI、Anthropic、Gemini、DeepSeek）
+                        </li>
+                        <li>⚡ <strong>自动配置：</strong> 根据识别到的服务商，自动更新服务商下拉框、API 端点和推荐模型</li>
+                        <li>💬 <strong>内联反馈：</strong> 显示检测到的服务商和配置的模型，并提供有用的指导信息</li>
+                        <li>🎯 <strong>零手动选择：</strong> 无需再手动选择服务商 - 粘贴即用！</li>
+                    </ul>
+
+                    <h3>🎨 界面/体验改进</h3>
+                    <ul>
+                        <li>🌐 <strong>官网同步：</strong> 更新了文档官网的版本信息</li>
+                        <li>🛠️ <strong>简化配置流程：</strong> 为新用户简化了初始配置步骤</li>
+                    </ul>
+
+                    <h3>🔧 技术细节</h3>
+                    <ul>
+                        <li>基于模式的 Key 检测：OpenAI（sk-proj-、sk- 且长度 50+ 字符）</li>
+                        <li>Anthropic Claude 检测（sk-ant- 前缀）</li>
+                        <li>Google Gemini 检测（AIzaSy 前缀）</li>
+                        <li>DeepSeek 检测（sk- 且 32 位十六进制字符）</li>
+                        <li>实时输入监听器，自动切换服务商</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version">
+                <div class="version-header">
                     <span class="version-number">v1.7.0</span>
                     <span class="version-date">2026年1月19日</span>
-                    <span class="badge latest">最新</span>
                 </div>
 
                 <div class="version-content">
