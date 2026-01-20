@@ -158,7 +158,7 @@
         "description": "Label for default model in detection feedback"
     },
     "checkAdvancedSettings": {
-        "message": "您可以在下方"高级设置"中确认修改或测试配置并保存",
+        "message": "您可以在下方「高级设置」中确认修改或测试配置并保存",
         "description": "Hint to check advanced settings"
     },
     "unrecognizedKey": {
