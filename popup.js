@@ -363,7 +363,8 @@ function handleApiKeyInput(e) {
     const providerSelect = document.getElementById("providerSelect");
     const modelNameInput = document.getElementById("modelName");
 
-    // Update provider if it has changed
+    // Only update provider and trigger change if it's different
+    // This respects user's current configuration when provider matches
     if (providerSelect && providerSelect.value !== detectedProvider) {
       providerSelect.value = detectedProvider;
 
@@ -371,9 +372,12 @@ function handleApiKeyInput(e) {
       providerSelect.dispatchEvent(new Event('change'));
 
       console.log(`[Smart Detection] Auto-switched to provider: ${detectedProvider}`);
+    } else {
+      console.log(`[Smart Detection] Detected provider matches current selection: ${detectedProvider}`);
     }
 
     // Always show inline notification when a provider is detected
+    // This provides confirmation feedback to the user
     if (detectionStatus && modelNameInput) {
       const providerNames = {
         'openai': 'OpenAI',
