@@ -144,7 +144,7 @@
         "description": "Generic error message for translation failure"
     },
     "detectedProvider": {
-        "message": "Auto-detected as $PROVIDER$",
+        "message": "Detectado automáticamente como $PROVIDER$",
         "description": "Message when provider is auto-detected",
         "placeholders": {
             "provider": {
@@ -154,19 +154,19 @@
         }
     },
     "defaultModelSet": {
-        "message": "Default model set to:",
+        "message": "Modelo predeterminado establecido en:",
         "description": "Label for default model in detection feedback"
     },
     "checkAdvancedSettings": {
-        "message": "You can confirm, modify, or test the configuration in Advanced Settings below and save",
+        "message": "Puede confirmar, modificar o probar la configuración en Configuración avanzada a continuación y guardar",
         "description": "Hint to check advanced settings"
     },
     "unrecognizedKey": {
-        "message": "Unable to auto-detect provider",
+        "message": "No se puede detectar automáticamente el proveedor",
         "description": "Warning when API key is not recognized"
     },
     "manualSelection": {
-        "message": "Please manually select AI Provider below",
+        "message": "Por favor, seleccione manualmente el proveedor de IA a continuación",
         "description": "Instruction to manually select provider"
     }
 }
