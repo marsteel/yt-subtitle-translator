@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /googled102bdd02ec4c19a.html
+
+Sitemap: https://yt-subtitle-translator.magang.net/sitemap.xml
